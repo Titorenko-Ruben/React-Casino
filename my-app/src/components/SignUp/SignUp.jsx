@@ -1,45 +1,76 @@
-import React from "react"
-import { useState } from "react"
+import React, { useState } from "react"
 import { IoIosClose, IoLogoTwitch } from 'react-icons/io'
 import { AiOutlineGoogle } from 'react-icons/ai'
 import { CgFacebook } from 'react-icons/cg'
 import { BiCommentError } from 'react-icons/bi'
-import { useFormik } from 'formik'
+import { useFormik, useFormikContext } from 'formik'
 import * as yup from 'yup'
 
 import styles from './styles.module.css'
-import check from '../../assets/icons/check.svg'
 
-function onSubmit (values, actions) {
-  console.log(values)
+import check from '../../assets/icons/check.svg'
+import { PASSWORD } from "../../shared/consts/regexp"
+
+function Input({  handleChange, handleBlur, id, type='text' }) {
+
+  const { values, errors } = useFormikContext();
+
+  return (
+    <label className={styles.stacked} htmlFor={id}>
+      <div className={styles.inputTitleWrapper}>
+        <div>{id}</div>
+      </div>
+      <div className={styles.inputWrapper}>
+        <div className={styles.inputContent}>
+          <input
+            id={id}
+            value={values[id]}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            type={type}
+            className={styles.input} />
+        </div>
+      </div>
+      {errors[id] && <div className={styles.inputError}>
+        <BiCommentError className={styles.errorIcon} />
+        <span className={styles.error}>{errors[id]}</span>
+      </div>}
+    </label>
+  )
 }
 
 function SignUp() {
-  // const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}/;
-  // 5 min characters, 1 upper case letter, 1 lower case letter, 1 numeric digit
+  const [userAgree, setUserAgree] = useState(false)
+
+  const date = new Date()
+
   const basicSchema = yup.object().shape({
     email: yup.string().email('Please enter a valid email').required('Required'),
     username: yup.string().required('Required'),
     day: yup.number().positive().max(31).integer().required('Required'),
     month: yup.number().positive().max(12).integer().required('Required'),
-    year: yup.number().positive().max(2022).integer().required('Required'),
-    password: yup.string().min(5)/*.matches(passwordRules, { message: 'Please create a stronger password' })*/.required('Required'),
+    year: yup.number().positive().max(date.getFullYear()).integer().required('Required'),
+    password: yup.string().min(5).matches(PASSWORD, 'Please create a stronger password').required('Required'),
   })
-
-  const [userAgree, setUserAgree] = useState(false)
 
   const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
       email: '',
       username: '',
-      password: '',
       day: '',
       month: '',
       year: '',
+      password: '',
     },
     validationSchema: basicSchema,
     onSubmit,
   })
+
+  console.log(errors)
+
+  function onSubmit(values) {
+    console.log(values)
+  }
 
   return (
     <div className={styles.modal}>
@@ -55,69 +86,28 @@ function SignUp() {
                 <h1 className={styles.title}>Create an Account</h1>
               </div>
               <form onSubmit={handleSubmit} className={styles.form}>
-                {/* Input for email */}
-                <label className={styles.stacked} htmlFor="email">
-                  <div className={styles.inputTitleWrapper}>
-                    <div>Email</div>
-                  </div>
-                  <div className={styles.inputWrapper}>
-                    <div className={styles.inputContent}>
-                      <input
-                        value={values.email}
-                        id='email'
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        type="email"
-                        className={styles.input} />
-                    </div>
-                  </div>
-                  <div className={errors.email ? styles.inputError : ''}>
-                    {errors.email && <BiCommentError className={styles.errorIcon} />}
-                    <span className={errors.email ? styles.error : ''}>{errors.email ? errors.email : ''}</span>
-                  </div>
-                </label>
-                {/* Input for Username */}
-                <label className={styles.stacked} htmlFor="username">
-                  <div className={styles.inputTitleWrapper}>
-                    <div>Username</div>
-                  </div>
-                  <div className={styles.inputWrapper}>
-                    <div className={styles.inputContent}>
-                      <input
-                        id='username'
-                        value={values.username}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        type="username"
-                        className={styles.input} />
-                    </div>
-                  </div>
-                  <div className={errors.username ? styles.inputError : ''}>
-                    {errors.username && <BiCommentError className={styles.errorIcon} />}
-                    <span className={errors.username ? styles.error : ''}>{errors.username ? errors.username: ''}</span>
-                  </div>
-                </label>
-                {/* Input for Password */}
-                <label className={styles.stacked} htmlFor="password">
-                  <div className={styles.inputTitleWrapper}>
-                    <div>Password</div>
-                  </div>
-                  <div className={styles.inputWrapper}>
-                    <div className={styles.inputContent}>
-                      <input
-                        id='password'
-                        value={values.password}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        type="password"
-                        className={styles.input} />
-                    </div>
-                  </div>
-                  <div className={errors.password ? styles.inputError : ''}>
-                    {errors.password && <BiCommentError className={styles.errorIcon} />}
-                    <span className={errors.password ? styles.error : ''}>{errors.password ? errors.password : ''}</span>
-                  </div>
-                </label>
+                <Input
+                  id="email"
+                  values={values}
+                  errors={errors}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+                <Input
+                  id="username"
+                  values={values}
+                  errors={errors}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+                <Input
+                  id="password"
+                  values={values}
+                  errors={errors}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  type="password"
+                />
                 {/* Input for Date */}
                 <label className={styles.stacked}>
                   <div className={styles.inputTitleWrapper}>
@@ -170,7 +160,7 @@ function SignUp() {
                       </div>
                     </label>
                   </div>
-                  <div className={errors.day ? styles.inputError : ''}>
+                  {/* <div className={errors.day ? styles.inputError : ''}>
                     {errors.day && <BiCommentError className={styles.errorIcon} />}
                     <span className={errors.day ? styles.error : ''}>{errors.day ? errors.day : ''}</span>
                   </div>
@@ -181,7 +171,7 @@ function SignUp() {
                   <div className={errors.year ? styles.inputError : ''}>
                     {errors.year && <BiCommentError className={styles.errorIcon} />}
                     <span className={errors.year ? styles.error : ''}>{errors.year ? errors.year : ''}</span>
-                  </div>
+                  </div> */}
                 </label>
                 <div className={styles.termsTextWrapper}>
                   <div className={styles.registerTerms}>
@@ -197,7 +187,7 @@ function SignUp() {
                     </button>
                   </div>
                 </div>
-                <button className={styles.playNowBtn} onClick={(e)=>e.preventDefault} type='submit'>
+                <button className={styles.playNowBtn} onClick={(e) => e.preventDefault} type='submit'>
                   <span className={styles.btnText}>Play Now</span>
                 </button>
               </form>
