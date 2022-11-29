@@ -6,10 +6,10 @@ import { BiCommentError } from "react-icons/bi";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
-import check from "../../assets/icons/check.svg";
-import { PASSWORD } from "../../shared/consts/regexp";
+import check from "assets/icons/check.svg";
+import { PASSWORD } from "shared/consts/regexp";
 
 function Input({
   values,
