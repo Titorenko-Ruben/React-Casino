@@ -1,20 +1,24 @@
-import React, { useState } from "react"
-import { IoIosClose, IoLogoTwitch } from 'react-icons/io'
-import { AiOutlineGoogle } from 'react-icons/ai'
-import { CgFacebook } from 'react-icons/cg'
-import { BiCommentError } from 'react-icons/bi'
-import { useFormik, useFormikContext } from 'formik'
-import * as yup from 'yup'
+import React, { useState } from "react";
+import { IoIosClose, IoLogoTwitch } from "react-icons/io";
+import { AiOutlineGoogle } from "react-icons/ai";
+import { CgFacebook } from "react-icons/cg";
+import { BiCommentError } from "react-icons/bi";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 
-import check from '../../assets/icons/check.svg'
-import { PASSWORD } from "../../shared/consts/regexp"
+import check from "../../assets/icons/check.svg";
+import { PASSWORD } from "../../shared/consts/regexp";
 
-function Input({  handleChange, handleBlur, id, type='text' }) {
-
-  const { values, errors } = useFormikContext();
-
+function Input({
+  values,
+  errors,
+  handleChange,
+  handleBlur,
+  id,
+  type = "text",
+}) {
   return (
     <label className={styles.stacked} htmlFor={id}>
       <div className={styles.inputTitleWrapper}>
@@ -28,48 +32,63 @@ function Input({  handleChange, handleBlur, id, type='text' }) {
             onChange={handleChange}
             onBlur={handleBlur}
             type={type}
-            className={styles.input} />
+            className={styles.input}
+          />
         </div>
       </div>
-      {errors[id] && <div className={styles.inputError}>
-        <BiCommentError className={styles.errorIcon} />
-        <span className={styles.error}>{errors[id]}</span>
-      </div>}
+      {errors[id] && (
+        <div className={styles.inputError}>
+          <BiCommentError className={styles.errorIcon} />
+          <span className={styles.error}>{errors[id]}</span>
+        </div>
+      )}
     </label>
-  )
+  );
 }
 
 function SignUp() {
-  const [userAgree, setUserAgree] = useState(false)
+  const [userAgree, setUserAgree] = useState(false);
 
-  const date = new Date()
+  const date = new Date();
 
   const basicSchema = yup.object().shape({
-    email: yup.string().email('Please enter a valid email').required('Required'),
-    username: yup.string().required('Required'),
-    day: yup.number().positive().max(31).integer().required('Required'),
-    month: yup.number().positive().max(12).integer().required('Required'),
-    year: yup.number().positive().max(date.getFullYear()).integer().required('Required'),
-    password: yup.string().min(5).matches(PASSWORD, 'Please create a stronger password').required('Required'),
-  })
+    email: yup
+      .string()
+      .email("Please enter a valid email")
+      .required("Required"),
+    username: yup.string().required("Required"),
+    day: yup.number().positive().max(31).integer().required("Required"),
+    month: yup.number().positive().max(12).integer().required("Required"),
+    year: yup
+      .number()
+      .positive()
+      .max(date.getFullYear())
+      .integer()
+      .required("Required"),
+    password: yup
+      .string()
+      .min(5)
+      .matches(PASSWORD, "Please create a stronger password")
+      .required("Required"),
+  });
 
   const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
-      email: '',
-      username: '',
-      day: '',
-      month: '',
-      year: '',
-      password: '',
+      email: "",
+      username: "",
+      day: "",
+      month: "",
+      year: "",
+      password: "",
     },
     validationSchema: basicSchema,
     onSubmit,
-  })
+  });
 
-  console.log(errors)
+  console.log(errors);
 
   function onSubmit(values) {
-    console.log(values)
+    console.log(values);
   }
 
   return (
@@ -79,7 +98,9 @@ function SignUp() {
         <div className={styles.regWrapper}>
           <div className={styles.modalContent}>
             <div className={styles.closeBtnWrapper}>
-              <button className={styles.closeBtn}><IoIosClose className={styles.closeIcon} /></button>
+              <button className={styles.closeBtn}>
+                <IoIosClose className={styles.closeIcon} />
+              </button>
             </div>
             <div className={styles.content}>
               <div className={styles.centerWrapperTitle}>
@@ -118,13 +139,13 @@ function SignUp() {
                       <div className={styles.inputWrapper}>
                         <div className={styles.inputContent}>
                           <input
-                            id='day'
+                            id="day"
                             value={values.day}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             type="text"
                             className={styles.input}
-                            placeholder='DD'
+                            placeholder="DD"
                           />
                         </div>
                       </div>
@@ -133,13 +154,13 @@ function SignUp() {
                       <div className={styles.inputWrapper}>
                         <div className={styles.inputContent}>
                           <input
-                            id='month'
+                            id="month"
                             value={values.month}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             type="text"
                             className={styles.input}
-                            placeholder='Month'
+                            placeholder="Month"
                           />
                         </div>
                       </div>
@@ -148,13 +169,13 @@ function SignUp() {
                       <div className={styles.inputWrapper}>
                         <div className={styles.inputContent}>
                           <input
-                            id='year'
+                            id="year"
                             value={values.year}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             type="text"
                             className={styles.input}
-                            placeholder='YYYY'
+                            placeholder="YYYY"
                           />
                         </div>
                       </div>
@@ -177,17 +198,30 @@ function SignUp() {
                   <div className={styles.registerTerms}>
                     <button
                       onClick={() => setUserAgree(!userAgree)}
-                      className={styles.btnTerms}>
-                      <div className={userAgree ? styles.indicatorEnable : styles.indicatorDisabled}>
-                        {userAgree ? <img src={check} alt='Check' /> : ''}
+                      className={styles.btnTerms}
+                    >
+                      <div
+                        className={
+                          userAgree
+                            ? styles.indicatorEnable
+                            : styles.indicatorDisabled
+                        }
+                      >
+                        {userAgree ? <img src={check} alt="Check" /> : ""}
                       </div>
                       <div className={styles.termsContent}>
-                        <div className={styles.termsText}>I agree and understand the Terms & Conditions*</div>
+                        <div className={styles.termsText}>
+                          I agree and understand the Terms & Conditions*
+                        </div>
                       </div>
                     </button>
                   </div>
                 </div>
-                <button className={styles.playNowBtn} onClick={(e) => e.preventDefault} type='submit'>
+                <button
+                  className={styles.playNowBtn}
+                  onClick={(e) => e.preventDefault}
+                  type="submit"
+                >
                   <span className={styles.btnText}>Play Now</span>
                 </button>
               </form>
@@ -198,13 +232,19 @@ function SignUp() {
               </div>
               <div className={styles.auth}>
                 <div className={styles.providerWrapper}>
-                  <button className={styles.provider}><CgFacebook className={styles.fIcon} /></button>
+                  <button className={styles.provider}>
+                    <CgFacebook className={styles.fIcon} />
+                  </button>
                 </div>
                 <div className={styles.providerWrapper}>
-                  <button className={styles.provider}><AiOutlineGoogle className={styles.fIcon} /></button>
+                  <button className={styles.provider}>
+                    <AiOutlineGoogle className={styles.fIcon} />
+                  </button>
                 </div>
                 <div className={styles.providerWrapper}>
-                  <button className={styles.provider}><IoLogoTwitch className={styles.icon} /></button>
+                  <button className={styles.provider}>
+                    <IoLogoTwitch className={styles.icon} />
+                  </button>
                 </div>
               </div>
               <div className={styles.footer}>
@@ -216,7 +256,9 @@ function SignUp() {
                 </span>
                 <span className={styles.footerLinkWrapper}>
                   <button className={styles.footerLink}>
-                    <span className={styles.footerLinkText}>Terms & Conditions*</span>
+                    <span className={styles.footerLinkText}>
+                      Terms & Conditions*
+                    </span>
                   </button>
                 </span>
               </div>
