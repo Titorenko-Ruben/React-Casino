@@ -1,7 +1,7 @@
 import React from 'react'
 
-import styles from './styles.module.css'
-import casinoLogo from '../../assets/icons/logo2.png'
+import styles from './styles.module.scss'
+import casinoLogo from 'assets/icons/logo2.png'
 
 function Header() {
   return (

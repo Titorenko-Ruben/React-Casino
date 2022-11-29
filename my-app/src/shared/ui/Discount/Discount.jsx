@@ -3,8 +3,7 @@ import { IoLogoTwitch } from 'react-icons/io'
 import { AiOutlineGoogle } from 'react-icons/ai'
 import { CgFacebook } from 'react-icons/cg'
 
-import styles from './styles.module.css'
-import backgroundImg from '../../assets/img/main.jpg'
+import styles from './styles.module.scss'
 
 const Discount = () => {
   return (
