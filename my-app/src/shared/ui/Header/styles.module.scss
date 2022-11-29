@@ -11,16 +11,19 @@ body {
   margin-left: 2.5rem;
 }
 
+
 .headerWrapper {
   width: 100%;
   height: 40px;
   background-color: #1a2c38;
   align-items: center;
   display: flex;
-  box-shadow: #0000001f 0 2px 4px -1;  /* #0003 0 4px 6px -1px, #0000001f 0 2px 4px -1;*/
+  box-shadow: #0000001f 0 2px 4px -1;
+  /* #0003 0 4px 6px -1px, #0000001f 0 2px 4px -1;*/
   touch-action: none;
   letter-spacing: normal;
   padding: 0 3vw;
+  z-index: 100;
   position: fixed;
 }
 
@@ -29,7 +32,7 @@ body {
   justify-content: center;
   margin-left: auto;
   margin-right: 10%;
- /* gap: 0.5rem;*/
+  /* gap: 0.5rem;*/
 }
 
 a {
@@ -50,10 +53,12 @@ button {
   padding: 0;
 
 }
-button:hover{
+
+button:hover {
   opacity: 0.8;
 }
-button:active{
+
+button:active {
   opacity: 0.5;
 }
 
