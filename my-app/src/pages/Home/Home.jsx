@@ -1,16 +1,19 @@
 import React from "react";
+import { useState } from "react";
 
 import Discount from "shared/ui/Discount/Discount";
 import Header from "shared/ui/Header/Header";
 import SignUp from "shared/ui/SignUp/SignUp";
-import styles from './styles.module.scss'
+// import styles from './styles.module.scss'
 
 function Home() {
+  const [regWindow, setRegWindow] = useState(false)
+
   return (
     <div>
-      <Header />
+      <Header regWindow={regWindow} setRegWindow={setRegWindow}/>
       <Discount />
-      <SignUp />
+      <SignUp regWindow={regWindow} setRegWindow={setRegWindow}/>
     </div>
   );
 }
