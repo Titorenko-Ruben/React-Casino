@@ -37,6 +37,7 @@ body {
   touch-action: none;
   letter-spacing: normal;
   padding: 0 3vw;
+  z-index: 100;
   position: fixed;
   z-index: 100;
 }
@@ -139,4 +140,6 @@ button:active {
   font: inherit;
   vertical-align: baseline;
   color: #fff;
+  background: #1475e1;
+  border-radius: 0.2rem;
 }
