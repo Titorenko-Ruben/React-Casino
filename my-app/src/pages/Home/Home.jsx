@@ -10,7 +10,7 @@ function Home() {
     <div>
       <Header />
       <Discount />
-      <SignUp />
+      {/* <SignUp /> */}
     </div>
   );
 }
