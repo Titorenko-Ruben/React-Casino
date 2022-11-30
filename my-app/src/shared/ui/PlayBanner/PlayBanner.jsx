@@ -1,9 +1,10 @@
 import React from "react";
 
-import styles from './styles.module.css'
+import styles from './styles.module.scss'
 import playBanner1 from 'assets/img/play-banner1.png'
 import playBanner2 from 'assets/img/play-banner2.png'
 import playBanner3 from 'assets/img/play-banner3.png'
+import { Link } from "react-router-dom";
 
 const PlayBanner = () => {
     return (
@@ -13,7 +14,7 @@ const PlayBanner = () => {
             <div className={styles.contentArea}>
                 <div className={styles.blockWrapper}>
                     <div className={styles.contentBlock}>
-                        <img src={playBanner1} />
+                        <img src={playBanner1} alt = "play Banner1"/>
                         <span className={styles.spaceImg}></span>
                         <h4>Industry favorites</h4>
                         <span className={styles.spaceImg}></span>
@@ -25,7 +26,7 @@ const PlayBanner = () => {
 
                 <div className={styles.blockWrapper}>
                     <div className={styles.contentBlock}>
-                        <img src={playBanner2} />
+                        <img src={playBanner2} alt = "play Banner2"/>
                         <span className={styles.spaceImg}></span>
                         <h4>Instant coins</h4>
                         <span className={styles.spaceImg}></span>
@@ -37,7 +38,7 @@ const PlayBanner = () => {
 
                 <div className={styles.blockWrapper}>
                     <div className={styles.contentBlock}>
-                        <img src={playBanner3} />
+                        <img src={playBanner3} alt = "play Banner3" />
                         <span className={styles.spaceImg}></span>
                         <h4>A truly social casino</h4>
                         <span className={styles.spaceImg}></span>
@@ -50,13 +51,14 @@ const PlayBanner = () => {
 
             <span className={styles.space}></span>
             <button>
-                <a className={styles.btnGoTo} href='#'>Go to Social Casino</a>
+
+                <Link className={styles.btnGoTo} to="/">Go to Social Casino</Link>
             </button>
 
         </section>
     )
 
 }
-
+//
 
 export default PlayBanner;

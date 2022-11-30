@@ -9,6 +9,7 @@ function Header() {
       <div className={styles.headerWrapper}>
         <div>
           <button><a href='#'><img className={styles.logo} src={casinoLogo} alt='logo' /></a></button>
+          
         </div>
         <div className={styles.btnField}>
           <button>
