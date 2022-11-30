@@ -51,11 +51,27 @@ button {
 }
 
 .scroll {
+    scrollbar-color: #b1bad3 transparent;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    flex: 1;    
     overscroll-behavior: contain;
     overflow-y: auto;
     overflow-x: hidden;
     min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    color: #b1bad3;
+    z-index: 1500;
+    cursor: default;
 }
+
 
 .modalContent {
     flex: 1;

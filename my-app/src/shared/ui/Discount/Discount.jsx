@@ -7,13 +7,13 @@ import styles from './styles.module.scss'
 
 import welcomeTopImg from 'assets/img/sweeps-welcome-top-en.png'
 
-const Discount = () => {
+function Discount ({ regWindow, setRegWindow }) {
   return (
     <div className={styles.wrapper} >
       <div className={styles.mainRegister}>
         <div className={styles.contener}>
           <h1 className={styles.title}>Play Smarter</h1>
-          <button className={styles.mainBtn}>
+          <button className={styles.mainBtn} onClick={()=>setRegWindow(!regWindow)}>
             <span> Register instanly</span>
           </button>
           <div className={styles.authWrapper}>
@@ -29,7 +29,7 @@ const Discount = () => {
         </div>
       </div>
       <div className={styles.mainImg}>
-        <img src={welcomeTopImg} />
+        <img alt='Welcome top img' src={welcomeTopImg} />
       </div>
     </div>
   )
