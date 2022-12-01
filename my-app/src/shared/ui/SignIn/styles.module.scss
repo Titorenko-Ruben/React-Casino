@@ -224,6 +224,18 @@ body {
     border: 2px solid #557086;
 }
 
+.errorTextWrapper {
+    cursor: default;
+    font-family: proxima-nova, sans-serif;
+    margin-top: .75rem;
+}
+
+.errorText {
+    font-size: 1rem;
+    color: #fe2247;
+    font-weight: 700;
+}
+
 .playNowBtn {
     font-family: proxima-nova, sans-serif;
     cursor: default;
@@ -510,4 +522,8 @@ body {
     display: inline-flex;
     position: relative;
     align-items: center;
+}
+
+.colorRed {
+    color:  #ff1f44;
 }

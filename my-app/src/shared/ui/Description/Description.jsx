@@ -8,10 +8,6 @@ import { Link } from 'react-router-dom'
 
 function Description() {
 
-  const onClick = () => {
-
-  }
-
   return (
 
     <div>
@@ -29,7 +25,7 @@ function Description() {
       <div className={styles.content}>
         <div className={styles.contentBlock}>
           <div className={styles.contentImg}>
-            <img className={styles.img} src={ruletteImg} />
+            <img className={styles.img} alt='roulete' src={ruletteImg} />
           </div>
           <div className={styles.contentInfo}>
             <h2 className={styles.contentTitle}>Claim Your Stake Coins</h2>
@@ -39,7 +35,7 @@ function Description() {
         </div>
         <div className={styles.contentBlock}>
           <div className={styles.contentImg}>
-            <img className={styles.img} src={barImg} />
+            <img className={styles.img} alt='bar' src={barImg} />
           </div>
           <div className={styles.contentInfo}>
             <h2 className={styles.contentTitle}>No Purchase Necessary</h2>
