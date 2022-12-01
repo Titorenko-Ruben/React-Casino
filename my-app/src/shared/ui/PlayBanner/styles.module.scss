@@ -1,0 +1,98 @@
+.PlayBanner {
+  background-color: #0f212e;
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+  color: white;
+  text-align: left;
+  justify-content: flex-start;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+.spaceTitle {
+  height: 1.75rem;
+  display: block;
+  flex-grow: 0;
+}
+
+.contentArea {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  width: 100%;
+  justify-items: center;
+  gap: 1rem;
+  padding: 1rem 2.5rem;
+}
+
+.blockWrapper {
+  padding: 1rem;
+  background-color: #213743;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+.spaceImg {
+  height: 1.25rem;
+  display: block;
+  flex-grow: 0;
+}
+
+h4 {
+  color: white;
+  line-height: 1.5;
+  text-align: left;
+  justify-content: flex-start;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.descriotion {
+  color: #b1bad3;
+}
+
+.space {
+  height: 0.25rem;
+  display: block;
+  flex-grow: 0;
+}
+
+.btnGoTo {
+  text-decoration: none;
+  font-family: proxima-nova, sans-serif;
+  color: white;
+  padding: 0.75em 1em;
+  letter-spacing: 0.001rem;
+  font-size: 0.6rem;
+  background: #1475e1;
+  border-radius: 0.2rem;
+}
+button {
+  border: none;
+  background: none;
+  font-weight: 600;
+  line-height: 150%;
+  cursor: pointer;
+  padding: 0;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:active {
+  opacity: 0.5;
+}

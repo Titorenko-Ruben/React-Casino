@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.description {
+   
+    background-image: url(../../../assets/img/sweeps-home-hero-en.avif);
+    background-repeat: no-repeat; 
+    background-size: 90%;
+    // width: 100%;
+    height: auto;
+    margin-bottom: 48px;
+    // min-height: 290px;
+
+}
+
+.contener{
+    display: flex;
+    flex-direction: column;
+    padding: 2.75rem 2.25rem;
+    max-width: 530px;
+    margin-left: auto;
+    background: linear-gradient(to right, #0f212e17  20% ,#0f212e84 40%, #0f212e 70%)
+}
+.title {
+    font-family: proxima-nova,sans-serif;
+    font-size: 1.25rem;
+    color:#fff;
+    text-align: left;
+    margin-bottom: 1.25rem;
+}
+
+.info{
+    color: #B1BAD3;
+    font-size: .875rem;
+    text-align: justify;
+    margin-bottom: 1.25rem;
+    font-family: proxima-nova,sans-serif;
+    font-weight: 400;
+    align-items: center;
+}
+
+.btn {
+    cursor: pointer;
+    border: none;
+    font-family: proxima-nova, sans-serif;
+    font-size: .875rem;
+    background-color: #1475e1;
+    color: #fff;
+    border-radius: 5px;
+    padding: .65rem;
+    font-weight: 600;
+    width: 35%;
+}
+.btn:hover{
+    background-color:#105fb4 ; 
+}
+
+.content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 48px;
+}
+
+.contentBlock{
+    display: flex;
+    gap: 1rem;
+}
+
+.img{
+    width: 100px;
+    height: 100px;
+    border-radius: .25rem;
+}
+
+.contentTitle{
+    color: #fff;
+    line-height: 1.5;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: proxima-nova, sans-serif;
+    margin-bottom: .5rem;
+}
+
+.contentText{
+    color: #b1bad3;
+    line-height: 1.5;
+    font-size: .875rem;
+    font-weight: 400;
+    align-items: center;
+    font-family: proxima-nova, sans-serif;
+}
+
