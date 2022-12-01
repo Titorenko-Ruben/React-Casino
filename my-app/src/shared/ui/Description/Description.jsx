@@ -3,12 +3,10 @@ import React from 'react'
 import styles from './styles.module.scss'
 import ruletteImg from 'assets/img/stake-roulette.png'
 import barImg from 'assets/img/bar.png'
-
+import { Link } from 'react-router-dom'
 
 
 function Description() {
-
-
 
   return (
 
@@ -19,7 +17,9 @@ function Description() {
           <span className={styles.info}>Our social casino has been tailor-made to provide the ultimate social,
             safe and free gaming experience. With a wide variety of over 200 industry favorite games by the most reputable providers,
             you wont find better action anywhere else.</span>
-          <button className={styles.btn}><span></span>Go to Social Casino</button>
+          <div className={styles.linkWrapper}>
+            <Link className={styles.btn} to='/'>Go to Social Casino</Link>
+          </div>
         </div>
       </div>
       <div className={styles.content}>

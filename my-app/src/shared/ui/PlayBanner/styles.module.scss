@@ -6,9 +6,11 @@
   padding-bottom: 1.5rem;
   justify-content: center;
   align-items: center;
+  margin-top: 3.5rem;
 }
 
 h3 {
+  font-family: proxima-nova, sans-serif;
   color: white;
   text-align: left;
   justify-content: flex-start;
@@ -52,6 +54,7 @@ img {
 }
 
 h4 {
+  font-family: proxima-nova, sans-serif;
   color: white;
   line-height: 1.5;
   text-align: left;
@@ -62,6 +65,7 @@ h4 {
 
 .descriotion {
   color: #b1bad3;
+  font-family: proxima-nova, sans-serif;
 }
 
 .space {
@@ -71,21 +75,22 @@ h4 {
 }
 
 .btnGoTo {
-  text-decoration: none;
-  font-family: proxima-nova, sans-serif;
-  color: white;
-  padding: 0.75em 1em;
-  letter-spacing: 0.001rem;
-  font-size: 0.6rem;
-  background: #1475e1;
-  border-radius: 0.2rem;
+  cursor: pointer;
+    border: none;
+    font-family: proxima-nova, sans-serif;
+    font-size: .875rem;
+    background-color: #1475e1;
+    color: #fff;
+    border-radius: 5px;
+    padding: .65rem;
+    font-weight: 600;
+    width: 35%;
+    text-decoration: none;
 }
 button {
-  border: none;
   background: none;
   font-weight: 600;
   line-height: 150%;
-  cursor: pointer;
   padding: 0;
 }
 

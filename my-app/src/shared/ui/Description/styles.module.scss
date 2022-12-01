@@ -55,6 +55,7 @@
     padding: .65rem;
     font-weight: 600;
     width: 35%;
+    text-decoration: none;
 }
 .btn:hover{
     background-color:#105fb4 ; 
@@ -95,3 +96,8 @@
     font-family: proxima-nova, sans-serif;
 }
 
+
+.linkWrapper{
+    display: flex;
+    justify-content: flex-end;
+}
