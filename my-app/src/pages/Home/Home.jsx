@@ -11,6 +11,7 @@ import Description from "shared/ui/Description/Description";
 
 
 function Home() {
+  const [user, setUser] = useState({})
   const [regWindow, setRegWindow] = useState(false)
   const [signInWindow, setSignInWindow] = useState(false)
 
@@ -29,10 +30,12 @@ function Home() {
       <SignUp 
       regWindow={regWindow} 
       setRegWindow={setRegWindow}
+      setUser = {setUser}
       />
       <SignIn 
       signInWindow={signInWindow} 
       setSignInWindow={setSignInWindow}
+      setUser = {setUser}
       />
       <div className={styles.wrapper}>
       <Description />

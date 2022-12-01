@@ -8,9 +8,7 @@ import barImg from 'assets/img/bar.png'
 
 function Description() {
 
-  const onClick = {
 
-  }
 
   return (
 
@@ -21,13 +19,13 @@ function Description() {
           <span className={styles.info}>Our social casino has been tailor-made to provide the ultimate social,
             safe and free gaming experience. With a wide variety of over 200 industry favorite games by the most reputable providers,
             you wont find better action anywhere else.</span>
-          <button className={styles.btn}><span onClick={onClick}></span>Go to Social Casino</button>
+          <button className={styles.btn}><span></span>Go to Social Casino</button>
         </div>
       </div>
       <div className={styles.content}>
         <div className={styles.contentBlock}>
           <div className={styles.contentImg}>
-            <img className={styles.img} src={ruletteImg} />
+            <img className={styles.img} alt='roulete' src={ruletteImg} />
           </div>
           <div className={styles.contentInfo}>
             <h2 className={styles.contentTitle}>Claim Your Stake Coins</h2>
@@ -37,7 +35,7 @@ function Description() {
         </div>
         <div className={styles.contentBlock}>
           <div className={styles.contentImg}>
-            <img className={styles.img} src={barImg} />
+            <img className={styles.img} alt='bar' src={barImg} />
           </div>
           <div className={styles.contentInfo}>
             <h2 className={styles.contentTitle}>No Purchase Necessary</h2>
