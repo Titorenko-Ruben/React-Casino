@@ -14,7 +14,7 @@ const PlayBanner = () => {
             <div className={styles.contentArea}>
                 <div className={styles.blockWrapper}>
                     <div className={styles.contentBlock}>
-                        <img src={playBanner1} alt = "play Banner1"/>
+                        <img src={playBanner1} alt="play Banner1" />
                         <span className={styles.spaceImg}></span>
                         <h4>Industry favorites</h4>
                         <span className={styles.spaceImg}></span>
@@ -26,7 +26,7 @@ const PlayBanner = () => {
 
                 <div className={styles.blockWrapper}>
                     <div className={styles.contentBlock}>
-                        <img src={playBanner2} alt = "play Banner2"/>
+                        <img src={playBanner2} alt="play Banner2" />
                         <span className={styles.spaceImg}></span>
                         <h4>Instant coins</h4>
                         <span className={styles.spaceImg}></span>
@@ -38,7 +38,7 @@ const PlayBanner = () => {
 
                 <div className={styles.blockWrapper}>
                     <div className={styles.contentBlock}>
-                        <img src={playBanner3} alt = "play Banner3" />
+                        <img src={playBanner3} alt="play Banner3" />
                         <span className={styles.spaceImg}></span>
                         <h4>A truly social casino</h4>
                         <span className={styles.spaceImg}></span>
@@ -50,11 +50,12 @@ const PlayBanner = () => {
             </div>
 
             <span className={styles.space}></span>
-            <button>
 
-                <Link className={styles.btnGoTo} to="/">Go to Social Casino</Link>
-            </button>
-
+            <Link className={styles.linkGoTo} to="/">
+                <span>
+                    Go to Social Casino
+                </span>
+            </Link>
         </section>
     )
 
