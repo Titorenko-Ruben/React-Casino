@@ -1,18 +1,23 @@
 import React from 'react'
-
-import styles from './styles.module.scss'
-import ruletteImg from 'assets/img/stake-roulette.png'
-import barImg from 'assets/img/bar.png'
 import { Link } from 'react-router-dom'
 
+import ruletteImg from 'assets/img/stake-roulette.png'
+import barImg from 'assets/img/bar.png'
+import socialCasinoDrake from 'assets/img/sweeps-home-hero-en.avif'
+
+import styles from './styles.module.scss'
 
 function Description() {
 
   return (
 
     <div>
-      <div className={styles.description}>
-        <div className={styles.contener}>
+      <div className={styles.sectionSocialCasino}>
+        <div className={styles.imgHolder}>
+          <img className={styles.imgSocialCasino} draggable="false" loading="lazy" src={socialCasinoDrake} alt="Socia casino" />
+        </div>
+        <div className={styles.gradient}></div>
+        <div className={styles.socialCasinoWrapper}>
           <h1 className={styles.title}>America's Social Casino</h1>
           <span className={styles.info}>Our social casino has been tailor-made to provide the ultimate social,
             safe and free gaming experience. With a wide variety of over 200 industry favorite games by the most reputable providers,

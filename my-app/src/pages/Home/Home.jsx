@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 
-import styles from './styles.module.scss'
-import Discount from "shared/ui/Discount/Discount";
-import Header from "shared/ui/Header/Header";
-import SignIn from "shared/ui/SignIn/SignIn";
-import SignUp from "shared/ui/SignUp/SignUp";
+import { Header, Description, Discount, SignIn, SignUp, PlayBanner } from "shared/ui";
 
-import PlayBanner from "shared/ui/PlayBanner/PlayBanner"
-import Description from "shared/ui/Description/Description";
+import styles from './styles.module.scss'
+
 
 
 function Home() {
@@ -17,30 +13,30 @@ function Home() {
 
   return (
     <div>
-      <Header 
-      regWindow={regWindow} 
-      setRegWindow={setRegWindow}
-      signInWindow={signInWindow}
-      setSignInWindow={setSignInWindow}
+      <Header
+        regWindow={regWindow}
+        setRegWindow={setRegWindow}
+        signInWindow={signInWindow}
+        setSignInWindow={setSignInWindow}
       />
-      <Discount 
-      regWindow={regWindow} 
-      setRegWindow={setRegWindow}
+      <Discount
+        regWindow={regWindow}
+        setRegWindow={setRegWindow}
       />
-      <SignUp 
-      regWindow={regWindow} 
-      setRegWindow={setRegWindow}
-      setUser = {setUser}
+      <SignUp
+        regWindow={regWindow}
+        setRegWindow={setRegWindow}
+        setUser={setUser}
       />
-      <SignIn 
-      signInWindow={signInWindow} 
-      setSignInWindow={setSignInWindow}
-      setUser = {setUser}
+      <SignIn
+        signInWindow={signInWindow}
+        setSignInWindow={setSignInWindow}
+        setUser={setUser}
       />
       <div className={styles.wrapper}>
-      <Description />
+        <Description />
+        <PlayBanner />
       </div>
-       <PlayBanner />
     </div>
   );
 }
