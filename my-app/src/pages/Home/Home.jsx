@@ -23,6 +23,10 @@ function Home() {
         regWindow={regWindow}
         setRegWindow={setRegWindow}
       />
+      <div className={styles.wrapper}>
+        <Description />
+        <PlayBanner />
+      </div>
       <SignUp
         regWindow={regWindow}
         setRegWindow={setRegWindow}
@@ -33,10 +37,6 @@ function Home() {
         setSignInWindow={setSignInWindow}
         setUser={setUser}
       />
-      <div className={styles.wrapper}>
-        <Description />
-        <PlayBanner />
-      </div>
     </div>
   );
 }
