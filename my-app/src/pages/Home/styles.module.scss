@@ -1,7 +1,19 @@
-.wrapper{
+.wrapper {
     top: 60px;
     position: relative;
     background-color: #1a2c38;
-    padding: 20px 200px 50px 200px;
+    padding: 20px 15vw 50px 15vw;
     margin: auto;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track { 
+    background:  #1a2c38;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2f4553;
 }
