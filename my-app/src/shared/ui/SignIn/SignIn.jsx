@@ -5,7 +5,7 @@ import { CgFacebook } from "react-icons/cg";
 
 import styles from 'shared/ui/SignIn/styles.module.scss'
 
-function SignIn({ signInWindow, setSignInWindow, setUser }) {
+function SignIn({ signInWindow, setSignInWindow, setUser, setIsUserLoggedIn }) {
     const [emailOrUsername, setEmailOrUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
@@ -18,6 +18,7 @@ function SignIn({ signInWindow, setSignInWindow, setUser }) {
             JSON.parse(localStorage.getItem('dataBase')).forEach((item) => {
                 if ((emailOrUsername === item.email && password === item.password) || (emailOrUsername === item.username && password === item.password)) {
                     console.log('auth complete')
+                    setIsUserLoggedIn(true)
                     setUser(item)
                     setError('')
                     setEmailOrUsername('')

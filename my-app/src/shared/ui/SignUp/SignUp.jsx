@@ -49,7 +49,7 @@ function Input({
   );
 }
 
-function SignUp({ regWindow, setRegWindow, setUser }) {
+function SignUp({ regWindow, setRegWindow, setUser, setIsUserLoggedIn }) {
   const [userAgree, setUserAgree] = useState(false);
   
   const { values, errors, touched ,handleBlur, handleChange, handleSubmit } = useFormik({
@@ -71,6 +71,7 @@ function SignUp({ regWindow, setRegWindow, setUser }) {
     resetForm({ values: '' })
     setRegWindow(!regWindow)
     localStorage.setItem('dataBase', JSON.stringify(users))
+    setIsUserLoggedIn(true)
     console.log('auth complete')
   }
 

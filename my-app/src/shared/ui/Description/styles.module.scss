@@ -10,14 +10,14 @@
     border-radius: .25rem;
     overflow: hidden;
     margin-bottom: 1.5rem;
-    height: auto;
+    height:350px;
 }
 
 .imgSocialCasino{
     position: absolute;
     width: 100%;
     height: 100%;
-    // object-fit: cover;
+    object-fit: cover;
     display: block;
 }
 
@@ -38,6 +38,7 @@
     margin-left: auto;
     max-width: 530px;
     gap: 1.25rem;
+    justify-content: center;
 }
 
 .description {

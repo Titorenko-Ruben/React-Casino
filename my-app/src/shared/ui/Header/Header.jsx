@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+import stakeLogo from "assets/img/stakeLogo.jpg"
 
 import styles from './styles.module.scss'
-import { Link } from 'react-router-dom'
-import stakeLogo from "assets/img/stakeLogo.jpg"
 
 function Header({ setRegWindow, regWindow, setSignInWindow, signInWindow }) {
   return (
