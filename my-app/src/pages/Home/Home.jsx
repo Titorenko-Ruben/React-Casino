@@ -4,7 +4,9 @@ import { Header, Description, Discount, SignIn, SignUp, PlayBanner } from "share
 
 import styles from './styles.module.scss'
 
-
+import PlayBanner from "shared/ui/PlayBanner/PlayBanner"
+import Description from "shared/ui/Description/Description";
+import StakeDrake from "shared/ui/Stake&Drake/StakeDrake";
 
 function Home() {
   const [user, setUser] = useState({})
@@ -26,6 +28,8 @@ function Home() {
       <div className={styles.wrapper}>
         <Description />
         <PlayBanner />
+         <StakeDrake />
+
       </div>
       <SignUp
         regWindow={regWindow}
