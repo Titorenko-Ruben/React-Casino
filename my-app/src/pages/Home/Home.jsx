@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 
-import { Header, UserHeader, Description, Discount, SignIn, SignUp, PlayBanner, TooltipWindow } from "shared/ui";
+import { Header, UserHeader, Description, Discount, SignIn, SignUp, PlayBanner, StakeDrake, Footer } from "shared/ui";
 
 import styles from './styles.module.scss'
-
-
 
 function Home() {
   const [user, setUser] = useState({})
@@ -30,6 +28,8 @@ function Home() {
       <div className={styles.wrapper}>
         <Description />
         <PlayBanner />
+         <StakeDrake />
+
       </div>
       <SignUp
         regWindow={regWindow}
@@ -43,6 +43,7 @@ function Home() {
         setUser={setUser}
         setIsUserLoggedIn={setIsUserLoggedIn}
       />
+      <Footer />
     </div>
   );
 }
