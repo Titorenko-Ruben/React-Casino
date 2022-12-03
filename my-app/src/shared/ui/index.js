@@ -4,4 +4,6 @@ export { Description } from './Description'
 export { PlayBanner } from './PlayBanner'
 export { SignIn } from './SignIn'
 export { SignUp } from './SignUp'
+export { StakeDrake } from './StakeDrake'
 export { Footer } from './Footer'
+
