@@ -1,4 +1,5 @@
 export { Header } from './Header'
+export { UserHeader } from './UserHeader'
 export { Discount } from './Discount'
 export { Description } from './Description'
 export { PlayBanner } from './PlayBanner'

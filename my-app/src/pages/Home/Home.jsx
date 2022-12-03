@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Header, Description, Discount, SignIn, SignUp, PlayBanner } from "shared/ui";
+import { Header, UserHeader, Description, Discount, SignIn, SignUp, PlayBanner, TooltipWindow } from "shared/ui";
 
 import styles from './styles.module.scss'
 
@@ -8,21 +8,25 @@ import styles from './styles.module.scss'
 
 function Home() {
   const [user, setUser] = useState({})
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
   const [regWindow, setRegWindow] = useState(false)
   const [signInWindow, setSignInWindow] = useState(false)
 
   return (
     <div>
-      <Header
-        regWindow={regWindow}
-        setRegWindow={setRegWindow}
-        signInWindow={signInWindow}
-        setSignInWindow={setSignInWindow}
-      />
-      <Discount
-        regWindow={regWindow}
-        setRegWindow={setRegWindow}
-      />
+      {isUserLoggedIn ?
+        <UserHeader />
+        :
+        <Header
+          regWindow={regWindow}
+          setRegWindow={setRegWindow}
+          signInWindow={signInWindow}
+          setSignInWindow={setSignInWindow}
+        />}
+        <Discount
+          regWindow={regWindow}
+          setRegWindow={setRegWindow}
+        />
       <div className={styles.wrapper}>
         <Description />
         <PlayBanner />
@@ -31,11 +35,13 @@ function Home() {
         regWindow={regWindow}
         setRegWindow={setRegWindow}
         setUser={setUser}
+        setIsUserLoggedIn={setIsUserLoggedIn}
       />
       <SignIn
         signInWindow={signInWindow}
         setSignInWindow={setSignInWindow}
         setUser={setUser}
+        setIsUserLoggedIn={setIsUserLoggedIn}
       />
     </div>
   );
