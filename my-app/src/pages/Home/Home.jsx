@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Header, Description, Discount, SignIn, SignUp, PlayBanner } from "shared/ui";
+import { Header, Description, Discount, SignIn, SignUp, PlayBanner, Footer } from "shared/ui";
 
 import styles from './styles.module.scss'
 
@@ -37,6 +37,7 @@ function Home() {
         setSignInWindow={setSignInWindow}
         setUser={setUser}
       />
+      <Footer />
     </div>
   );
 }
