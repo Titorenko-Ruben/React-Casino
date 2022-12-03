@@ -8,6 +8,8 @@ import SignUp from "shared/ui/SignUp/SignUp";
 
 import PlayBanner from "shared/ui/PlayBanner/PlayBanner"
 import Description from "shared/ui/Description/Description";
+import StakeDrake from "shared/ui/Stake&Drake/StakeDrake";
+
 
 
 function Home() {
@@ -36,6 +38,7 @@ function Home() {
       />
       <div className={styles.wrapper}>
       <Description />
+       <StakeDrake />
       </div>
        <PlayBanner />
     </div>
