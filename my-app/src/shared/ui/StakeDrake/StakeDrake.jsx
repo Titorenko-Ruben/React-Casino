@@ -1,12 +1,12 @@
 import React from "react";
-
-import styles from './styles.module.scss'
 import { Link } from "react-router-dom";
-import stakeLogo from "assets/img/stakeLogo.jpg"
+
 import ImgBg from "assets/img/drake-banner.avif"
 import StakeDrakeImg from "assets/img/stakeLogo.png"
 import Border from "assets/img/border.png"
 import Drake from "assets/img/drake.png"
+
+import styles from './styles.module.scss'
 
 
 
@@ -19,15 +19,15 @@ const StakeDrake = () => {
 
             <div className={styles.stakeDrakeWrapper}>
            
-                <img className={styles.imgStake} src={StakeDrakeImg} />
-                <img className={styles.imgBorder} src={Border} />
-                <img className={styles.imgDrake} src={Drake} />
+                <img className={styles.imgStake} src={StakeDrakeImg} alt='stake' />
+                <img className={styles.imgBorder} src={Border} alt='border'/>
+                <img className={styles.imgDrake} src={Drake} alt='drake'/>
 
 
 
             </div>
             <div className={styles.stakeDrakeLinkImgBg}>
-                <img className={styles.img} src={ImgBg} />
+                <img className={styles.img} src={ImgBg} alt='drakeBg' />
             </div>
         </div>
     )

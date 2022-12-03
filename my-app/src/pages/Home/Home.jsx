@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 
-import { Header, Description, Discount, SignIn, SignUp, PlayBanner } from "shared/ui";
+import { Header, Description, Discount, SignIn, SignUp, PlayBanner, StakeDrake } from "shared/ui";
 
 import styles from './styles.module.scss'
-
-import PlayBanner from "shared/ui/PlayBanner/PlayBanner"
-import Description from "shared/ui/Description/Description";
-import StakeDrake from "shared/ui/Stake&Drake/StakeDrake";
 
 function Home() {
   const [user, setUser] = useState({})
