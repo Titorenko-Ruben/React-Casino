@@ -1,22 +1,23 @@
 import React from 'react'
-
-import styles from './styles.module.scss'
-import ruletteImg from 'assets/img/stake-roulette.png'
-import barImg from 'assets/img/bar.png'
 import { Link } from 'react-router-dom'
 
+import ruletteImg from 'assets/img/stake-roulette.png'
+import barImg from 'assets/img/bar.png'
+import socialCasinoDrake from 'assets/img/sweeps-home-hero-en.avif'
+
+import styles from './styles.module.scss'
 
 function Description() {
-
-  const onClick = () => {
-
-  }
 
   return (
 
     <div>
-      <div className={styles.description}>
-        <div className={styles.contener}>
+      <div className={styles.sectionSocialCasino}>
+        <div className={styles.imgHolder}>
+          <img className={styles.imgSocialCasino} draggable="false" loading="lazy" src={socialCasinoDrake} alt="Socia casino" />
+        </div>
+        <div className={styles.gradient}></div>
+        <div className={styles.socialCasinoWrapper}>
           <h1 className={styles.title}>America's Social Casino</h1>
           <span className={styles.info}>Our social casino has been tailor-made to provide the ultimate social,
             safe and free gaming experience. With a wide variety of over 200 industry favorite games by the most reputable providers,
@@ -29,7 +30,7 @@ function Description() {
       <div className={styles.content}>
         <div className={styles.contentBlock}>
           <div className={styles.contentImg}>
-            <img className={styles.img} src={ruletteImg} />
+            <img className={styles.img} alt='roulete' src={ruletteImg} />
           </div>
           <div className={styles.contentInfo}>
             <h2 className={styles.contentTitle}>Claim Your Stake Coins</h2>
@@ -39,7 +40,7 @@ function Description() {
         </div>
         <div className={styles.contentBlock}>
           <div className={styles.contentImg}>
-            <img className={styles.img} src={barImg} />
+            <img className={styles.img} alt='bar' src={barImg} />
           </div>
           <div className={styles.contentInfo}>
             <h2 className={styles.contentTitle}>No Purchase Necessary</h2>

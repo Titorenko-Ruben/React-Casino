@@ -10,6 +10,8 @@ import check from "assets/icons/check.svg";
 
 import { basicSchema } from "shared/schemas";
 
+const users = []
+
 function Input({
   values,
   errors,
@@ -34,7 +36,7 @@ function Input({
             type={type}
             className={styles.input}
             style={errors[id.toLowerCase()] && touched[id.toLowerCase()] ?{ border: "2px solid #ff1f44"} : {border: "2px solid #2f4553"} }
-          />
+            />
         </div>
       </div>
       {errors[id.toLowerCase()] && touched[id.toLowerCase()] ? (
@@ -47,9 +49,9 @@ function Input({
   );
 }
 
-function SignUp({ regWindow, setRegWindow }) {
+function SignUp({ regWindow, setRegWindow, setUser }) {
   const [userAgree, setUserAgree] = useState(false);
-
+  
   const { values, errors, touched ,handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
       email: "",
@@ -62,11 +64,14 @@ function SignUp({ regWindow, setRegWindow }) {
     validationSchema: basicSchema,
     onSubmit,
   });
-
+  
   function onSubmit(values, { resetForm }) {
-    console.log(values)
+    setUser(values)
+    users.push(values)
     resetForm({ values: '' })
     setRegWindow(!regWindow)
+    localStorage.setItem('dataBase', JSON.stringify(users))
+    console.log('auth complete')
   }
 
   return (
