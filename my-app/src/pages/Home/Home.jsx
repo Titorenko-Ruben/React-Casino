@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Header, Description, Discount, SignIn, SignUp, PlayBanner, StakeDrake } from "shared/ui";
+import { Header, Description, Discount, SignIn, SignUp, PlayBanner, StakeDrake, NavBar } from "shared/ui";
 
 import styles from './styles.module.scss'
 
@@ -17,6 +17,7 @@ function Home() {
         signInWindow={signInWindow}
         setSignInWindow={setSignInWindow}
       />
+      <NavBar />
       <Discount
         regWindow={regWindow}
         setRegWindow={setRegWindow}
@@ -24,7 +25,7 @@ function Home() {
       <div className={styles.wrapper}>
         <Description />
         <PlayBanner />
-         <StakeDrake />
+        <StakeDrake />
 
       </div>
       <SignUp
