@@ -71,6 +71,7 @@ function SignUp({ regWindow, setRegWindow, setUser, setIsUserLoggedIn }) {
     resetForm({ values: '' })
     setRegWindow(!regWindow)
     localStorage.setItem('dataBase', JSON.stringify(users))
+    localStorage.setItem('isUserLoggedIn', true)
     setIsUserLoggedIn(true)
     console.log('auth complete')
   }

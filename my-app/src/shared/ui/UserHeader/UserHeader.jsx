@@ -1,19 +1,25 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
-import { HiOutlineCurrencyDollar } from 'react-icons/hi'
-import { HiOutlineChatAlt2 } from 'react-icons/hi'
+import { IoIosArrowDown, IoIosArrowUp, IoIosPaper } from 'react-icons/io'
+import { IoWalletSharp, IoSettingsSharp, IoLogOutSharp } from 'react-icons/io5'
+import { HiOutlineCurrencyDollar, HiOutlineChatAlt2 } from 'react-icons/hi'
+import { ImArrowUp } from 'react-icons/im'
 
 import stakeLogo from "assets/img/stakeLogo.jpg"
 import person from "assets/img/person.png"
+import vault from 'assets/icons/vault.svg'
 
 import styles from './styles.module.scss'
 
-function UserHeader() {
+function UserHeader({setIsUserLoggedIn}) {
     const [isBalanceOpen, setIsBalanceOpen] = useState(false)
     const [isUserWindowOpen, setIsUserWindowOpen] = useState(false)
 
-
+    function logout(){
+        localStorage.setItem('isUserLoggedIn', false)
+        setIsUserLoggedIn(false)
+    }
+    
     return (
         <div className={styles.headerWrapper}>
             <div className={styles.header}>
@@ -58,11 +64,38 @@ function UserHeader() {
                         </div>
                         <div className={styles.userBtns}>
                             <div className={styles.dropdown}>
-                                <button className={styles.userWindowButton}>
+                                <button className={styles.userWindowButton} onClick={()=>setIsUserWindowOpen(!isUserWindowOpen) }>
                                     <span className={styles.userWindowImgWrapper}>
                                         <img src={person} className={styles.imgPerson} />
                                     </span>
                                 </button>
+                                {isUserWindowOpen && (
+                                    <div className={styles.userToolWindowWraper}>
+                                            <ImArrowUp className={styles.arrowIcon}/>
+                                        <div className={styles.userToolWindow}>
+                                            <button className={styles.userTool}>
+                                                <IoWalletSharp className={styles.userToolIcon} />
+                                                <div className={styles.userToolText}>Wallet</div>
+                                            </button>
+                                            <button className={styles.userTool}>
+                                                <img src={vault} className={styles.userToolIcon} alt='Vault' />
+                                                <div className={styles.userToolText}>Vault</div>
+                                            </button>
+                                            <button className={styles.userTool}>
+                                                <IoIosPaper className={styles.userToolIcon} />
+                                                <div className={styles.userToolText}>Transactions</div>
+                                            </button>
+                                            <button className={styles.userTool}>
+                                                <IoSettingsSharp className={styles.userToolIcon} />
+                                                <div className={styles.userToolText}>Settings</div>
+                                            </button>
+                                            <button className={styles.userTool} onClick={()=> logout()}>
+                                                <IoLogOutSharp className={styles.userToolIcon} />
+                                                <div className={styles.userToolText}>Logout</div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                             <div className={styles.dropdown}>
                                 <button className={styles.userWindowButton}>
