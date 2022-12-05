@@ -5,8 +5,9 @@ import { CgFacebook } from "react-icons/cg";
 import { BiCommentError } from "react-icons/bi";
 import { useFormik } from "formik";
 
-import styles from "./styles.module.scss";
 import check from "assets/icons/check.svg";
+
+import styles from "./styles.module.scss";
 
 import { basicSchema } from "shared/schemas";
 
@@ -81,8 +82,8 @@ function SignUp({ regWindow, setRegWindow, setUser, setIsUserLoggedIn }) {
       {regWindow && (
         <div className={styles.modal}>
           <div className={styles.modalAuth}>
-            <div className={styles.overlay}></div>
-            <div className={styles.regWrapper}>
+            <div className={styles.overlay} onClick={() => setRegWindow(!regWindow)}></div>
+            <div className={styles.regWrapper} onClick={(e)=>e.stopPropagation()}>
               <div className={styles.scroll}>
                 <div className={styles.modalContent}>
                   <div className={styles.closeBtnWrapper}>

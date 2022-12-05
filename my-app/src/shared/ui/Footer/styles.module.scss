@@ -30,6 +30,10 @@
     color: #fff;
 }
 
+.li:active {
+    opacity: .5;
+}
+
 .hr {
     border-top: 2px solid #213743;
 }

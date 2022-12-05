@@ -55,6 +55,10 @@
    background-color:#105EB4 ; 
 }
 
+.mainBtn:active{
+   opacity: 0.5; 
+}
+
 .networks{
     display: flex;
     gap: 0.5rem;
@@ -119,4 +123,8 @@
 
 .socialNetworks:hover{
     background-color: #557086;
+}
+
+.socialNetworks:active{
+    opacity: 0.5;
 }
