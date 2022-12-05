@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import { Header, UserHeader, Description, Discount, SignIn, SignUp, PlayBanner, StakeDrake, Footer } from "shared/ui";
+import { Header, UserHeader, Description, Discount, SignIn, SignUp, PlayBanner, StakeDrake, Footer, NavBar } from "shared/ui";
 
 import styles from './styles.module.scss'
-
 
 function Home() {
   const [user, setUser] = useState({})
@@ -27,6 +26,7 @@ function Home() {
           signInWindow={signInWindow}
           setSignInWindow={setSignInWindow}
         />}
+        <NavBar />
       <Discount
         regWindow={regWindow}
         setRegWindow={setRegWindow}

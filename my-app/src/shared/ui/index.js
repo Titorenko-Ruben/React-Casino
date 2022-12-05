@@ -6,5 +6,5 @@ export { PlayBanner } from './PlayBanner'
 export { SignIn } from './SignIn'
 export { SignUp } from './SignUp'
 export { StakeDrake } from './StakeDrake'
+export { NavBar } from './NavBar'
 export { Footer } from './Footer'
-
