@@ -16,23 +16,16 @@ const StakeDrake = () => {
             <div className={styles.stakeDrakeLink}>
                 <Link className={styles.link} to="/">Learn more</Link>
             </div>
-
             <div className={styles.stakeDrakeWrapper}>
-           
                 <img className={styles.imgStake} src={StakeDrakeImg} alt='stake' />
-                <img className={styles.imgBorder} src={Border} alt='border'/>
-                <img className={styles.imgDrake} src={Drake} alt='drake'/>
-
-
-
+                <img className={styles.imgBorder} src={Border} alt='border' />
+                <img className={styles.imgDrake} src={Drake} alt='drake' />
             </div>
             <div className={styles.stakeDrakeLinkImgBg}>
                 <img className={styles.img} src={ImgBg} alt='drakeBg' />
             </div>
         </div>
     )
-
 }
-// <img className={styles.logoImg} alt="Stake logo" src={stakeLogo}/>
 
 export default StakeDrake;

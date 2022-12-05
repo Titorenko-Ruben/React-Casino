@@ -18,6 +18,7 @@ function SignIn({ signInWindow, setSignInWindow, setUser, setIsUserLoggedIn }) {
             JSON.parse(localStorage.getItem('dataBase')).forEach((item) => {
                 if ((emailOrUsername === item.email && password === item.password) || (emailOrUsername === item.username && password === item.password)) {
                     console.log('auth complete')
+                    localStorage.setItem('isUserLoggedIn', true)
                     setIsUserLoggedIn(true)
                     setUser(item)
                     setError('')
