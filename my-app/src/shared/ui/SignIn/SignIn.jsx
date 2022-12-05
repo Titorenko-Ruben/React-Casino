@@ -36,8 +36,8 @@ function SignIn({ signInWindow, setSignInWindow, setUser, setIsUserLoggedIn }) {
         <>
             {signInWindow && (<div className={styles.modal}>
                 <div className={styles.modalAuth}>
-                    <div className={styles.overlay}></div>
-                    <div className={styles.regWrapper}>
+                    <div className={styles.overlay} onClick={()=> setSignInWindow(!signInWindow)}></div>
+                    <div className={styles.regWrapper} onClick={(e)=>e.stopPropagation()}>
                         <div className={styles.scroll}>
                             <div className={styles.modalContent}>
                                 <div className={styles.closeBtnWrapper}>

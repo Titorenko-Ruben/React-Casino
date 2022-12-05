@@ -97,6 +97,10 @@
     background-color:#105fb4 ; 
 }
 
+.btn:active{
+    opacity: 0.5;
+}
+
 .content{
     display: grid;
     grid-template-columns: 1fr 1fr;
