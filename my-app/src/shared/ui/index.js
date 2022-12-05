@@ -1,4 +1,5 @@
 export { Header } from './Header'
+export { UserHeader } from './UserHeader'
 export { Discount } from './Discount'
 export { Description } from './Description'
 export { PlayBanner } from './PlayBanner'
@@ -6,4 +7,4 @@ export { SignIn } from './SignIn'
 export { SignUp } from './SignUp'
 export { StakeDrake } from './StakeDrake'
 export { NavBar } from './NavBar'
-
+export { Footer } from './Footer'

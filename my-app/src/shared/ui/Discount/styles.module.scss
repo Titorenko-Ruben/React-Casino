@@ -7,7 +7,7 @@
 .wrapper{
     display: grid;
     grid-template-columns: 40% 50%;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
     background-image: url(../../../assets/img/abstract-bg-71bdcaae.svg);
     background-size: 60%;
@@ -17,7 +17,6 @@
     position: relative;
     top: 60px;
     padding: 0 15vw;
-    
 }
 
 
@@ -53,6 +52,10 @@
 
 .mainBtn:hover{
    background-color:#105EB4 ; 
+}
+
+.mainBtn:active{
+   opacity: 0.5; 
 }
 
 .networks{
@@ -119,4 +122,8 @@
 
 .socialNetworks:hover{
     background-color: #557086;
+}
+
+.socialNetworks:active{
+    opacity: 0.5;
 }

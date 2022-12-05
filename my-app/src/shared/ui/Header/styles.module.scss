@@ -81,11 +81,11 @@ body {
   color: #fff;
 }
 
-button:hover {
+signInBtn:hover, btnReg:hover {
   opacity: 0.8;
 }
 
-button:active {
+signInBtn:active, btnReg:active {
   opacity: 0.5;
 }
 
