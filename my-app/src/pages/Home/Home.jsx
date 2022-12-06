@@ -10,15 +10,16 @@ function Home() {
   const [regWindow, setRegWindow] = useState(false)
   const [signInWindow, setSignInWindow] = useState(false)
 
+  console.log(user)
   useEffect(() => {
     if (localStorage.getItem('isUserLoggedIn') === 'true') {
       setIsUserLoggedIn(true)
     }
-  }, [])
+  })
   return (
     <div>
       {isUserLoggedIn ?
-        <UserHeader setIsUserLoggedIn={setIsUserLoggedIn}/>
+        <UserHeader setIsUserLoggedIn={setIsUserLoggedIn} />
         :
         <Header
           regWindow={regWindow}
@@ -26,7 +27,7 @@ function Home() {
           signInWindow={signInWindow}
           setSignInWindow={setSignInWindow}
         />}
-        <NavBar />
+      <NavBar />
       <Discount
         regWindow={regWindow}
         setRegWindow={setRegWindow}
