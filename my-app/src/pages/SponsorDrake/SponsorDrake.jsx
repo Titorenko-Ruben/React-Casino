@@ -9,9 +9,6 @@ import singerDrake from 'assets/img/drake-live-stream.avif'
 import styles from './styles.module.scss'
 
 function SponsorDrake() {
-
-
-
   return (
     <div>
     <Header />
