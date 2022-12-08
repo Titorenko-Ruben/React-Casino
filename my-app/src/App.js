@@ -5,6 +5,7 @@ import Home from "pages/Home/Home";
 import SponsorEverton from "pages/SponsorEverton/SponsorEverton";
 import SponsorWatford from "pages/SponsorWatford/SponsorWatford";
 import SponsorDrake from "pages/SponsorDrake/SponsorDrake";
+import Settings from "pages/Settings/Settings";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/sponsorships/everton" element ={<SponsorEverton />} />
           <Route path="/sponsorships/watford" element ={<SponsorWatford />} />
           <Route path="/sponsorships/drake" element ={<SponsorDrake />} />
+          <Route path="/settings/general" element ={<Settings/>} />
         </Routes>
       </div>
     </BrowserRouter>
