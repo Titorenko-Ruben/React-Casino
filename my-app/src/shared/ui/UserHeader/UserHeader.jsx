@@ -11,7 +11,7 @@ import vault from 'assets/icons/vault.svg'
 
 import styles from './styles.module.scss'
 
-function UserHeader({ setIsUserLoggedIn }) {
+function UserHeader({ setIsUserLoggedIn, setWalletWindow, walletWindow }) {
 	const [isBalanceOpen, setIsBalanceOpen] = useState(false)
 	const [isUserWindowOpen, setIsUserWindowOpen] = useState(false)
 
@@ -67,7 +67,10 @@ function UserHeader({ setIsUserLoggedIn }) {
 									</div>
 								</div>
 							</div>
-							<button className={styles.walletButton}>
+							<button
+								className={styles.walletButton}
+								onClick={() => setWalletWindow(!walletWindow)}
+							>
 								<span className={styles.walletButtonText}>Wallet</span>
 							</button>
 						</div>

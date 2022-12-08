@@ -62,7 +62,7 @@ const NavBar = () => {
 						</a>
 					</div>
 					{/* <div className={styles.hoverable}>
-                        <a>
+                        <a>`
                             <span className={styles.contentLoader}>
                                 <MdSportsBasketball className={styles.icon} style={{ color: "white" }} />
                             </span>
