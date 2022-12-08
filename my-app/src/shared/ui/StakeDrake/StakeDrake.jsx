@@ -14,7 +14,7 @@ const StakeDrake = () => {
     return (
         <div className={styles.stakeDrakeBlock}>
             <div className={styles.stakeDrakeLink}>
-                <Link className={styles.link} to="/">Learn more</Link>
+                <Link className={styles.link} to="/sponsorships/drake">Learn more</Link>
             </div>
             <div className={styles.stakeDrakeWrapper}>
                 <img className={styles.imgStake} src={StakeDrakeImg} alt='stake' />

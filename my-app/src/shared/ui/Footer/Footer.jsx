@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import evertonLogo from 'assets/icons/everton-logo.svg'
 import ufcLogo from 'assets/icons/ufc.svg'
@@ -75,21 +76,21 @@ function Footer() {
       <div className={styles.hr}></div>
       <div className={styles.mainPartners}>
         <div className={styles.partner}>
-          <a href='/sponsorships/watford'>
+          <Link to='/sponsorships/everton'>
             <img className={styles.logoPartner} src={evertonLogo} />
-          </a>
+            </Link>
         </div>
 
         <div className={styles.partner}>
-          <a href='/sponsorships/watford'>
+          <Link to='/sponsorships/watford'>
             <img className={styles.logoPartner} src={watfordLogo} />
-          </a>
+            </Link>
         </div>
 
         <div className={styles.partner}>
-          <a href='/sponsorships/watford'>
+          <Link to ='/'>
             <img className={styles.logoPartner} src={ufcLogo} />
-          </a>
+            </Link>
         </div>
       </div>
       <div className={styles.hr}></div>

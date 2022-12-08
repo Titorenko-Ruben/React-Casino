@@ -1,0 +1,79 @@
+.wrapper {
+    top: 60px;
+    position: relative;
+    background-color: #1a2c38;
+    padding: 32px 8vw 32px 8vw;
+    margin: auto;
+   
+}
+
+.headerWrapper {
+    display: flex;
+    background-color: #0f212e;
+    top: 60px;
+    position: relative;
+    padding: 20px 8vw 20px 8vw;
+    margin: auto;
+    max-height: 230px;
+    justify-content: center;
+
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.settingsTitle{
+    font-size: 1.125rem;
+    color: #fff;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+.exit{
+    color: #fff;
+    cursor: pointer;
+}
+
+.settings{
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+
+.outerWrapper{
+   
+    padding: .5rem 0;
+    background-color: #0f212e;
+    border-radius: 10px;
+}
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-size: .875rem;
+    width: 180px;
+}
+
+.contaner{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+}
+
+.navText{
+    color: #fff;
+    font-size: .875rem;
+    outline: none;
+    line-height: 150%;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10.5px 14px;
+
+}
+
+.cardVariantDefault{
+    background-color: #0f212e;
+    border-radius: 10px; 
+}
