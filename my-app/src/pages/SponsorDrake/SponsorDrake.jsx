@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react'
-
-import { Header, UserHeader, Footer, NavBar, SignUp, SignIn } from 'shared/ui'
+import React from 'react'
 
 import stakeDrake from 'assets/img/stakeDrake.png'
 
@@ -9,30 +7,8 @@ import singerDrake from 'assets/img/drake-live-stream.avif'
 import styles from './styles.module.scss'
 
 function SponsorDrake() {
-	const [user, setUser] = useState({})
-	const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
-	const [regWindow, setRegWindow] = useState(false)
-	const [signInWindow, setSignInWindow] = useState(false)
-
-	useEffect(() => {
-		if (localStorage.getItem('isUserLoggedIn') === 'true') {
-			setIsUserLoggedIn(true)
-		}
-	}, [])
-
 	return (
 		<div>
-			{isUserLoggedIn ? (
-				<UserHeader setIsUserLoggedIn={setIsUserLoggedIn} />
-			) : (
-				<Header
-					regWindow={regWindow}
-					setRegWindow={setRegWindow}
-					signInWindow={signInWindow}
-					setSignInWindow={setSignInWindow}
-				/>
-			)}
-			<NavBar />
 			<div className={styles.headerWrapper}>
 				<img className={styles.headerWrapperLogo} src={stakeDrake} />
 			</div>
@@ -82,19 +58,6 @@ function SponsorDrake() {
 					</div>
 				</div>
 			</div>
-			<SignUp
-				regWindow={regWindow}
-				setRegWindow={setRegWindow}
-				setUser={setUser}
-				setIsUserLoggedIn={setIsUserLoggedIn}
-			/>
-			<SignIn
-				signInWindow={signInWindow}
-				setSignInWindow={setSignInWindow}
-				setUser={setUser}
-				setIsUserLoggedIn={setIsUserLoggedIn}
-			/>
-			<Footer />
 		</div>
 	)
 }

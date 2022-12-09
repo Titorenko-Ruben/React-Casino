@@ -1,0 +1,6 @@
+export { Home } from './Home'
+export { Pay } from './Pay'
+export { Settings } from './Settings'
+export { SponsorDrake } from './SponsorDrake'
+export { SponsorEverton } from './SponsorEverton'
+export { SponsorWatford } from './SponsorWatford'

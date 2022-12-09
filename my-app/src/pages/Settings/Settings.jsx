@@ -3,14 +3,11 @@ import { Link } from 'react-router-dom'
 import { AiOutlineSetting } from 'react-icons/ai'
 import { BsXLg } from 'react-icons/bs'
 
-import { Header, Footer } from 'shared/ui'
-
 import styles from './styles.module.scss'
 
 function Settings() {
 	return (
 		<div>
-			<Header />
 			<div className={styles.wrapper}>
 				<div className={styles.title}>
 					<div className={styles.settings}>
@@ -42,7 +39,6 @@ function Settings() {
 					</div>
 				</div>
 			</div>
-			<Footer />
 		</div>
 	)
 }

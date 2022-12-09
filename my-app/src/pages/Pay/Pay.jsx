@@ -1,16 +1,17 @@
-import React from 'react'
-
-import stakeLogo from 'assets/img/stakeLogo.png'
+import React, { useEffect } from 'react'
 
 import styles from './styles.module.scss'
 
 function Pay() {
+	useEffect(() => {
+		localStorage.setItem('isPagePayOpen', true)
+	}, [])
 	return (
 		<div className={styles.conentWrapper}>
 			<div className={styles.content}>
 				<div className={styles.header}>
 					<div className={styles.logoWrapper}>
-						<img src={stakeLogo} alt='Logo' className={styles.logo} />
+						<div className={styles.logoText}>Stake</div>
 					</div>
 					<div className={styles.headerInfoWrapper}>
 						<div className={styles.headerInfoText}>

@@ -5,16 +5,16 @@ import { WalletWindowForm } from './ui/WalletWindowForm'
 
 import styles from './styles.module.scss'
 
-function WalletWindow({ walletWindow, setWalletWindow }) {
+function WalletWindow({ showWalletModal, setShowWalletModal }) {
 	const [isDepositeActive, setIsDepositeActive] = useState(true)
 
 	return (
 		<>
-			{walletWindow && (
+			{showWalletModal && (
 				<div className={styles.modalWindow}>
 					<div
 						className={styles.overlay}
-						onClick={() => setWalletWindow(!walletWindow)}
+						onClick={() => setShowWalletModal(!showWalletModal)}
 					></div>
 					<div className={styles.window} onClick={(e) => e.stopPropagation()}>
 						<div className={styles.header}>
@@ -23,7 +23,7 @@ function WalletWindow({ walletWindow, setWalletWindow }) {
 								<div className={styles.walletText}>Wallet</div>
 							</div>
 							<button
-								onClick={() => setWalletWindow(!walletWindow)}
+								onClick={() => setShowWalletModal(!showWalletModal)}
 								className={styles.closeBtn}
 							>
 								<IoIosClose className={styles.closeIcon} />
@@ -58,7 +58,7 @@ function WalletWindow({ walletWindow, setWalletWindow }) {
 									</div>
 								</div>
 							</div>
-							<WalletWindowForm setWalletWindow={setWalletWindow} />
+							<WalletWindowForm setWalletWindow={setShowWalletModal} />
 						</div>
 					</div>
 				</div>

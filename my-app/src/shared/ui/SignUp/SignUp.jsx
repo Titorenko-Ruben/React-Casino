@@ -56,7 +56,7 @@ function Input({
 	)
 }
 
-function SignUp({ regWindow, setRegWindow, setUser, setIsUserLoggedIn }) {
+function SignUp({ showRegModal, setShowRegModal, setUser, setIsUserLoggedIn }) {
 	const [userAgree, setUserAgree] = useState(false)
 
 	const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -77,7 +77,7 @@ function SignUp({ regWindow, setRegWindow, setUser, setIsUserLoggedIn }) {
 		setUser(values)
 		users.push(values)
 		resetForm({ values: '' })
-		setRegWindow(!regWindow)
+		setShowRegModal(!showRegModal)
 		localStorage.setItem('dataBase', JSON.stringify(users))
 		localStorage.setItem('isUserLoggedIn', true)
 		setIsUserLoggedIn(true)
@@ -86,12 +86,12 @@ function SignUp({ regWindow, setRegWindow, setUser, setIsUserLoggedIn }) {
 
 	return (
 		<>
-			{regWindow && (
+			{showRegModal && (
 				<div className={styles.modal}>
 					<div className={styles.modalAuth}>
 						<div
 							className={styles.overlay}
-							onClick={() => setRegWindow(!regWindow)}
+							onClick={() => setShowRegModal(!showRegModal)}
 						></div>
 						<div
 							className={styles.regWrapper}
@@ -101,7 +101,7 @@ function SignUp({ regWindow, setRegWindow, setUser, setIsUserLoggedIn }) {
 								<div className={styles.modalContent}>
 									<div className={styles.closeBtnWrapper}>
 										<button
-											onClick={() => setRegWindow(!regWindow)}
+											onClick={() => setShowRegModal(!showRegModal)}
 											className={styles.closeBtn}
 										>
 											<IoIosClose className={styles.closeIcon} />
