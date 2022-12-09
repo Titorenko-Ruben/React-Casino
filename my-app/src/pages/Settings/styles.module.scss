@@ -2,78 +2,65 @@
     top: 60px;
     position: relative;
     background-color: #1a2c38;
-    padding: 32px 8vw 32px 8vw;
+    padding: 32px 8vw 32px 12vw;
     margin: auto;
-   
 }
 
-.headerWrapper {
-    display: flex;
-    background-color: #0f212e;
-    top: 60px;
-    position: relative;
-    padding: 20px 8vw 20px 8vw;
-    margin: auto;
-    max-height: 230px;
-    justify-content: center;
-
-}
-
-.title{
+.title {
     display: flex;
     justify-content: space-between;
 }
 
-.settingsTitle{
+.settings {
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+
+.settingsTitle {
     font-size: 1.125rem;
     color: #fff;
     line-height: 1.5;
     font-weight: 600;
 }
 
-.exit{
-    color: #fff;
-    cursor: pointer;
-}
-
-.settings{
-    display: flex;
-    margin-bottom: 1.5rem;
-}
-
-.outerWrapper{
-   
-    padding: .5rem 0;
-    background-color: #0f212e;
-    border-radius: 10px;
-}
-
-.nav{
-    display: flex;
-    flex-direction: column;
-    color: #fff;
-    font-size: .875rem;
-    width: 180px;
-}
-
-.contaner{
+.contener {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 1.5rem;
 }
 
-.navText{
+.outerWrapper {
+    padding: 0.5rem 0;
+    background-color: #0f212e;
+    border-radius: 10px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
     color: #fff;
-    font-size: .875rem;
+    font-size: 0.875rem;
+    width: 180px;
+}
+
+.navText {
+    color: #fff;
+    font-size: 0.875rem;
     outline: none;
     line-height: 150%;
     font-weight: 600;
     text-decoration: none;
     padding: 10.5px 14px;
-
 }
 
-.cardVariantDefault{
-    background-color: #0f212e;
-    border-radius: 10px; 
+.exit {
+    color: #fff;
+    width: 70%;
+}
+
+.settingsIcon{
+    color: #b1bad3;
+    text-align: center;
+    padding-top: 2px;
+    padding-right: 5px;
 }

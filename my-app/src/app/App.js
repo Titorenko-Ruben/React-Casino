@@ -62,7 +62,7 @@ function App() {
 				<Route path='/sponsorships/everton' element={<SponsorEverton />} />
 				<Route path='/sponsorships/watford' element={<SponsorWatford />} />
 				<Route path='/sponsorships/drake' element={<SponsorDrake />} />
-				<Route path='/settings/general' element={<Settings />} />
+				<Route path='/settings' element={<Settings />} />
 				<Route path='/pay' element={<Pay />} />
 			</Routes>
 			<Footer />
