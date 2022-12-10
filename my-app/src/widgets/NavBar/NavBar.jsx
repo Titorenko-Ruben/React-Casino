@@ -8,12 +8,12 @@ import { FaHandshake } from 'react-icons/fa'
 
 import styles from './styles.module.scss'
 
-const NavBar = () => {
+function NavBar({setIsNavBarOpen}){
 	return (
 		<div className={styles.navBarWrapper}>
 			<div className={styles.header}>
 				<div className={styles.style}>
-					<button className={styles.hoverable}>
+					<button onClick={()=>setIsNavBarOpen(true)} className={styles.hoverable}>
 						<AiOutlineMenuUnfold
 							className={styles.icon}
 							style={{ color: 'white' }}
