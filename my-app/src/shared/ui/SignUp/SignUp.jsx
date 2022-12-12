@@ -11,7 +11,7 @@ import styles from './styles.module.scss'
 
 import { basicSchema } from 'shared/schemas'
 
-const users = []
+// const users = []
 
 function Input({
 	values,
@@ -56,7 +56,15 @@ function Input({
 	)
 }
 
-function SignUp({ showRegModal, setShowRegModal, setUser, setIsUserLoggedIn }) {
+function SignUp({
+	showRegModal,
+	setShowRegModal,
+	setStore,
+	setIsUserLoggedIn,
+	setDataBase,
+	store,
+	dataBase
+}) {
 	const [userAgree, setUserAgree] = useState(false)
 
 	const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -74,13 +82,27 @@ function SignUp({ showRegModal, setShowRegModal, setUser, setIsUserLoggedIn }) {
 		})
 
 	function onSubmit(values, { resetForm }) {
-		setUser(values)
-		users.push(values)
+		setStore((prev) => {
+			return {
+				...prev,
+				user: {
+					...prev.user,
+					email: values.email,
+					username: values.username,
+					day: values.day,
+					month: values.month,
+					year: values.year,
+					password: values.password
+				}
+			}
+		})
 		resetForm({ values: '' })
 		setShowRegModal(!showRegModal)
-		localStorage.setItem('dataBase', JSON.stringify(users))
 		localStorage.setItem('isUserLoggedIn', true)
 		setIsUserLoggedIn(true)
+		// setDataBase((prev) => {
+		// 	return { ...prev, users: [...prev.users, store.user] }
+		// })
 		console.log('auth complete')
 	}
 

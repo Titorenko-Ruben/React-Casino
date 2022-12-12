@@ -14,12 +14,31 @@ import styles from './styles.module.scss'
 function UserHeader({
 	setIsUserLoggedIn,
 	setShowWalletModal,
-	showWalletModal
+	showWalletModal,
+	setStore
 }) {
 	const [isBalanceOpen, setIsBalanceOpen] = useState(false)
 	const [isUserWindowOpen, setIsUserWindowOpen] = useState(false)
 
 	function logout() {
+		setStore({
+			user: {
+				balance: '',
+				email: '',
+				username: '',
+				day: '',
+				month: '',
+				year: '',
+				password: '',
+				cardInfo: {
+					number: '',
+					month: '',
+					year: '',
+					holder: '',
+					cvv: ''
+				}
+			}
+		})
 		localStorage.setItem('isUserLoggedIn', false)
 		setIsUserLoggedIn(false)
 	}
