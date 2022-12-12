@@ -65,10 +65,12 @@
 
 .cardBlock {
 	width: 560px;
+	height: 300px;
 	padding: 0;
 	margin: 0;
-	display: block;
+	display: flex;
 	border: 0;
+	position: relative;
 }
 
 .front {
@@ -78,32 +80,31 @@
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
-	position: relative;
-	z-index: 4;
+	position: absolute;
+	z-index: 2;
 	top: 0;
 	margin-top: 0px;
 	margin-left: 0px;
 	text-align: right;
 	padding: 15px;
 	max-width: 370px;
-	position: relative;
+	box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
 .back {
 	background: url(../../assets/img/backCard.jpg);
-	margin-left: 190px;
-	margin-bottom: 45px;
 	display: flex;
 	align-items: center;
-	z-index: 3;
-	position: relative;
+	z-index: 1;
 	background-repeat: no-repeat;
 	background-size: cover;
-	width: 370px;
+	width: 350px;
 	height: 210px;
 	border-radius: 10px;
 	position: absolute;
-	top: 44%;
+	margin-top: 50px;
+	margin-left: 160px;
+	box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
 .cardNumberField {
@@ -241,7 +242,7 @@
 	font-size: 16px;
 	line-height: 16px;
 	background: transparent !important;
-	border: 1px solid white !important;
+	border: 1px solid white;
 	border-radius: 3px;
 	padding: 6px;
 	outline: none;
@@ -283,8 +284,40 @@
 	margin-bottom: 6px;
 	margin-left: 6px;
 	background: transparent !important;
-	border: 1px solid white !important;
+	border: 1px solid white;
 	border-radius: 3px;
 	padding: 6px;
 	outline: none;
+}
+
+.paymentBtn {
+	margin-top: 0.5rem;
+	border: none;
+	background-color: #1475e1;
+	color: #fff;
+	cursor: pointer;
+	font-family: proxima-nova, sans-serif;
+	font-size: 1.2rem;
+	padding: 1rem;
+	border-radius: 15px;
+}
+
+.paymentBtn:hover {
+	opacity: 0.8;
+}
+
+.paymentBtn:active {
+	opacity: 0.5;
+}
+
+.errorText {
+	margin-top: 0.8rem;
+	color: #fe2247;
+	font-size: 1rem;
+	font-weight: 600;
+	font-family: proxima-nova, sans-serif;
+}
+
+.error {
+	border: 2px solid #fe2247;
 }
