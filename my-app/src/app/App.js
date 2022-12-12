@@ -10,7 +10,7 @@ import {
 	Pay
 } from 'pages'
 
-import { Header, UserHeader, NavBar, Footer } from 'widgets'
+import { Header, UserHeader, NavBar, NavBarWindow, Footer } from 'widgets'
 import { SignUp, SignIn, WalletWindow } from 'shared/ui'
 
 function App() {
@@ -33,6 +33,7 @@ function App() {
 		}
 	})
 	const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
+	const [isNavBarOpen, setIsNavBarOpen] = useState(false)
 	const [showRegModal, setShowRegModal] = useState(false)
 	const [showSignInModal, setShowSignInModal] = useState(false)
 	const [showWalletModal, setShowWalletModal] = useState(false)
@@ -68,9 +69,10 @@ function App() {
 			setIsUserLoggedIn(true)
 		}
 	}, [])
-
+  
 	console.log('store ', store)
 	console.log('dataBase ', dataBase)
+
 	return (
 		<BrowserRouter>
 			{isUserLoggedIn ? (
@@ -88,7 +90,14 @@ function App() {
 					setShowSignInModal={setShowSignInModal}
 				/>
 			)}
-			<NavBar />
+			{isNavBarOpen ? (
+				<NavBarWindow
+					isNavBarOpen={isNavBarOpen}
+					setIsNavBarOpen={setIsNavBarOpen}
+				/>
+			) : (
+				<NavBar setIsNavBarOpen={setIsNavBarOpen} />
+			)}
 			<Routes>
 				<Route
 					path='/'
