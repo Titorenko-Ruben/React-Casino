@@ -11,8 +11,6 @@ import styles from './styles.module.scss'
 
 import { basicSchema } from 'shared/schemas'
 
-const users = []
-
 function Input({
 	values,
 	errors,
@@ -56,7 +54,13 @@ function Input({
 	)
 }
 
-function SignUp({ showRegModal, setShowRegModal, setUser, setIsUserLoggedIn }) {
+function SignUp({
+	showRegModal,
+	setShowRegModal,
+	setStore,
+	setIsUserLoggedIn,
+	setDataBase
+}) {
 	const [userAgree, setUserAgree] = useState(false)
 
 	const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -74,13 +78,47 @@ function SignUp({ showRegModal, setShowRegModal, setUser, setIsUserLoggedIn }) {
 		})
 
 	function onSubmit(values, { resetForm }) {
-		setUser(values)
-		users.push(values)
-		resetForm({ values: '' })
-		setShowRegModal(!showRegModal)
-		localStorage.setItem('dataBase', JSON.stringify(users))
-		localStorage.setItem('isUserLoggedIn', true)
+		setStore((prev) => {
+			return {
+				...prev,
+				user: {
+					...prev.user,
+					email: values.email,
+					username: values.username,
+					day: values.day,
+					month: values.month,
+					year: values.year,
+					password: values.password
+				}
+			}
+		})
+		setDataBase((prev) => {
+			return {
+				...prev,
+				users: [
+					...prev.users,
+					{
+						balance: '',
+						email: values.email,
+						username: values.username,
+						day: values.day,
+						month: values.month,
+						year: values.year,
+						password: values.password,
+						cardInfo: {
+							number: '',
+							month: '',
+							year: '',
+							holder: '',
+							cvv: ''
+						}
+					}
+				]
+			}
+		})
+		setShowRegModal(false)
 		setIsUserLoggedIn(true)
+		resetForm({ values: '' })
 		console.log('auth complete')
 	}
 

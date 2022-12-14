@@ -14,13 +14,32 @@ import styles from './styles.module.scss'
 function UserHeader({
 	setIsUserLoggedIn,
 	setShowWalletModal,
-	showWalletModal
+	showWalletModal,
+	setStore,
+	store
 }) {
 	const [isBalanceOpen, setIsBalanceOpen] = useState(false)
 	const [isUserWindowOpen, setIsUserWindowOpen] = useState(false)
 
 	function logout() {
-		localStorage.setItem('isUserLoggedIn', false)
+		setStore({
+			user: {
+				balance: '',
+				email: '',
+				username: '',
+				day: '',
+				month: '',
+				year: '',
+				password: '',
+				cardInfo: {
+					number: '',
+					month: '',
+					year: '',
+					holder: '',
+					cvv: ''
+				}
+			}
+		})
 		setIsUserLoggedIn(false)
 	}
 
@@ -52,7 +71,9 @@ function UserHeader({
 														<div className={styles.currencyContent}>
 															<span className={styles.currencyContent}>
 																<span className={styles.currencyText}>
-																	0.000
+																	{store.user.balance
+																		? store.user.balance
+																		: '0.000'}
 																</span>
 															</span>
 															<span className={styles.iconWrap}>
@@ -85,7 +106,11 @@ function UserHeader({
 									onClick={() => setIsUserWindowOpen(!isUserWindowOpen)}
 								>
 									<span className={styles.userWindowImgWrapper}>
-										<img src={person} className={styles.imgPerson} />
+										<img
+											src={person}
+											className={styles.imgPerson}
+											alt='person'
+										/>
 									</span>
 								</button>
 								{isUserWindowOpen && (

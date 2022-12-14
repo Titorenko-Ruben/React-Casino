@@ -8,8 +8,9 @@ import styles from 'shared/ui/SignIn/styles.module.scss'
 function SignIn({
 	showSignInModal,
 	setShowSignInModal,
-	setUser,
-	setIsUserLoggedIn
+	setStore,
+	setIsUserLoggedIn,
+	dataBase
 }) {
 	const [emailOrUsername, setEmailOrUsername] = useState('')
 	const [password, setPassword] = useState('')
@@ -20,19 +21,18 @@ function SignIn({
 		if (emailOrUsername === '' || password === '') {
 			setError('Please, fill out the task')
 		} else {
-			JSON.parse(localStorage.getItem('dataBase')).forEach((item) => {
+			dataBase.users.forEach((user) => {
 				if (
-					(emailOrUsername === item.email && password === item.password) ||
-					(emailOrUsername === item.username && password === item.password)
+					(emailOrUsername === user.email && password === user.password) ||
+					(emailOrUsername === user.username && password === user.password)
 				) {
-					console.log('auth complete')
-					localStorage.setItem('isUserLoggedIn', true)
+					setStore(() => ({ user: { ...user } }))
 					setIsUserLoggedIn(true)
-					setUser(item)
 					setError('')
 					setEmailOrUsername('')
 					setPassword('')
 					setShowSignInModal(false)
+					console.log('auth complete')
 				} else {
 					setError('User not found')
 				}
