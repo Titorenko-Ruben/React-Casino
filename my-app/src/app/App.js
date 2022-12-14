@@ -62,7 +62,6 @@ function App() {
 
 	useEffect(() => {
 		localStorage.setItem('DataBase', JSON.stringify(dataBase))
-		console.log('dataBase ', dataBase)
 	}, [dataBase])
 
 	return (
@@ -132,7 +131,6 @@ function App() {
 				setShowSignInModal={setShowSignInModal}
 				setStore={setStore}
 				setIsUserLoggedIn={setIsUserLoggedIn}
-				dataBase={dataBase}
 			/>
 			<WalletWindow
 				showWalletModal={showWalletModal}

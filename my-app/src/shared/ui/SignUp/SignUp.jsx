@@ -59,8 +59,7 @@ function SignUp({
 	setShowRegModal,
 	setStore,
 	setIsUserLoggedIn,
-	setDataBase,
-	dataBase
+	setDataBase
 }) {
 	const [userAgree, setUserAgree] = useState(false)
 
