@@ -1,45 +1,66 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AiOutlineSetting } from 'react-icons/ai'
 import { BsXLg } from 'react-icons/bs'
 
+import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
+
 import styles from './styles.module.scss'
+import General from './General/General'
+import Security from './Security/Security'
 
 function Settings() {
+	const [isgeneralActive, setIsGeneralActive] = useState(true)
+	const [isSecurityActive, setIsSecurityActive] = useState(false)
 	return (
 		<div>
 			<div className={styles.wrapper}>
 				<div className={styles.title}>
 					<div className={styles.settings}>
-						<AiOutlineSetting />
+						<SettingsRoundedIcon className={styles.settingsIcon} fontSize="medium" />
 						<h1 className={styles.settingsTitle}>Settings</h1>
 					</div>
 					<Link to='/'>
 						<BsXLg className={styles.exit} />
 					</Link>
 				</div>
-				<div className={styles.contaner}>
+				<div className={styles.contener}>
 					<div className={styles.outerWrapper}>
 						<div className={styles.nav}>
-							<Link to='/settings/general'>
+							<div
+								onClick={() => {
+									setIsGeneralActive(true)
+									setIsSecurityActive(false)
+								}}
+								className={isgeneralActive
+									? styles.linkActive
+									: styles.link}
+							>
 								<span className={styles.navText}>General</span>
-							</Link>
-							<Link to='/settings/security'>
+							</div>
+							<div
+								onClick={() => {
+									setIsSecurityActive(true)
+									setIsGeneralActive(false)
+								}}
+								className={isSecurityActive
+									? styles.linkActive
+									: styles.link}
+							>
 								<span className={styles.navText}>Security</span>
-							</Link>
+							</div>
+							<div className={styles.dash}></div>
 						</div>
 					</div>
-					<div className={styles.cardVariantDefault}>
-						<div className={styles.section}>
-							<h3 className={styles.sectionTitle}>Email</h3>
-							<form>
-								<input></input>
-							</form>
-						</div>
+					<div>
+						{isgeneralActive
+							? <General />
+							: <Security />
+						}
 					</div>
 				</div>
 			</div>
 		</div>
 	)
 }
+
 export default Settings
