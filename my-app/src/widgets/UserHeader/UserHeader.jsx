@@ -106,7 +106,11 @@ function UserHeader({
 									onClick={() => setIsUserWindowOpen(!isUserWindowOpen)}
 								>
 									<span className={styles.userWindowImgWrapper}>
-										<img src={person} className={styles.imgPerson} />
+										<img
+											src={person}
+											className={styles.imgPerson}
+											alt='person'
+										/>
 									</span>
 								</button>
 								{isUserWindowOpen && (
