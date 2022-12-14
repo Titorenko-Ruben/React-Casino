@@ -2,7 +2,7 @@
     top: 60px;
     position: relative;
     background-color: #1a2c38;
-    padding: 32px 8vw 32px 12vw;
+    padding: 32px 12vw 32px 12vw;
     margin: auto;
 }
 
@@ -33,6 +33,8 @@
     padding: 0.5rem 0;
     background-color: #0f212e;
     border-radius: 10px;
+    display: block;
+    max-height: 100px;
 }
 
 .nav {
@@ -50,7 +52,7 @@
     line-height: 150%;
     font-weight: 600;
     text-decoration: none;
-    padding: 10.5px 14px;
+   
 }
 
 .exit {
@@ -64,3 +66,31 @@
     padding-top: 2px;
     padding-right: 5px;
 }
+
+.link{
+    padding: 10.5px 14px;
+    cursor: pointer;
+}
+
+.link:hover{
+    background-color: #071824;
+}
+
+.linkActive{
+    padding: 10.5px 14px;
+    background-color: #071824;
+    cursor: pointer;
+}
+
+.dash{
+    height: 11.1111%;
+    transform: translateY(0%);
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    background: #1475E1;
+    transition: all .2s ease-out
+}
+
