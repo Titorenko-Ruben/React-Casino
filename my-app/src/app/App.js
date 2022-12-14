@@ -37,41 +37,33 @@ function App() {
 	const [showRegModal, setShowRegModal] = useState(false)
 	const [showSignInModal, setShowSignInModal] = useState(false)
 	const [showWalletModal, setShowWalletModal] = useState(false)
-	const [dataBase, setDataBase] = useState({
-		users: [
-			{
-				balance: '1000000',
-				email: 'admin@gmail.com',
-				username: 'Admin',
-				day: '1',
-				month: '1',
-				year: '2001',
-				password: 'Admin123',
-				cardInfo: {
-					number: '1111 1111 1111 1111',
+	const [dataBase, setDataBase] = useState(
+		JSON.parse(localStorage.getItem('DataBase')) || {
+			users: [
+				{
+					balance: '1000000',
+					email: 'admin@gmail.com',
+					username: 'Admin',
+					day: '1',
 					month: '1',
-					year: '21',
-					holder: 'Admin',
-					cvv: '111'
+					year: '2001',
+					password: 'Admin123',
+					cardInfo: {
+						number: '1111 1111 1111 1111',
+						month: '1',
+						year: '21',
+						holder: 'Admin',
+						cvv: '111'
+					}
 				}
-			}
-		]
-	})
-
-	useEffect(() => {
-		setDataBase((prev) => {
-			return { ...prev, users: [...prev.users, store.user] }
-		})
-	}, [store])
-
-	useEffect(() => {
-		if (localStorage.getItem('isUserLoggedIn') === 'true') {
-			setIsUserLoggedIn(true)
+			]
 		}
-	}, [])
-  
-	console.log('store ', store)
-	console.log('dataBase ', dataBase)
+	)
+
+	useEffect(() => {
+		localStorage.setItem('DataBase', JSON.stringify(dataBase))
+		console.log('dataBase ', dataBase)
+	}, [dataBase])
 
 	return (
 		<BrowserRouter>
@@ -81,6 +73,7 @@ function App() {
 					showWalletModal={showWalletModal}
 					setShowWalletModal={setShowWalletModal}
 					setStore={setStore}
+					store={store}
 				/>
 			) : (
 				<Header
@@ -112,7 +105,17 @@ function App() {
 				<Route path='/sponsorships/watford' element={<SponsorWatford />} />
 				<Route path='/sponsorships/drake' element={<SponsorDrake />} />
 				<Route path='/settings/general' element={<Settings />} />
-				<Route path='/pay' element={<Pay setStore={setStore} />} />
+				<Route
+					path='/pay'
+					element={
+						<Pay
+							setStore={setStore}
+							dataBase={dataBase}
+							setDataBase={setDataBase}
+							store={store}
+						/>
+					}
+				/>
 			</Routes>
 			<Footer />
 			<SignUp

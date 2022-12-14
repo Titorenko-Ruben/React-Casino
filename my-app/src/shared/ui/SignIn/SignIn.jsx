@@ -21,25 +21,18 @@ function SignIn({
 		if (emailOrUsername === '' || password === '') {
 			setError('Please, fill out the task')
 		} else {
-			dataBase.users.map((item) => {
+			dataBase.users.forEach((user) => {
 				if (
-					(emailOrUsername === item.email && password === item.password) ||
-					(emailOrUsername === item.username && password === item.password)
+					(emailOrUsername === user.email && password === user.password) ||
+					(emailOrUsername === user.username && password === user.password)
 				) {
-					// console.log('auth complete')
-					console.log(item)
-					localStorage.setItem('isUserLoggedIn', true)
+					setStore(() => ({ user: { ...user } }))
 					setIsUserLoggedIn(true)
-					setStore((prev) => {
-						return {
-							...prev,
-							user: item
-						}
-					})
 					setError('')
 					setEmailOrUsername('')
 					setPassword('')
 					setShowSignInModal(false)
+					console.log('auth complete')
 				} else {
 					setError('User not found')
 				}

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import styles from './styles.module.scss'
 
-function Pay({ setStore }) {
+function Pay({ setStore, setDataBase, dataBase, store }) {
 	const [cardInfo, setCardInfo] = useState({
 		cardNumber: '',
 		cardMonth: '',
@@ -13,6 +13,8 @@ function Pay({ setStore }) {
 	})
 	const [error, setError] = useState(false)
 	const year = String(new Date().getFullYear()).substr(2)
+	const sumOfBalance =
+		+store.user.balance + +localStorage.getItem('DepositRequest')
 	const navigate = useNavigate()
 
 	function cardValidation() {
@@ -50,9 +52,8 @@ function Pay({ setStore }) {
 					...prev,
 					user: {
 						...prev.user,
-						balance: localStorage.getItem('DepositRequest'),
+						balance: `${sumOfBalance}`,
 						cardInfo: {
-							...prev.user.cardInfo,
 							number: cardInfo.cardNumber,
 							month: cardInfo.cardMonth,
 							year: cardInfo.cardYear,
@@ -62,6 +63,32 @@ function Pay({ setStore }) {
 					}
 				}
 			})
+			setDataBase((prev) => {
+				return {
+					...prev,
+					users: dataBase.users.map((user) => {
+						if (
+							user.email === store.user.email &&
+							user.password === store.user.password
+						) {
+							return {
+								...store.user,
+								balance: `${sumOfBalance}`,
+								cardInfo: {
+									number: cardInfo.cardNumber,
+									month: cardInfo.cardMonth,
+									year: cardInfo.cardYear,
+									holder: cardInfo.cardHolder,
+									cvv: cardInfo.cardCvv
+								}
+							}
+						} else {
+							return user
+						}
+					})
+				}
+			})
+			localStorage.setItem('DepositRequest', 0)
 			navigate('/')
 			console.log('deposit')
 		}

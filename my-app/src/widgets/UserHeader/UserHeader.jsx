@@ -15,7 +15,8 @@ function UserHeader({
 	setIsUserLoggedIn,
 	setShowWalletModal,
 	showWalletModal,
-	setStore
+	setStore,
+	store
 }) {
 	const [isBalanceOpen, setIsBalanceOpen] = useState(false)
 	const [isUserWindowOpen, setIsUserWindowOpen] = useState(false)
@@ -39,7 +40,6 @@ function UserHeader({
 				}
 			}
 		})
-		localStorage.setItem('isUserLoggedIn', false)
 		setIsUserLoggedIn(false)
 	}
 
@@ -71,7 +71,9 @@ function UserHeader({
 														<div className={styles.currencyContent}>
 															<span className={styles.currencyContent}>
 																<span className={styles.currencyText}>
-																	0.000
+																	{store.user.balance
+																		? store.user.balance
+																		: '0.000'}
 																</span>
 															</span>
 															<span className={styles.iconWrap}>
