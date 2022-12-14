@@ -11,8 +11,6 @@ import styles from './styles.module.scss'
 
 import { basicSchema } from 'shared/schemas'
 
-// const users = []
-
 function Input({
 	values,
 	errors,
@@ -62,7 +60,6 @@ function SignUp({
 	setStore,
 	setIsUserLoggedIn,
 	setDataBase,
-	store,
 	dataBase
 }) {
 	const [userAgree, setUserAgree] = useState(false)
@@ -96,13 +93,33 @@ function SignUp({
 				}
 			}
 		})
-		resetForm({ values: '' })
-		setShowRegModal(!showRegModal)
-		localStorage.setItem('isUserLoggedIn', true)
+		setDataBase((prev) => {
+			return {
+				...prev,
+				users: [
+					...prev.users,
+					{
+						balance: '',
+						email: values.email,
+						username: values.username,
+						day: values.day,
+						month: values.month,
+						year: values.year,
+						password: values.password,
+						cardInfo: {
+							number: '',
+							month: '',
+							year: '',
+							holder: '',
+							cvv: ''
+						}
+					}
+				]
+			}
+		})
+		setShowRegModal(false)
 		setIsUserLoggedIn(true)
-		// setDataBase((prev) => {
-		// 	return { ...prev, users: [...prev.users, store.user] }
-		// })
+		resetForm({ values: '' })
 		console.log('auth complete')
 	}
 
