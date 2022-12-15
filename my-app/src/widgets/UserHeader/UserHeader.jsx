@@ -10,6 +10,7 @@ import person from 'assets/img/person.png'
 import vault from 'assets/icons/vault.svg'
 
 import styles from './styles.module.scss'
+import { BalanceWindow } from 'shared/ui'
 
 function UserHeader({
 	setIsUserLoggedIn,
@@ -18,7 +19,7 @@ function UserHeader({
 	setStore,
 	store
 }) {
-	const [isBalanceOpen, setIsBalanceOpen] = useState(false)
+	const [showBalanceModal, setShowBalanceModal] = useState(false)
 	const [isUserWindowOpen, setIsUserWindowOpen] = useState(false)
 
 	function logout() {
@@ -63,7 +64,7 @@ function UserHeader({
 									<div className={styles.wrapper}>
 										<button
 											className={styles.moneyWrapper}
-											onClick={() => setIsBalanceOpen(!isBalanceOpen)}
+											onClick={() => setShowBalanceModal(!showBalanceModal)}
 										>
 											<span className={styles.content}>
 												<div className={styles.wrap}>
@@ -82,13 +83,14 @@ function UserHeader({
 														</div>
 													</div>
 												</div>
-												{isBalanceOpen ? (
+												{showBalanceModal ? (
 													<IoIosArrowUp style={{ marginLeft: '.5rem' }} />
 												) : (
 													<IoIosArrowDown style={{ marginLeft: '.5rem' }} />
 												)}
 											</span>
 										</button>
+										{showBalanceModal && <BalanceWindow />}
 									</div>
 								</div>
 							</div>
