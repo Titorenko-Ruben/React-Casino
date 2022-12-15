@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import ImgBg from "assets/img/drake-banner.avif"
 import StakeDrakeImg from "assets/img/stakeLogo.png"
@@ -11,10 +11,15 @@ import styles from './styles.module.scss'
 
 
 const StakeDrake = () => {
+    const navigate = useNavigate()
     return (
         <div className={styles.stakeDrakeBlock}>
             <div className={styles.stakeDrakeLink}>
-                <Link className={styles.link} to="/sponsorships/drake">Learn more</Link>
+                <div 
+                onClick={() => {
+                    navigate('/sponsorships/drake')
+                    window.scroll(0, 0)}}
+                className={styles.link}>Learn more</div>
             </div>
             <div className={styles.stakeDrakeWrapper}>
                 <img className={styles.imgStake} src={StakeDrakeImg} alt='stake' />
