@@ -11,7 +11,7 @@ import {
 } from 'pages'
 
 import { Header, UserHeader, NavBar, NavBarWindow, Footer } from 'widgets'
-import { SignUp, SignIn, WalletModal } from 'shared/ui'
+import { SignUp, SignIn, WalletModal, BalanceWindow } from 'shared/ui'
 
 function App() {
 	const [store, setStore] = useState({
@@ -64,7 +64,6 @@ function App() {
 		localStorage.setItem('DataBase', JSON.stringify(dataBase))
 	}, [dataBase])
 
-	console.log(store.user.username)
 	return (
 		<BrowserRouter>
 			{isUserLoggedIn ? (
@@ -89,7 +88,6 @@ function App() {
 				store={store}
 			/>
 			<NavBar setIsNavBarOpen={setIsNavBarOpen} isNavBarOpen={isNavBarOpen} />
-
 			<Routes>
 				<Route
 					path='/'

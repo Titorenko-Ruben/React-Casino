@@ -75,6 +75,7 @@
 	font-weight: 600;
 	line-height: 150%;
 	border: none;
+	position: relative;
 }
 
 .moneyWrapper:hover {
@@ -120,6 +121,7 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: inherit;
+	
 }
 
 .iconWrap {
