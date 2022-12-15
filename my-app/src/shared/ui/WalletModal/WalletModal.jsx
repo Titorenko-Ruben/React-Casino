@@ -5,7 +5,7 @@ import { WalletWindowForm } from './ui/WalletWindowForm'
 
 import styles from './styles.module.scss'
 
-function WalletWindow({ showWalletModal, setShowWalletModal }) {
+function WalletModal({ showWalletModal, setShowWalletModal }) {
 	const [isDepositeActive, setIsDepositeActive] = useState(true)
 
 	return (
@@ -67,4 +67,4 @@ function WalletWindow({ showWalletModal, setShowWalletModal }) {
 	)
 }
 
-export default WalletWindow
+export default WalletModal

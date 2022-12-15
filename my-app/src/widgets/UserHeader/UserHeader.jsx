@@ -117,7 +117,10 @@ function UserHeader({
 									<div className={styles.userToolWindowWraper}>
 										<ImArrowUp className={styles.arrowIcon} />
 										<div className={styles.userToolWindow}>
-											<button className={styles.userTool}>
+											<button
+												className={styles.userTool}
+												onClick={() => setShowWalletModal(true)}
+											>
 												<IoWalletSharp className={styles.userToolIcon} />
 												<div className={styles.userToolText}>Wallet</div>
 											</button>
