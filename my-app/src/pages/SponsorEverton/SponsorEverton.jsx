@@ -16,7 +16,7 @@ function SponsorEverton() {
 					<h2 className={styles.secondaryTitle}>Main Partner</h2>
 				</div>
 				<div className={styles.headerWrapperLogo}>
-					<img src={evertonLogo} />
+					<img src={evertonLogo} alt='Everton logo'/>
 				</div>
 			</div>
 			<div className={styles.wrapper}>
@@ -46,12 +46,12 @@ function SponsorEverton() {
 						</p>
 					</div>
 					<div className={styles.contantBlockImg}>
-						<img src={evertonFlag} />
+						<img src={evertonFlag} alt='Everton'/>
 					</div>
 				</div>
 				<div className={styles.contantBlock}>
 					<div className={styles.contantBlockImg}>
-						<img src={everton} />
+						<img src={everton} alt='Everton'/>
 					</div>
 					<div className={styles.contantBlockInfo}>
 						<h2 className={styles.contantBlockInfoTitle}>Impressive Growth</h2>

@@ -10,12 +10,12 @@ function SponsorDrake() {
 	return (
 		<div>
 			<div className={styles.headerWrapper}>
-				<img className={styles.headerWrapperLogo} src={stakeDrake} />
+				<img className={styles.headerWrapperLogo} src={stakeDrake} alt='Stake|Drake'/>
 			</div>
 			<div className={styles.wrapper}>
 				<div className={styles.contantBlock}>
 					<div className={styles.contantBlockImg}>
-						<img src={singerDrake} />
+						<img src={singerDrake} alt='Drake'/>
 					</div>
 					<div className={styles.contantBlockInfo}>
 						<h2 className={styles.contantBlockInfoTitle}>

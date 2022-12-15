@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import evertonLogo from 'assets/icons/everton-logo.svg'
 import ufcLogo from 'assets/icons/ufc.svg'
@@ -20,7 +20,7 @@ import stakeLogo from "assets/icons/logo-footer.png"
 import styles from './styles.module.scss'
 
 function Footer() {
-
+  const navigate = useNavigate()
   return (
 
     <div className={styles.footerContant}>
@@ -62,41 +62,47 @@ function Footer() {
       </div>
       <div className={styles.hr}></div>
       <div className={styles.logoWrapper}>
-        <img className={styles.logoImg} src={litecoin} />
-        <img className={styles.logoImg} src={bitcoin} />
-        <img className={styles.logoImg} src={ethereum} />
-        <img className={styles.logoImg} src={tron} />
-        <img className={styles.logoImg} src={ripple} />
-        <img className={styles.logoImg} src={dogecoin} />
-        <img className={styles.logoImg} src={bitcoinCash} />
-        <img className={styles.logoImg} src={tether} />
-        <img className={styles.logoImg} src={responsibleGaming} />
-        <img className={styles.logoImg} src={age} />
+        <img className={styles.logoImg} src={litecoin} alt='litecoin'/>
+        <img className={styles.logoImg} src={bitcoin} alt='bitcoin'/>
+        <img className={styles.logoImg} src={ethereum} alt='ethereum'/>
+        <img className={styles.logoImg} src={tron} alt='tron'/>
+        <img className={styles.logoImg} src={ripple} alt='ripple'/>
+        <img className={styles.logoImg} src={dogecoin} alt='dogecoin'/>
+        <img className={styles.logoImg} src={bitcoinCash} alt='bitcoinCash'/>
+        <img className={styles.logoImg} src={tether} alt='tether'/>
+        <img className={styles.logoImg} src={responsibleGaming} alt='responsibleGaming'/>
+        <img className={styles.logoImg} src={age} alt='21+'/>
       </div>
       <div className={styles.hr}></div>
       <div className={styles.mainPartners}>
         <div className={styles.partner}>
-          <Link to='/sponsorships/everton'>
-            <img className={styles.logoPartner} src={evertonLogo} />
-            </Link>
+          <img
+            onClick={() => {
+              navigate('/sponsorships/everton')
+              window.scroll(0, 0)
+            }}
+            className={styles.logoPartner} src={evertonLogo} alt='everton logo'/>
         </div>
-
         <div className={styles.partner}>
-          <Link to='/sponsorships/watford'>
-            <img className={styles.logoPartner} src={watfordLogo} />
-            </Link>
+            <img 
+             onClick={() => {
+              navigate('/sponsorships/watford')
+              window.scroll(0, 0)
+            }}
+            className={styles.logoPartner} src={watfordLogo} alt='watford logo'/>
         </div>
-
         <div className={styles.partner}>
-          <Link to ='/'>
-            <img className={styles.logoPartner} src={ufcLogo} />
-            </Link>
+            <img 
+               onClick={() => {
+                navigate('/')
+                window.scroll(0, 0)}}
+            className={styles.logoPartner} src={ufcLogo} alt='UFC'/>
         </div>
       </div>
       <div className={styles.hr}></div>
       <div className={styles.wrapLogo}>
-      <img className={styles.logo} src={stakeLogo} /> 
-      <p className={styles.footerText}>2022 Stake.us | All Rights Reserved.</p>
+        <img className={styles.logo} src={stakeLogo} alt='Stake logo'/>
+        <p className={styles.footerText}>2022 Stake.us | All Rights Reserved.</p>
       </div>
     </div>
   )

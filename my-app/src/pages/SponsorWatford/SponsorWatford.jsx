@@ -16,7 +16,7 @@ function SponsorWatford() {
 					<h2 className={styles.secondaryTitle}>Main Club Sponsor</h2>
 				</div>
 				<div className={styles.headerWrapperLogo}>
-					<img src={watfordLogo} />
+					<img src={watfordLogo} alt='Watford'/>
 				</div>
 			</div>
 			<div className={styles.wrapper}>
@@ -41,12 +41,12 @@ function SponsorWatford() {
 						</p>
 					</div>
 					<div className={styles.contantBlockImg}>
-						<img src={watford} />
+						<img src={watford} alt='Watford'/>
 					</div>
 				</div>
 				<div className={styles.contantBlock}>
 					<div className={styles.contantBlockImg}>
-						<img src={watfordSponsor} />
+						<img src={watfordSponsor} alt='Watford'/>
 					</div>
 					<div className={styles.contantBlockInfo}>
 						<h2 className={styles.contantBlockInfoTitle}>The Next Chapter</h2>
