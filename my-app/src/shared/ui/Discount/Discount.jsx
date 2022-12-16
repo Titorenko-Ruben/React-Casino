@@ -9,12 +9,23 @@ import styles from './styles.module.scss'
 import welcomeTopImg from 'assets/img/sweeps-welcome-top-en.png'
 import { Store } from 'app/App'
 
-function Discount({ showRegModal, setShowRegModal, isUserLoggedIn }) {
+function Discount({
+	showRegModal,
+	setShowRegModal,
+	isUserLoggedIn,
+	isNavBarOpen
+}) {
 	const [store] = useContext(Store)
 	return (
 		<>
 			{isUserLoggedIn ? (
-				<div className={styles.wrapper}>
+				<div
+					className={
+						isNavBarOpen
+							? [styles.wrapper, styles.active].join(' ')
+							: styles.wrapper
+					}
+				>
 					<div className={styles.mainRegister}>
 						<div className={styles.contener}>
 							<h1 className={styles.title}>
@@ -31,7 +42,13 @@ function Discount({ showRegModal, setShowRegModal, isUserLoggedIn }) {
 					</div>
 				</div>
 			) : (
-				<div className={styles.wrapper}>
+				<div
+					className={
+						isNavBarOpen
+							? [styles.wrapper, styles.active].join(' ')
+							: styles.wrapper
+					}
+				>
 					<div className={styles.mainRegister}>
 						<div className={styles.contener}>
 							<h1 className={styles.title}>Play Smarter</h1>

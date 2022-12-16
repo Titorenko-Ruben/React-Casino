@@ -17,7 +17,8 @@ function Router({
 	setShowRegModal,
 	isUserLoggedIn,
 	dataBase,
-	setDataBase
+	setDataBase,
+	isNavBarOpen
 }) {
 	return (
 		<Routes>
@@ -28,6 +29,7 @@ function Router({
 						showRegModal={showRegModal}
 						setShowRegModal={setShowRegModal}
 						isUserLoggedIn={isUserLoggedIn}
+						isNavBarOpen={isNavBarOpen}
 					/>
 				}
 			/>

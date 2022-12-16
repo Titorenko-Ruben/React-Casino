@@ -81,6 +81,7 @@ function App() {
 						setShowRegModal={setShowRegModal}
 						setDataBase={setDataBase}
 						dataBase={dataBase}
+						isNavBarOpen={isNavBarOpen}
 					/>
 				</Layout>
 				<SignUp

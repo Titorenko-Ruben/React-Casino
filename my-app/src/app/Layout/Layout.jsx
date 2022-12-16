@@ -2,8 +2,6 @@ import React from 'react'
 
 import { Header, UserHeader, NavBar, NavBarWindow, Footer } from 'widgets'
 
-import styles from './styles.module.scss'
-
 function Layout({
 	children,
 	isUserLoggedIn,
@@ -38,7 +36,7 @@ function Layout({
 				setIsNavBarOpen={setIsNavBarOpen}
 			/>
 			<NavBar setIsNavBarOpen={setIsNavBarOpen} isNavBarOpen={isNavBarOpen} />
-			<div className={styles.content}>{children}</div>
+			<div>{children}</div>
 			<Footer />
 		</>
 	)
