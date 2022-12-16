@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { AiOutlineMenuFold } from 'react-icons/ai'
 import { MdSportsBasketball } from 'react-icons/md'
@@ -6,9 +6,12 @@ import { FaHandshake } from 'react-icons/fa'
 import { GiPresent } from 'react-icons/gi'
 import { BiReset } from 'react-icons/bi'
 import { WiStars } from 'react-icons/wi'
+import { Store } from 'app/App'
+
 import styles from './styles.module.scss'
 
-function NavBarWindow({ setIsNavBarOpen, isNavBarOpen, store }) {
+function NavBarWindow({ setIsNavBarOpen, isNavBarOpen }) {
+	const [store] = useContext(Store)
 	return (
 		<div
 			className={

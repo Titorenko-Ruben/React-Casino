@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import { Store } from 'app/App'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import styles from './styles.module.scss'
 
-function Pay({ setStore, setDataBase, dataBase, store }) {
+function Pay({ setDataBase, dataBase }) {
+	const [store, setStore] = useContext(Store)
 	const [cardInfo, setCardInfo] = useState({
 		cardNumber: '',
 		cardMonth: '',

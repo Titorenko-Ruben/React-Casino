@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { IoLogoTwitch } from 'react-icons/io'
 import { AiOutlineGoogle } from 'react-icons/ai'
 import { CgFacebook } from 'react-icons/cg'
@@ -7,8 +7,10 @@ import { MdWavingHand } from 'react-icons/md'
 import styles from './styles.module.scss'
 
 import welcomeTopImg from 'assets/img/sweeps-welcome-top-en.png'
+import { Store } from 'app/App'
 
-function Discount({ showRegModal, setShowRegModal, isUserLoggedIn, store }) {
+function Discount({ showRegModal, setShowRegModal, isUserLoggedIn }) {
+	const [store] = useContext(Store)
 	return (
 		<>
 			{isUserLoggedIn ? (

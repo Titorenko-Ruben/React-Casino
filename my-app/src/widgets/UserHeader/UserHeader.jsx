@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { IoIosArrowDown, IoIosArrowUp, IoIosPaper } from 'react-icons/io'
 import { IoWalletSharp, IoSettingsSharp, IoLogOutSharp } from 'react-icons/io5'
@@ -11,14 +11,14 @@ import vault from 'assets/icons/vault.svg'
 
 import styles from './styles.module.scss'
 import { BalanceWindow } from 'shared/ui'
+import { Store } from 'app/App'
 
 function UserHeader({
 	setIsUserLoggedIn,
 	setShowWalletModal,
-	showWalletModal,
-	setStore,
-	store
+	showWalletModal
 }) {
+	const [store, setStore] = useContext(Store)
 	const [showBalanceModal, setShowBalanceModal] = useState(false)
 	const [isUserWindowOpen, setIsUserWindowOpen] = useState(false)
 
