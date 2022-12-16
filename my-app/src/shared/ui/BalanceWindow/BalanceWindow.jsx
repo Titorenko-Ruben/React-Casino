@@ -46,7 +46,6 @@ function BalanceWindow() {
 				<div className={styles.currencyWrapper}>
 					<div className={styles.modalContent}>
 						{exchangeRate.map((item) => {
-							console.log(item)
 							return (
 								<Rates
 									usd={usd}

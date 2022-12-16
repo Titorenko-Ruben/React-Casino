@@ -29,3 +29,12 @@ export const depositSchema = yup.object().shape({
 		.max(1000000, 'Maximum deposit at one time 1.000.000$')
 		.required('Required')
 })
+
+export const withdrawSchema = yup.object().shape({
+	withdraw: yup
+		.number('Please write amount')
+		.positive('Withdraw must be more than 1$')
+		.min(1, 'Withdraw must be more than 1$')
+		.max(1000000, 'Maximum withdraw at one time 1.000.000$')
+		.required('Required')
+})

@@ -7,7 +7,8 @@ import {
 	SponsorWatford,
 	SponsorDrake,
 	Settings,
-	Pay
+	Pay,
+	Withdraw
 } from 'pages'
 
 import { ROUTES } from 'shared/consts'
@@ -40,6 +41,10 @@ function Router({
 			<Route
 				path={ROUTES.PAY}
 				element={<Pay dataBase={dataBase} setDataBase={setDataBase} />}
+			/>
+			<Route
+				path={ROUTES.WITHDRAW}
+				element={<Withdraw dataBase={dataBase} setDataBase={setDataBase} />}
 			/>
 		</Routes>
 	)

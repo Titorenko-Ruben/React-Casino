@@ -2,12 +2,12 @@ import React from 'react'
 import { Formik, Form } from 'formik'
 import { useNavigate } from 'react-router-dom'
 
-import CustomInput from '../CustomInput/CustomInput'
+import { CustomInput } from '../CustomInput'
 import { depositSchema } from 'shared/schemas'
 
 import styles from './styles.module.scss'
 
-function WalletWindowForm({ setWalletWindow }) {
+function WalletDepositForm({ setWalletWindow }) {
 	const navigate = useNavigate()
 
 	function onSubmit(values, actions) {
@@ -43,4 +43,4 @@ function WalletWindowForm({ setWalletWindow }) {
 	)
 }
 
-export default WalletWindowForm
+export default WalletDepositForm
