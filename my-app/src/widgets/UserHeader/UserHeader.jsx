@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { IoIosArrowDown, IoIosArrowUp, IoIosPaper } from 'react-icons/io'
 import { IoWalletSharp, IoSettingsSharp, IoLogOutSharp } from 'react-icons/io5'
 import { HiOutlineCurrencyDollar, HiOutlineChatAlt2 } from 'react-icons/hi'
@@ -21,7 +21,7 @@ function UserHeader({
 	const [store, setStore] = useContext(Store)
 	const [showBalanceModal, setShowBalanceModal] = useState(false)
 	const [isUserWindowOpen, setIsUserWindowOpen] = useState(false)
-
+	const navigate = useNavigate()
 	function logout() {
 		setStore({
 			user: {
@@ -126,7 +126,11 @@ function UserHeader({
 												<IoWalletSharp className={styles.userToolIcon} />
 												<div className={styles.userToolText}>Wallet</div>
 											</button>
-											<button className={styles.userTool}>
+											<button
+												className={styles.userTool}
+												onClick={() => {
+													navigate('/vault')
+												}}>
 												<img
 													src={vault}
 													className={styles.userToolIcon}
@@ -134,11 +138,19 @@ function UserHeader({
 												/>
 												<div className={styles.userToolText}>Vault</div>
 											</button>
-											<button className={styles.userTool}>
+											<button
+												className={styles.userTool}
+												onClick={() => {
+													navigate('/transactions')
+												}}>
 												<IoIosPaper className={styles.userToolIcon} />
 												<div className={styles.userToolText}>Transactions</div>
 											</button>
-											<button className={styles.userTool}>
+											<button
+												className={styles.userTool}
+												onClick={() => {
+													navigate('/settings')
+												}}>
 												<IoSettingsSharp className={styles.userToolIcon} />
 												<div className={styles.userToolText}>Settings</div>
 											</button>
