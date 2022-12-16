@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { IoIosClose, IoLogoTwitch } from 'react-icons/io'
 import { AiOutlineGoogle } from 'react-icons/ai'
 import { CgFacebook } from 'react-icons/cg'
@@ -10,6 +10,7 @@ import check from 'assets/icons/check.svg'
 import styles from './styles.module.scss'
 
 import { basicSchema } from 'shared/schemas'
+import { Store } from 'app/App'
 
 function Input({
 	values,
@@ -57,10 +58,10 @@ function Input({
 function SignUp({
 	showRegModal,
 	setShowRegModal,
-	setStore,
 	setIsUserLoggedIn,
 	setDataBase
 }) {
+	const [store, setStore] = useContext(Store)
 	const [userAgree, setUserAgree] = useState(false)
 
 	const { values, errors, touched, handleBlur, handleChange, handleSubmit } =

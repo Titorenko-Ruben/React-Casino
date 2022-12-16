@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 import { ImArrowUp } from 'react-icons/im'
 import { IoWalletSharp } from 'react-icons/io5'
-import { HiOutlineMagnifyingGlass } from 'react-icons/hi' //это иконка лупы для поиска
 
 import styles from './styles.module.scss'
 
@@ -28,7 +27,7 @@ function BalanceWindow() {
 			.then((res) => {
 				setExchangeRate(res)
 				res.forEach((item) => {
-					if (item.Cur_Abbreviation == 'USD') {
+					if (item.Cur_Abbreviation === 'USD') {
 						setUsd(item.Cur_OfficialRate)
 					}
 				})

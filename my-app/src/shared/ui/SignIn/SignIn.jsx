@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { IoIosClose, IoLogoTwitch } from 'react-icons/io'
 import { AiOutlineGoogle } from 'react-icons/ai'
 import { CgFacebook } from 'react-icons/cg'
 
 import styles from 'shared/ui/SignIn/styles.module.scss'
+import { Store } from 'app/App'
 
 function SignIn({
 	showSignInModal,
 	setShowSignInModal,
-	setStore,
 	setIsUserLoggedIn,
 	dataBase
 }) {
+	const [store, setStore] = useContext(Store)
 	const [emailOrUsername, setEmailOrUsername] = useState('')
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState('')
