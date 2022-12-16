@@ -4,5 +4,6 @@ export const ROUTES = {
 	SPONSOR_WATFORD: '/sponsorships/watford',
 	SPONSOR_DRAKE: '/sponsorships/drake',
 	SETTINGS: '/settings',
-	PAY: '/pay'
+	PAY: '/pay',
+	WITHDRAW: '/withdraw'
 }

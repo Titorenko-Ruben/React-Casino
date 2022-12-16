@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { IoIosClose } from 'react-icons/io'
 import { IoWalletSharp } from 'react-icons/io5'
-import { WalletWindowForm } from './ui/WalletWindowForm'
+import { WalletDepositForm } from './ui/WalletDepositModal/WalletDepositForm'
 
 import styles from './styles.module.scss'
+import { WalletWithdrawForm } from './ui/WalletWithdrawModal/WalletWirhdrawForm'
 
 function WalletModal({ showWalletModal, setShowWalletModal }) {
 	const [isDepositeActive, setIsDepositeActive] = useState(true)
@@ -58,7 +59,11 @@ function WalletModal({ showWalletModal, setShowWalletModal }) {
 									</div>
 								</div>
 							</div>
-							<WalletWindowForm setWalletWindow={setShowWalletModal} />
+							{isDepositeActive ? (
+								<WalletDepositForm setWalletWindow={setShowWalletModal} />
+							) : (
+								<WalletWithdrawForm setWalletWindow={setShowWalletModal} />
+							)}
 						</div>
 					</div>
 				</div>
