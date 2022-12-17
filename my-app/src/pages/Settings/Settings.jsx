@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { BsXLg } from 'react-icons/bs'
+import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded'
 
-import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
+import { DataBase } from 'app/App'
 
 import styles from './styles.module.scss'
 import General from './General/General'
 import Security from './Security/Security'
 
 function Settings() {
+	const [dataBase, setDataBase] = useContext(DataBase)
 	const [isgeneralActive, setIsGeneralActive] = useState(true)
 	const [isSecurityActive, setIsSecurityActive] = useState(false)
 	return (
@@ -16,7 +18,10 @@ function Settings() {
 			<div className={styles.wrapper}>
 				<div className={styles.title}>
 					<div className={styles.settings}>
-						<SettingsRoundedIcon className={styles.settingsIcon} fontSize="medium" />
+						<SettingsRoundedIcon
+							className={styles.settingsIcon}
+							fontSize='medium'
+						/>
 						<h1 className={styles.settingsTitle}>Settings</h1>
 					</div>
 					<Link to='/'>
@@ -31,9 +36,7 @@ function Settings() {
 									setIsGeneralActive(true)
 									setIsSecurityActive(false)
 								}}
-								className={isgeneralActive
-									? styles.linkActive
-									: styles.link}
+								className={isgeneralActive ? styles.linkActive : styles.link}
 							>
 								<span className={styles.navText}>General</span>
 							</div>
@@ -42,9 +45,7 @@ function Settings() {
 									setIsSecurityActive(true)
 									setIsGeneralActive(false)
 								}}
-								className={isSecurityActive
-									? styles.linkActive
-									: styles.link}
+								className={isSecurityActive ? styles.linkActive : styles.link}
 							>
 								<span className={styles.navText}>Security</span>
 							</div>
@@ -52,10 +53,11 @@ function Settings() {
 						</div>
 					</div>
 					<div>
-						{isgeneralActive
-							? <General />
-							: <Security />
-						}
+						{isgeneralActive ? (
+							<General dataBase={dataBase} setDataBase={setDataBase} />
+						) : (
+							<Security dataBase={dataBase} setDataBase={setDataBase} />
+						)}
 					</div>
 				</div>
 			</div>

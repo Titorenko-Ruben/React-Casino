@@ -1,39 +1,171 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import { useFormik } from 'formik'
+import { BiCommentError } from 'react-icons/bi'
+import 'react-toastify/dist/ReactToastify.css'
+
+import { DataBase, Store } from 'app/App'
 
 import styles from './styles.module.scss'
+import { securitySchema } from 'shared/validations'
 
 function Security() {
+	const [dataBase, setDataBase] = useContext(DataBase)
+	const [store, setStore] = useContext(Store)
+	const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
+		useFormik({
+			initialValues: {
+				pastPassword: '',
+				password: '',
+				confirmPassword: ''
+			},
+			validationSchema: securitySchema,
+			onSubmit
+		})
+	const notify = () =>
+		toast.error('Error', {
+			position: 'top-left',
+			autoClose: 3500,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: 'dark'
+		})
+
+	function onSubmit(values, { resetForm }) {
+		if (
+			values.pastPassword === '' ||
+			values.password === '' ||
+			values.confirmPassword === '' ||
+			values.pastPassword !== store.user.password ||
+			values.password !== values.confirmPassword
+		) {
+			notify()
+		} else {
+			setStore((prev) => {
+				return {
+					...prev,
+					user: {
+						...prev.user,
+						password: values.password
+					}
+				}
+			})
+			setDataBase((prev) => {
+				return {
+					...prev,
+					users: dataBase.users.map((user) => {
+						if (
+							user.email === store.user.email &&
+							user.password === store.user.password
+						) {
+							return {
+								...store.user,
+								password: values.password
+							}
+						} else {
+							return user
+						}
+					})
+				}
+			})
+		}
+		resetForm({ values: '' })
+	}
+	console.log(store.user)
+	console.log(dataBase.users)
 	return (
 		<div>
-			<div className={styles.cardVariantDefault}>
+			<form className={styles.cardVariantDefault} onSubmit={handleSubmit}>
 				<div className={styles.section}>
 					<h3 className={styles.sectionTitle}>Password</h3>
-					<div className={styles.sectionForm}>
+					<label className={styles.sectionForm}>
 						<div className={styles.sectionFormContener}>
 							<span className={styles.sectionFormTitle}>Old Password</span>
 							<span className={styles.asterisk}>*</span>
 						</div>
-						<input className={styles.sectionInput}>{ }</input>
-					</div>
-					<div className={styles.sectionForm}>
+						<input
+							id='pastPassword'
+							type='password'
+							value={values.pastPassword}
+							onChange={handleChange}
+							onBlur={handleBlur}
+							style={
+								errors.pastPassword && touched.pastPassword
+									? { border: '2px solid #ff1f44' }
+									: { border: '2px solid #2f4553' }
+							}
+							className={styles.sectionInput}
+						/>
+						{errors.pastPassword && touched.pastPassword && (
+							<div className={styles.inputError}>
+								<BiCommentError className={styles.errorIcon} />
+								<span className={styles.error}>{errors.pastPassword}</span>
+							</div>
+						)}
+					</label>
+					<label className={styles.sectionForm}>
 						<div className={styles.sectionFormContener}>
 							<span className={styles.sectionFormTitle}>New Password</span>
 							<span className={styles.asterisk}>*</span>
 						</div>
-						<input className={styles.sectionInput}>{ }</input>
-					</div>
-					<div className={styles.sectionForm}>
+						<input
+							id='password'
+							type='password'
+							value={values.password}
+							onChange={handleChange}
+							onBlur={handleBlur}
+							style={
+								errors.password && touched.password
+									? { border: '2px solid #ff1f44' }
+									: { border: '2px solid #2f4553' }
+							}
+							className={styles.sectionInput}
+						/>
+						{errors.password && touched.password && (
+							<div className={styles.inputError}>
+								<BiCommentError className={styles.errorIcon} />
+								<span className={styles.error}>{errors.password}</span>
+							</div>
+						)}
+					</label>
+					<label className={styles.sectionForm}>
 						<div className={styles.sectionFormContener}>
-							<span className={styles.sectionFormTitle}>Confirm New Password</span>
+							<span className={styles.sectionFormTitle}>
+								Confirm New Password
+							</span>
 							<span className={styles.asterisk}>*</span>
 						</div>
-						<input className={styles.sectionInput}>{ }</input>
-					</div>
+						<input
+							id='confirmPassword'
+							type='password'
+							value={values.confirmPassword}
+							onChange={handleChange}
+							onBlur={handleBlur}
+							style={
+								errors.confirmPassword && touched.confirmPassword
+									? { border: '2px solid #ff1f44' }
+									: { border: '2px solid #2f4553' }
+							}
+							className={styles.sectionInput}
+						/>
+						{errors.confirmPassword && touched.confirmPassword && (
+							<div className={styles.inputError}>
+								<BiCommentError className={styles.errorIcon} />
+								<span className={styles.error}>{errors.confirmPassword}</span>
+							</div>
+						)}
+					</label>
 					<div className={styles.sectionFooter}>
-						<button className={styles.btnGreen}><span>Save</span></button>
+						<button type='submit' className={styles.btn}>
+							<span>Save</span>
+						</button>
+						<ToastContainer />
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	)
 }

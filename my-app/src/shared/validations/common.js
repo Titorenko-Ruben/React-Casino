@@ -38,3 +38,24 @@ export const withdrawSchema = yup.object().shape({
 		.max(1000000, 'Maximum withdraw at one time 1.000.000$')
 		.required('Required')
 })
+
+export const securitySchema = yup.object().shape({
+	pastPassword: yup
+		.string()
+		.min(5, 'Password must be more than 5 characters')
+		.required('Required'),
+	password: yup
+		.string()
+		.min(5, 'Password must be more than 5 characters')
+		.matches(PASSWORD, 'Please create a stronger password')
+		.required('Required'),
+
+	confirmPassword: yup
+		.string()
+		.oneOf([yup.ref('password'), null])
+		.required('Required')
+})
+
+export const email = yup.object().shape({
+	email: yup.string().email('Please enter a valid email')
+})
