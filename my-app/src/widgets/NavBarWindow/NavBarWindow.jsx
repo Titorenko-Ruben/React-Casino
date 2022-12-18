@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 import { AiOutlineMenuFold } from 'react-icons/ai'
 import { MdSportsBasketball } from 'react-icons/md'
@@ -11,6 +12,7 @@ import { Store } from 'app/App'
 import styles from './styles.module.scss'
 
 function NavBarWindow({ setIsNavBarOpen, isNavBarOpen }) {
+	const location = useLocation()
 	const [store] = useContext(Store)
 	return (
 		<div
@@ -44,49 +46,49 @@ function NavBarWindow({ setIsNavBarOpen, isNavBarOpen }) {
 			</div>
 			<div className={styles.contentWindow}>
 				<div className={styles.scroll}>
-					<button className={styles.item}>
+					<Link to='/sports' className={styles.item}>
 						<span className={styles.contentLoader}>
 							<div className={styles.icon}>
 								<MdSportsBasketball />
 							</div>
 							<div>Sport</div>
 						</span>
-					</button>
+					</Link>
 				</div>
 
 				<div className={styles.scroll}>
-					<button className={styles.item}>
+					<Link to='/promotions' className={styles.item}>
 						<span className={styles.contentLoader}>
 							<div className={styles.icon}>
 								<GiPresent />
 							</div>
 							<div>Promotion</div>
 						</span>
-					</button>
+					</Link>
 				</div>
 
 				<div className={styles.scroll}>
-					<button className={styles.item}>
+					<Link to='/sponsorships' className={styles.item}>
 						<span className={styles.contentLoader}>
 							<div className={styles.icon}>
 								<FaHandshake />
 							</div>
 							<div>Sponsorship</div>
 						</span>
-					</button>
+					</Link>
 				</div>
 				<div className={styles.lineWrapper}>
 					<hr className={styles.separator} />
 				</div>
 				<div className={styles.scroll}>
-					<button className={styles.item}>
+					<Link className={styles.item}>
 						<span className={styles.contentLoader}>
 							<div className={styles.icon}>
 								<BiReset />
 							</div>
 							<div>Resent</div>
 						</span>
-					</button>
+					</Link>
 				</div>
 			</div>
 		</div>

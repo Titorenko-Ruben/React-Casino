@@ -6,13 +6,11 @@ import { IoIosBasketball, IoIosMicrophone } from 'react-icons/io'
 import { AiOutlineMenuUnfold } from 'react-icons/ai'
 import { BiReset } from 'react-icons/bi'
 import { FaHandshake } from 'react-icons/fa'
-import { SiUfc } from 'react-icons/si'
 
 import styles from './styles.module.scss'
 
 function NavBar({ setIsNavBarOpen, isNavBarOpen }) {
 	const location = useLocation()
-	console.log(location.pathname)
 	return (
 		<div
 			className={
@@ -52,35 +50,35 @@ function NavBar({ setIsNavBarOpen, isNavBarOpen }) {
 							</span>
 						</div>
 					</Link>
-					<div
-						className={
-							location.pathname === '/promotions'
-								? styles.hoverableActive
-								: styles.hoverable
-						}
-					>
-						<Link to='/promotions'>
+					<Link to='/promotions'>
+						<div
+							className={
+								location.pathname === '/promotions'
+									? styles.hoverableActive
+									: styles.hoverable
+							}
+						>
 							<span className={styles.contentLoader}>
 								<GiPresent className={styles.icon} style={{ color: 'white' }} />
 							</span>
-						</Link>
-					</div>
-					<div
-						className={
-							location.pathname === '/sponsorships'
-								? styles.hoverableActive
-								: styles.hoverable
-						}
-					>
-						<Link to='/sponsorships'>
+						</div>
+					</Link>
+					<Link to='/sponsorships'>
+						<div
+							className={
+								location.pathname === '/sponsorships'
+									? styles.hoverableActive
+									: styles.hoverable
+							}
+						>
 							<span className={styles.contentLoader}>
 								<FaHandshake
 									className={styles.icon}
 									style={{ color: 'white' }}
 								/>
 							</span>
-						</Link>
-					</div>
+						</div>
+					</Link>
 					<div className={styles.lineWrapper}>
 						<hr className={styles.separator} />
 					</div>
