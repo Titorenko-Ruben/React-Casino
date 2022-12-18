@@ -1,15 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
-import { GiPresent } from 'react-icons/gi'
-import { BiBasketball } from 'react-icons/bi'
+import { GiPresent, GiTennisBall, GiSoccerBall } from 'react-icons/gi'
+import { IoIosBasketball, IoIosMicrophone } from 'react-icons/io'
 import { AiOutlineMenuUnfold } from 'react-icons/ai'
 import { BiReset } from 'react-icons/bi'
 import { FaHandshake } from 'react-icons/fa'
+import { SiUfc } from 'react-icons/si'
 
 import styles from './styles.module.scss'
 
 function NavBar({ setIsNavBarOpen, isNavBarOpen }) {
+	const location = useLocation()
+	console.log(location.pathname)
 	return (
 		<div
 			className={
@@ -33,25 +36,43 @@ function NavBar({ setIsNavBarOpen, isNavBarOpen }) {
 			</div>
 			<div className={styles.scroll}>
 				<div className={styles.scrollebleContent}>
-					<div className={styles.hoverable}>
-						<Link>
+					<Link to='/sports'>
+						<div
+							className={
+								location.pathname === '/sports'
+									? styles.hoverableActive
+									: styles.hoverable
+							}
+						>
 							<span className={styles.contentLoader}>
-								<BiBasketball
+								<GiSoccerBall
 									className={styles.icon}
 									style={{ color: 'white' }}
 								/>
 							</span>
-						</Link>
-					</div>
-					<div className={styles.hoverable}>
-						<Link>
+						</div>
+					</Link>
+					<div
+						className={
+							location.pathname === '/promotions'
+								? styles.hoverableActive
+								: styles.hoverable
+						}
+					>
+						<Link to='/promotions'>
 							<span className={styles.contentLoader}>
 								<GiPresent className={styles.icon} style={{ color: 'white' }} />
 							</span>
 						</Link>
 					</div>
-					<div className={styles.hoverable}>
-						<Link>
+					<div
+						className={
+							location.pathname === '/sponsorships'
+								? styles.hoverableActive
+								: styles.hoverable
+						}
+					>
+						<Link to='/sponsorships'>
 							<span className={styles.contentLoader}>
 								<FaHandshake
 									className={styles.icon}
@@ -63,7 +84,6 @@ function NavBar({ setIsNavBarOpen, isNavBarOpen }) {
 					<div className={styles.lineWrapper}>
 						<hr className={styles.separator} />
 					</div>
-
 					<div className={styles.hoverable}>
 						<Link>
 							<span className={styles.contentLoader}>
@@ -71,27 +91,75 @@ function NavBar({ setIsNavBarOpen, isNavBarOpen }) {
 							</span>
 						</Link>
 					</div>
-					{/* <div className={styles.hoverable}>
-                        <a>`
-                            <span className={styles.contentLoader}>
-                                <MdSportsBasketball className={styles.icon} style={{ color: "white" }} />
-                            </span>
-                        </a>
-                    </div>
-                    <div className={styles.hoverable}>
-                        <a>
-                            <span className={styles.contentLoader}>
-                                <GiTennisBall className={styles.icon} style={{ color: "white" }} />
-                            </span>
-                        </a>
-                    </div>
-                    <div className={styles.hoverable}>
-                        <a>
-                            <span className={styles.contentLoader}>
-                                <MdSportsHockey className={styles.icon} style={{ color: "white" }} />
-                            </span>
-                        </a>
-                    </div> */}
+					{location.pathname === '/sports' && (
+						<>
+							<div className={styles.lineWrapper}>
+								<hr className={styles.separator} />
+							</div>
+							<div className={styles.hoverable}>
+								<Link>
+									<span className={styles.contentLoader}>
+										<IoIosBasketball
+											className={styles.icon}
+											style={{ color: 'white' }}
+										/>
+									</span>
+								</Link>
+							</div>
+							<div className={styles.hoverable}>
+								<Link>
+									<span className={styles.contentLoader}>
+										<GiTennisBall
+											className={styles.icon}
+											style={{ color: 'white' }}
+										/>
+									</span>
+								</Link>
+							</div>
+							<div className={styles.hoverable}>
+								<Link>
+									<span className={styles.contentLoader}>
+										<GiSoccerBall
+											className={styles.icon}
+											style={{ color: 'white' }}
+										/>
+									</span>
+								</Link>
+							</div>
+						</>
+					)}
+					{location.pathname === '/sponsorships' && (
+						<>
+							<div className={styles.lineWrapper}>
+								<hr className={styles.separator} />
+							</div>
+							<div className={styles.hoverable}>
+								<Link>
+									<span className={styles.contentLoader}>
+										<IoIosMicrophone
+											className={styles.icon}
+											style={{ color: 'white' }}
+										/>
+									</span>
+								</Link>
+							</div>
+							<div className={styles.hoverable}>
+								<Link style={{ textDecoration: 'none' }}>
+									<span className={styles.contentText}>Eveton</span>
+								</Link>
+							</div>
+							<div className={styles.hoverable}>
+								<Link style={{ textDecoration: 'none' }}>
+									<span className={styles.contentText}>Watford</span>
+								</Link>
+							</div>
+							<div className={styles.hoverable}>
+								<Link style={{ textDecoration: 'none' }}>
+									<span className={styles.contentText}>UFC</span>
+								</Link>
+							</div>
+						</>
+					)}
 				</div>
 			</div>
 		</div>

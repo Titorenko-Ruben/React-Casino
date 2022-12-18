@@ -50,6 +50,24 @@
 	opacity: 0.5;
 }
 
+.hoverableActive {
+	cursor: pointer;
+	display: inline-flex;
+	justify-content: center;
+	padding: 0.5rem;
+	width: 42px;
+	height: 35px;
+	outline: none;
+	border: none;
+	background: #071824;
+	outline: none;
+	border-radius: 10px;
+}
+
+.hoverableActive:active {
+	opacity: 0.5;
+}
+
 .variantPused {
 	outline: none;
 }
@@ -65,6 +83,12 @@
 	background: #071824 !important;
 	border: none solid #071824;
 	border-radius: 15px;
+}
+
+.contentText {
+	color: #fff;
+	text-decoration: none;
+	font-size: 0.68rem;
 }
 
 .scroll {
@@ -101,7 +125,6 @@
 .icon {
 	width: 1rem;
 	height: 1rem;
-	background: #0f212e;
 }
 
 .icon:hover {
