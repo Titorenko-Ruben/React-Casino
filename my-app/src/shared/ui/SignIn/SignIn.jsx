@@ -83,6 +83,7 @@ function SignIn({
 														<div className={styles.inputWrapper}>
 															<div className={styles.inputContent}>
 																<input
+																	autoFocus
 																	value={emailOrUsername}
 																	onChange={(e) =>
 																		setEmailOrUsername(e.target.value)
