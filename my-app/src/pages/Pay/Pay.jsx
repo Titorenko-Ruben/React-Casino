@@ -1,51 +1,24 @@
-import { Store } from 'app/App'
+import { DataBase, Store } from 'app/App'
 import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import styles from './styles.module.scss'
+import { cardValidation } from 'shared/validations'
+import { ccFormat } from 'shared/helpers'
 
-function Pay({ setDataBase, dataBase }) {
+import styles from './styles.module.scss'
+import { observer } from 'mobx-react-lite'
+import { PayModel } from './model'
+
+function Pay() {
 	const [store, setStore] = useContext(Store)
-	const [cardInfo, setCardInfo] = useState({
-		cardNumber: '',
-		cardMonth: '',
-		cardYear: '',
-		cardHolder: '',
-		cardCvv: ''
-	})
+	const [dataBase, setDataBase] = useContext(DataBase)
 	const [error, setError] = useState(false)
-	const year = String(new Date().getFullYear()).substr(2)
 	const sumOfBalance =
 		+store.user.balance + +localStorage.getItem('DepositRequest')
 	const navigate = useNavigate()
 
-	function cardValidation() {
-		if (
-			cardInfo.cardNumber === '' ||
-			typeof +cardInfo.cardNumber !== 'number' ||
-			cardInfo.cardNumber.length !== 20
-		) {
-			console.log('error')
-		} else if (
-			cardInfo.cardMonth === '' ||
-			cardInfo.cardYear === '' ||
-			cardInfo.cardMonth.match(/[a-zA-Zа-яА-Я]/) ||
-			cardInfo.cardYear.match(/[a-zA-Zа-яА-Я]/) ||
-			cardInfo.cardMonth > 12 ||
-			cardInfo.cardYear > year ||
-			cardInfo.cardMonth < 0 ||
-			cardInfo.cardYear < 0
-		) {
-			setError(true)
-		} else if (
-			cardInfo.cardHolder.match(/[0-9\\.,:]/) ||
-			cardInfo.cardHolder === ''
-		) {
-			setError(true)
-		} else if (
-			cardInfo.cardCvv.match(/[a-zA-Zа-яА-Я]/) ||
-			cardInfo.cardCvv.length < 2
-		) {
+	function validation() {
+		if (cardValidation(PayModel.cardInfo) === true) {
 			setError(true)
 		} else {
 			setError(false)
@@ -56,11 +29,11 @@ function Pay({ setDataBase, dataBase }) {
 						...prev.user,
 						balance: `${sumOfBalance}`,
 						cardInfo: {
-							number: cardInfo.cardNumber,
-							month: cardInfo.cardMonth,
-							year: cardInfo.cardYear,
-							holder: cardInfo.cardHolder,
-							cvv: cardInfo.cardCvv
+							number: PayModel.cardInfo.number,
+							month: PayModel.cardInfo.month,
+							year: PayModel.cardInfo.year,
+							holder: PayModel.cardInfo.holder,
+							cvv: PayModel.cardInfo.cvv
 						}
 					}
 				}
@@ -77,11 +50,11 @@ function Pay({ setDataBase, dataBase }) {
 								...store.user,
 								balance: `${sumOfBalance}`,
 								cardInfo: {
-									number: cardInfo.cardNumber,
-									month: cardInfo.cardMonth,
-									year: cardInfo.cardYear,
-									holder: cardInfo.cardHolder,
-									cvv: cardInfo.cardCvv
+									number: PayModel.cardInfo.number,
+									month: PayModel.cardInfo.month,
+									year: PayModel.cardInfo.year,
+									holder: PayModel.cardInfo.holder,
+									cvv: PayModel.cardInfo.cvv
 								}
 							}
 						} else {
@@ -90,24 +63,11 @@ function Pay({ setDataBase, dataBase }) {
 					})
 				}
 			})
+			PayModel.resetCardInfo()
 			localStorage.setItem('DepositRequest', 0)
 			navigate('/')
 			console.log('deposit')
 		}
-	}
-
-	function ccFormat(value) {
-		const v = value
-			.replace(/\s+/g, '')
-			.replace(/[^0-9]/gi, '')
-			.substr(0, 16)
-		const parts = []
-
-		for (let i = 0; i < v.length; i += 4) {
-			parts.push(v.substr(i, 4))
-		}
-
-		return parts.length > 1 ? parts.join(' ') : value
 	}
 
 	return (
@@ -146,13 +106,8 @@ function Pay({ setDataBase, dataBase }) {
 										: styles.inputCardNumber
 								}
 								placeholder='0000 0000 0000 0000'
-								value={ccFormat(cardInfo.cardNumber)}
-								onChange={(e) =>
-									setCardInfo((prev) => ({
-										...prev,
-										cardNumber: e.target.value
-									}))
-								}
+								value={ccFormat(PayModel.cardInfo.number)}
+								onChange={(e) => PayModel.setCardNumber(e.target.value)}
 							/>
 						</div>
 						<div className={styles.cardExpire}>
@@ -168,13 +123,8 @@ function Pay({ setDataBase, dataBase }) {
 								}
 								placeholder='MM'
 								maxLength='2'
-								value={cardInfo.cardMonth}
-								onChange={(e) =>
-									setCardInfo((prev) => ({
-										...prev,
-										cardMonth: e.target.value
-									}))
-								}
+								value={PayModel.cardInfo.month}
+								onChange={(e) => PayModel.setCardMonth(e.target.value)}
 							/>
 							<span className={styles.inputSlash}>/</span>
 							<input
@@ -186,13 +136,8 @@ function Pay({ setDataBase, dataBase }) {
 								}
 								placeholder='YY'
 								maxLength='2'
-								value={cardInfo.cardYear}
-								onChange={(e) =>
-									setCardInfo((prev) => ({
-										...prev,
-										cardYear: e.target.value
-									}))
-								}
+								value={PayModel.cardInfo.year}
+								onChange={(e) => PayModel.setCardYear(e.target.value)}
 							/>
 						</div>
 						<div className={styles.cardHolderField}>
@@ -205,13 +150,8 @@ function Pay({ setDataBase, dataBase }) {
 										: styles.inputCardHolder
 								}
 								placeholder='SERGEY IVANOV'
-								value={cardInfo.cardHolder}
-								onChange={(e) =>
-									setCardInfo((prev) => ({
-										...prev,
-										cardHolder: e.target.value
-									}))
-								}
+								value={PayModel.cardInfo.holder}
+								onChange={(e) => PayModel.setCardHolder(e.target.value)}
 							/>
 						</div>
 						<div className={styles.cardError}></div>
@@ -232,13 +172,8 @@ function Pay({ setDataBase, dataBase }) {
 								}
 								placeholder='000'
 								maxLength='3'
-								value={cardInfo.cardCvv}
-								onChange={(e) =>
-									setCardInfo((prev) => ({
-										...prev,
-										cardCvv: e.target.value
-									}))
-								}
+								value={PayModel.cardInfo.cvv}
+								onChange={(e) => PayModel.setCardCvv(e.target.value)}
 							/>
 						</div>
 					</div>
@@ -246,7 +181,7 @@ function Pay({ setDataBase, dataBase }) {
 				{error && (
 					<div className={styles.errorText}>Please check your card details</div>
 				)}
-				<button className={styles.paymentBtn} onClick={cardValidation}>
+				<button className={styles.paymentBtn} onClick={validation}>
 					<span>Make a payment</span>
 				</button>
 			</div>
@@ -254,4 +189,4 @@ function Pay({ setDataBase, dataBase }) {
 	)
 }
 
-export default Pay
+export default observer(Pay)

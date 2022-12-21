@@ -1,51 +1,24 @@
 import React, { useContext, useState } from 'react'
-import { Store } from 'app/App'
+import { DataBase, Store } from 'app/App'
 import { useNavigate } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
+
+import { cardValidation } from 'shared/validations'
+import { ccFormat } from 'shared/helpers'
 
 import styles from './styles.module.scss'
+import { WithdrawModel } from './model'
 
-function Withdraw({ setDataBase, dataBase }) {
+function Withdraw() {
 	const [store, setStore] = useContext(Store)
-	const [cardInfo, setCardInfo] = useState({
-		cardNumber: '',
-		cardMonth: '',
-		cardYear: '',
-		cardHolder: '',
-		cardCvv: ''
-	})
+	const [dataBase, setDataBase] = useContext(DataBase)
 	const [error, setError] = useState(false)
-	const year = String(new Date().getFullYear()).substr(2)
 	const sumOfBalance =
 		+store.user.balance - +localStorage.getItem('WithdrawRequest')
 	const navigate = useNavigate()
 
-	function cardValidation() {
-		if (
-			cardInfo.cardNumber === '' ||
-			typeof +cardInfo.cardNumber !== 'number' ||
-			cardInfo.cardNumber.length !== 20
-		) {
-			setError(true)
-		} else if (
-			cardInfo.cardMonth === '' ||
-			cardInfo.cardYear === '' ||
-			cardInfo.cardMonth.match(/[a-zA-Zа-яА-Я]/) ||
-			cardInfo.cardYear.match(/[a-zA-Zа-яА-Я]/) ||
-			cardInfo.cardMonth > 12 ||
-			cardInfo.cardYear > year ||
-			cardInfo.cardMonth < 0 ||
-			cardInfo.cardYear < 0
-		) {
-			setError(true)
-		} else if (
-			cardInfo.cardHolder.match(/[0-9\\.,:]/) ||
-			cardInfo.cardHolder === ''
-		) {
-			setError(true)
-		} else if (
-			cardInfo.cardCvv.match(/[a-zA-Zа-яА-Я]/) ||
-			cardInfo.cardCvv.length < 2
-		) {
+	function validation() {
+		if (cardValidation(WithdrawModel.cardInfo) === true) {
 			setError(true)
 		} else {
 			setError(false)
@@ -56,11 +29,11 @@ function Withdraw({ setDataBase, dataBase }) {
 						...prev.user,
 						balance: `${sumOfBalance}`,
 						cardInfo: {
-							number: cardInfo.cardNumber,
-							month: cardInfo.cardMonth,
-							year: cardInfo.cardYear,
-							holder: cardInfo.cardHolder,
-							cvv: cardInfo.cardCvv
+							number: WithdrawModel.cardInfo.number,
+							month: WithdrawModel.cardInfo.month,
+							year: WithdrawModel.cardInfo.year,
+							holder: WithdrawModel.cardInfo.holder,
+							cvv: WithdrawModel.cardInfo.cvv
 						}
 					}
 				}
@@ -77,11 +50,11 @@ function Withdraw({ setDataBase, dataBase }) {
 								...store.user,
 								balance: `${sumOfBalance}`,
 								cardInfo: {
-									number: cardInfo.cardNumber,
-									month: cardInfo.cardMonth,
-									year: cardInfo.cardYear,
-									holder: cardInfo.cardHolder,
-									cvv: cardInfo.cardCvv
+									number: WithdrawModel.cardInfo.number,
+									month: WithdrawModel.cardInfo.month,
+									year: WithdrawModel.cardInfo.year,
+									holder: WithdrawModel.cardInfo.holder,
+									cvv: WithdrawModel.cardInfo.cvv
 								}
 							}
 						} else {
@@ -90,24 +63,11 @@ function Withdraw({ setDataBase, dataBase }) {
 					})
 				}
 			})
+			WithdrawModel.resetCardInfo()
 			localStorage.setItem('WithdrawRequest', 0)
 			navigate('/')
 			console.log('Withdraw')
 		}
-	}
-
-	function ccFormat(value) {
-		const v = value
-			.replace(/\s+/g, '')
-			.replace(/[^0-9]/gi, '')
-			.substr(0, 16)
-		const parts = []
-
-		for (let i = 0; i < v.length; i += 4) {
-			parts.push(v.substr(i, 4))
-		}
-
-		return parts.length > 1 ? parts.join(' ') : value
 	}
 
 	return (
@@ -151,13 +111,8 @@ function Withdraw({ setDataBase, dataBase }) {
 										: styles.inputCardNumber
 								}
 								placeholder='0000 0000 0000 0000'
-								value={ccFormat(cardInfo.cardNumber)}
-								onChange={(e) =>
-									setCardInfo((prev) => ({
-										...prev,
-										cardNumber: e.target.value
-									}))
-								}
+								value={ccFormat(WithdrawModel.cardInfo.number)}
+								onChange={(e) => WithdrawModel.setCardNumber(e.target.value)}
 							/>
 						</div>
 						<div className={styles.cardExpire}>
@@ -173,13 +128,8 @@ function Withdraw({ setDataBase, dataBase }) {
 								}
 								placeholder='MM'
 								maxLength='2'
-								value={cardInfo.cardMonth}
-								onChange={(e) =>
-									setCardInfo((prev) => ({
-										...prev,
-										cardMonth: e.target.value
-									}))
-								}
+								value={WithdrawModel.cardInfo.month}
+								onChange={(e) => WithdrawModel.setCardMonth(e.target.value)}
 							/>
 							<span className={styles.inputSlash}>/</span>
 							<input
@@ -191,13 +141,8 @@ function Withdraw({ setDataBase, dataBase }) {
 								}
 								placeholder='YY'
 								maxLength='2'
-								value={cardInfo.cardYear}
-								onChange={(e) =>
-									setCardInfo((prev) => ({
-										...prev,
-										cardYear: e.target.value
-									}))
-								}
+								value={WithdrawModel.cardInfo.year}
+								onChange={(e) => WithdrawModel.setCardYear(e.target.value)}
 							/>
 						</div>
 						<div className={styles.cardHolderField}>
@@ -210,13 +155,8 @@ function Withdraw({ setDataBase, dataBase }) {
 										: styles.inputCardHolder
 								}
 								placeholder='SERGEY IVANOV'
-								value={cardInfo.cardHolder}
-								onChange={(e) =>
-									setCardInfo((prev) => ({
-										...prev,
-										cardHolder: e.target.value
-									}))
-								}
+								value={WithdrawModel.cardInfo.holder}
+								onChange={(e) => WithdrawModel.setCardHolder(e.target.value)}
 							/>
 						</div>
 						<div className={styles.cardError}></div>
@@ -237,13 +177,8 @@ function Withdraw({ setDataBase, dataBase }) {
 								}
 								placeholder='000'
 								maxLength='3'
-								value={cardInfo.cardCvv}
-								onChange={(e) =>
-									setCardInfo((prev) => ({
-										...prev,
-										cardCvv: e.target.value
-									}))
-								}
+								value={WithdrawModel.cardInfo.cvv}
+								onChange={(e) => WithdrawModel.setCardCvv(e.target.value)}
 							/>
 						</div>
 					</div>
@@ -251,7 +186,7 @@ function Withdraw({ setDataBase, dataBase }) {
 				{error && (
 					<div className={styles.errorText}>Please check your card details</div>
 				)}
-				<button className={styles.paymentBtn} onClick={cardValidation}>
+				<button className={styles.paymentBtn} onClick={validation}>
 					<span>Make a withdraw</span>
 				</button>
 			</div>
@@ -259,4 +194,4 @@ function Withdraw({ setDataBase, dataBase }) {
 	)
 }
 
-export default Withdraw
+export default observer(Withdraw)

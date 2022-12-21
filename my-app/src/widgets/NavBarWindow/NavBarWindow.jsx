@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { AiOutlineMenuFold } from 'react-icons/ai'
 import { MdSportsBasketball } from 'react-icons/md'
@@ -12,7 +12,6 @@ import { Store } from 'app/App'
 import styles from './styles.module.scss'
 
 function NavBarWindow({ setIsNavBarOpen, isNavBarOpen }) {
-	const location = useLocation()
 	const [store] = useContext(Store)
 	return (
 		<div

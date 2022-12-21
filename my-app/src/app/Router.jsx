@@ -13,14 +13,7 @@ import {
 
 import { ROUTES } from 'shared/consts'
 
-function Router({
-	showRegModal,
-	setShowRegModal,
-	isUserLoggedIn,
-	dataBase,
-	setDataBase,
-	isNavBarOpen
-}) {
+function Router({ showRegModal, setShowRegModal, isNavBarOpen }) {
 	return (
 		<Routes>
 			<Route
@@ -29,7 +22,6 @@ function Router({
 					<Home
 						showRegModal={showRegModal}
 						setShowRegModal={setShowRegModal}
-						isUserLoggedIn={isUserLoggedIn}
 						isNavBarOpen={isNavBarOpen}
 					/>
 				}
@@ -38,14 +30,8 @@ function Router({
 			<Route path={ROUTES.SPONSOR_WATFORD} element={<SponsorWatford />} />
 			<Route path={ROUTES.SPONSOR_DRAKE} element={<SponsorDrake />} />
 			<Route path={ROUTES.SETTINGS} element={<Settings />} />
-			<Route
-				path={ROUTES.PAY}
-				element={<Pay dataBase={dataBase} setDataBase={setDataBase} />}
-			/>
-			<Route
-				path={ROUTES.WITHDRAW}
-				element={<Withdraw dataBase={dataBase} setDataBase={setDataBase} />}
-			/>
+			<Route path={ROUTES.PAY} element={<Pay />} />
+			<Route path={ROUTES.WITHDRAW} element={<Withdraw />} />
 		</Routes>
 	)
 }
