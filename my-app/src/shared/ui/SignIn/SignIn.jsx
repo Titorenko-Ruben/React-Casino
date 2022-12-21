@@ -4,15 +4,11 @@ import { AiOutlineGoogle } from 'react-icons/ai'
 import { CgFacebook } from 'react-icons/cg'
 
 import styles from 'shared/ui/SignIn/styles.module.scss'
-import { Store } from 'app/App'
+import { DataBase, Store } from 'app/App'
 
-function SignIn({
-	showSignInModal,
-	setShowSignInModal,
-	setIsUserLoggedIn,
-	dataBase
-}) {
-	const [store, setStore] = useContext(Store)
+function SignIn({ showSignInModal, setShowSignInModal }) {
+	const [, setStore] = useContext(Store)
+	const [dataBase] = useContext(DataBase)
 	const [emailOrUsername, setEmailOrUsername] = useState('')
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState('')
@@ -27,8 +23,7 @@ function SignIn({
 					(emailOrUsername === user.email && password === user.password) ||
 					(emailOrUsername === user.username && password === user.password)
 				) {
-					setStore(() => ({ user: { ...user } }))
-					setIsUserLoggedIn(true)
+					setStore(() => ({ user: { ...user }, isUserLoggedIn: true }))
 					setError('')
 					setEmailOrUsername('')
 					setPassword('')

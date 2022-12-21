@@ -9,16 +9,11 @@ import styles from './styles.module.scss'
 import welcomeTopImg from 'assets/img/sweeps-welcome-top-en.png'
 import { Store } from 'app/App'
 
-function Discount({
-	showRegModal,
-	setShowRegModal,
-	isUserLoggedIn,
-	isNavBarOpen
-}) {
+function Discount({ showRegModal, setShowRegModal, isNavBarOpen }) {
 	const [store] = useContext(Store)
 	return (
 		<>
-			{isUserLoggedIn ? (
+			{store.isUserLoggedIn ? (
 				<div
 					className={
 						isNavBarOpen

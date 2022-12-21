@@ -4,13 +4,12 @@ import { Description, Discount, PlayBanner, StakeDrake } from 'shared/ui'
 
 import styles from './styles.module.scss'
 
-function Home({ showRegModal, setShowRegModal, isUserLoggedIn, isNavBarOpen }) {
+function Home({ showRegModal, setShowRegModal, isNavBarOpen }) {
 	return (
 		<div>
 			<Discount
 				showRegModal={showRegModal}
 				setShowRegModal={setShowRegModal}
-				isUserLoggedIn={isUserLoggedIn}
 				isNavBarOpen={isNavBarOpen}
 			/>
 			<div

@@ -9,8 +9,8 @@ import check from 'assets/icons/check.svg'
 
 import styles from './styles.module.scss'
 
-import { basicSchema } from 'shared/schemas'
-import { Store } from 'app/App'
+import { basicSchema } from 'shared/validations/common'
+import { DataBase, Store } from 'app/App'
 
 function Input({
 	values,
@@ -55,13 +55,9 @@ function Input({
 	)
 }
 
-function SignUp({
-	showRegModal,
-	setShowRegModal,
-	setIsUserLoggedIn,
-	setDataBase
-}) {
-	const [store, setStore] = useContext(Store)
+function SignUp({ showRegModal, setShowRegModal }) {
+	const [, setStore] = useContext(Store)
+	const [, setDataBase] = useContext(DataBase)
 	const [userAgree, setUserAgree] = useState(false)
 
 	const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -90,7 +86,8 @@ function SignUp({
 					month: values.month,
 					year: values.year,
 					password: values.password
-				}
+				},
+				isUserLoggedIn: true
 			}
 		})
 		setDataBase((prev) => {
@@ -118,7 +115,6 @@ function SignUp({
 			}
 		})
 		setShowRegModal(false)
-		setIsUserLoggedIn(true)
 		resetForm({ values: '' })
 		console.log('auth complete')
 	}

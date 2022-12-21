@@ -9,15 +9,12 @@ import stakeLogo from 'assets/img/stakeLogo.jpg'
 import person from 'assets/img/person.png'
 import vault from 'assets/icons/vault.svg'
 
-import styles from './styles.module.scss'
-import { BalanceWindow } from 'shared/ui'
 import { Store } from 'app/App'
+import { BalanceWindow } from 'shared/ui'
 
-function UserHeader({
-	setIsUserLoggedIn,
-	setShowWalletModal,
-	showWalletModal
-}) {
+import styles from './styles.module.scss'
+
+function UserHeader({ setShowWalletModal, showWalletModal }) {
 	const [store, setStore] = useContext(Store)
 	const [showBalanceModal, setShowBalanceModal] = useState(false)
 	const [isUserWindowOpen, setIsUserWindowOpen] = useState(false)
@@ -39,9 +36,9 @@ function UserHeader({
 					holder: '',
 					cvv: ''
 				}
-			}
+			},
+			isUserLoggedIn: false
 		})
-		setIsUserLoggedIn(false)
 	}
 
 	return (
@@ -130,7 +127,8 @@ function UserHeader({
 												className={styles.userTool}
 												onClick={() => {
 													navigate('/vault')
-												}}>
+												}}
+											>
 												<img
 													src={vault}
 													className={styles.userToolIcon}
@@ -142,7 +140,8 @@ function UserHeader({
 												className={styles.userTool}
 												onClick={() => {
 													navigate('/transactions')
-												}}>
+												}}
+											>
 												<IoIosPaper className={styles.userToolIcon} />
 												<div className={styles.userToolText}>Transactions</div>
 											</button>
@@ -150,7 +149,8 @@ function UserHeader({
 												className={styles.userTool}
 												onClick={() => {
 													navigate('/settings')
-												}}>
+												}}
+											>
 												<IoSettingsSharp className={styles.userToolIcon} />
 												<div className={styles.userToolText}>Settings</div>
 											</button>
