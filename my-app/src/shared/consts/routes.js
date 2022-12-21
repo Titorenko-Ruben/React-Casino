@@ -5,5 +5,6 @@ export const ROUTES = {
 	SPONSOR_DRAKE: '/sponsorships/drake',
 	SETTINGS: '/settings',
 	PAY: '/pay',
-	WITHDRAW: '/withdraw'
+	WITHDRAW: '/withdraw',
+	PROMOTION: '/promotions'
 }

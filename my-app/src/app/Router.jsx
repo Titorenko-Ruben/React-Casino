@@ -8,7 +8,8 @@ import {
 	SponsorDrake,
 	Settings,
 	Pay,
-	Withdraw
+	Withdraw,
+	Promotion
 } from 'pages'
 
 import { ROUTES } from 'shared/consts'
@@ -30,6 +31,7 @@ function Router({ showRegModal, setShowRegModal, isNavBarOpen }) {
 			<Route path={ROUTES.SPONSOR_WATFORD} element={<SponsorWatford />} />
 			<Route path={ROUTES.SPONSOR_DRAKE} element={<SponsorDrake />} />
 			<Route path={ROUTES.SETTINGS} element={<Settings />} />
+			<Route path={ROUTES.PROMOTION} element={<Promotion />} />
 			<Route path={ROUTES.PAY} element={<Pay />} />
 			<Route path={ROUTES.WITHDRAW} element={<Withdraw />} />
 		</Routes>
