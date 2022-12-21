@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik'
 import { useNavigate } from 'react-router-dom'
 
 import { CustomInput } from '../CustomInput'
-import { depositSchema } from 'shared/schemas'
+import { depositSchema } from 'shared/validations/common'
 
 import styles from './styles.module.scss'
 

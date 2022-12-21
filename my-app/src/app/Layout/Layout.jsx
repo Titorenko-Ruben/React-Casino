@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
+import { Store } from 'app/App'
 import { Header, UserHeader, NavBar, NavBarWindow, Footer } from 'widgets'
 
 function Layout({
 	children,
-	isUserLoggedIn,
-	setIsUserLoggedIn,
 	showWalletModal,
 	setShowWalletModal,
 	showRegModal,
@@ -15,11 +14,12 @@ function Layout({
 	setIsNavBarOpen,
 	setShowSignInModal
 }) {
+	const [store] = useContext(Store)
+
 	return (
 		<>
-			{isUserLoggedIn ? (
+			{store.isUserLoggedIn ? (
 				<UserHeader
-					setIsUserLoggedIn={setIsUserLoggedIn}
 					showWalletModal={showWalletModal}
 					setShowWalletModal={setShowWalletModal}
 				/>

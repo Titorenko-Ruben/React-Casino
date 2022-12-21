@@ -6,6 +6,7 @@ import { Layout } from './Layout'
 import Router from './Router'
 
 export const Store = createContext()
+export const DataBase = createContext()
 
 function App() {
 	const [store, setStore] = useState({
@@ -24,9 +25,9 @@ function App() {
 				holder: '',
 				cvv: ''
 			}
-		}
+		},
+		isUserLoggedIn: false
 	})
-	const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
 	const [isNavBarOpen, setIsNavBarOpen] = useState(false)
 	const [showRegModal, setShowRegModal] = useState(false)
 	const [showSignInModal, setShowSignInModal] = useState(false)
@@ -61,46 +62,36 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Store.Provider value={[store, setStore]}>
-				<Layout
-					isUserLoggedIn={isUserLoggedIn}
-					setIsUserLoggedIn={setIsUserLoggedIn}
-					showWalletModal={showWalletModal}
-					setShowWalletModal={setShowWalletModal}
-					showRegModal={showRegModal}
-					setShowRegModal={setShowRegModal}
-					showSignInModal={showSignInModal}
-					setShowSignInModal={setShowSignInModal}
-					isNavBarOpen={isNavBarOpen}
-					setIsNavBarOpen={setIsNavBarOpen}
-				>
-					<Router
-						isUserLoggedIn={isUserLoggedIn}
-						setStore={setStore}
-						store={store}
+				<DataBase.Provider value={[dataBase, setDataBase]}>
+					<Layout
+						showWalletModal={showWalletModal}
+						setShowWalletModal={setShowWalletModal}
 						showRegModal={showRegModal}
 						setShowRegModal={setShowRegModal}
-						setDataBase={setDataBase}
-						dataBase={dataBase}
+						showSignInModal={showSignInModal}
+						setShowSignInModal={setShowSignInModal}
 						isNavBarOpen={isNavBarOpen}
+						setIsNavBarOpen={setIsNavBarOpen}
+					>
+						<Router
+							showRegModal={showRegModal}
+							setShowRegModal={setShowRegModal}
+							isNavBarOpen={isNavBarOpen}
+						/>
+					</Layout>
+					<SignUp
+						showRegModal={showRegModal}
+						setShowRegModal={setShowRegModal}
 					/>
-				</Layout>
-				<SignUp
-					showRegModal={showRegModal}
-					setShowRegModal={setShowRegModal}
-					setIsUserLoggedIn={setIsUserLoggedIn}
-					setDataBase={setDataBase}
-					dataBase={dataBase}
-				/>
-				<SignIn
-					showSignInModal={showSignInModal}
-					setShowSignInModal={setShowSignInModal}
-					setIsUserLoggedIn={setIsUserLoggedIn}
-					dataBase={dataBase}
-				/>
-				<WalletModal
-					showWalletModal={showWalletModal}
-					setShowWalletModal={setShowWalletModal}
-				/>
+					<SignIn
+						showSignInModal={showSignInModal}
+						setShowSignInModal={setShowSignInModal}
+					/>
+					<WalletModal
+						showWalletModal={showWalletModal}
+						setShowWalletModal={setShowWalletModal}
+					/>
+				</DataBase.Provider>
 			</Store.Provider>
 		</BrowserRouter>
 	)

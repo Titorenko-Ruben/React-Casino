@@ -3,18 +3,17 @@ import { Formik, Form } from 'formik'
 import { useNavigate } from 'react-router-dom'
 
 import { CustomInput } from '../CustomInput'
-import { withdrawSchema } from 'shared/schemas'
+import { withdrawSchema } from 'shared/validations/common'
 import { Store } from 'app/App'
 
 import styles from './styles.module.scss'
 
 function WalletWithdrawForm({ setWalletWindow }) {
-	const [store, setStore] = useContext(Store)
+	const [store] = useContext(Store)
 	const [error, setError] = useState(false)
 	const navigate = useNavigate()
 
 	function onSubmit(values, actions) {
-		console.log(store.user.balance)
 		if (Math.ceil(values.withdraw) > store.user.balance) {
 			setError(true)
 		} else {

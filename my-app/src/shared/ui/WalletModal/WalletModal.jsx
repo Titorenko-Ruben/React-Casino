@@ -3,8 +3,8 @@ import { IoIosClose } from 'react-icons/io'
 import { IoWalletSharp } from 'react-icons/io5'
 import { WalletDepositForm } from './ui/WalletDepositModal/WalletDepositForm'
 
-import styles from './styles.module.scss'
 import { WalletWithdrawForm } from './ui/WalletWithdrawModal/WalletWirhdrawForm'
+import styles from './styles.module.scss'
 
 function WalletModal({ showWalletModal, setShowWalletModal }) {
 	const [isDepositeActive, setIsDepositeActive] = useState(true)
