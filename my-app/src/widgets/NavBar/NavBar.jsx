@@ -83,10 +83,18 @@ function NavBar({ setIsNavBarOpen, isNavBarOpen }) {
 						<hr className={styles.separator} />
 					</div>
 					<div className={styles.hoverable}>
-						<Link>
-							<span className={styles.contentLoader}>
-								<BiReset className={styles.icon} style={{ color: 'white' }} />
-							</span>
+						<Link to='/recent'>
+							<div
+								className={
+									location.pathname === '/sponsorships'
+										? styles.hoverableActive
+										: styles.hoverable
+								}
+							>
+								<span className={styles.contentLoader}>
+									<BiReset className={styles.icon} style={{ color: 'white' }} />
+								</span>
+							</div>
 						</Link>
 					</div>
 					{location.pathname === '/sports' && (

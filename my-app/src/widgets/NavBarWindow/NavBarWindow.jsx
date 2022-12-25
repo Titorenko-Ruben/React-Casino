@@ -80,7 +80,7 @@ function NavBarWindow({ setIsNavBarOpen, isNavBarOpen }) {
 					<hr className={styles.separator} />
 				</div>
 				<div className={styles.scroll}>
-					<Link className={styles.item}>
+					<Link to='/recent' className={styles.item}>
 						<span className={styles.contentLoader}>
 							<div className={styles.icon}>
 								<BiReset />

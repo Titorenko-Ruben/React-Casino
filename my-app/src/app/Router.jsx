@@ -9,7 +9,8 @@ import {
 	Settings,
 	Pay,
 	Withdraw,
-	Promotion
+	Promotion,
+	Recent
 } from 'pages'
 
 import { ROUTES } from 'shared/consts'
@@ -34,6 +35,7 @@ function Router({ showRegModal, setShowRegModal, isNavBarOpen }) {
 			<Route path={ROUTES.PROMOTION} element={<Promotion />} />
 			<Route path={ROUTES.PAY} element={<Pay />} />
 			<Route path={ROUTES.WITHDRAW} element={<Withdraw />} />
+			<Route path={ROUTES.RECENT} element={<Recent />} />
 		</Routes>
 	)
 }

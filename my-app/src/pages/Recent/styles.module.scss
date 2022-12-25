@@ -32,6 +32,7 @@
 
 .imgBg {
 	z-index: 1500;
+	width: auto;
 }
 
 .central {
@@ -51,11 +52,11 @@
 	padding-bottom: 20px;
 }
 
-.itemWrapper {
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.contentWrapper {
 	margin: 30px auto;
-	grid-gap: 20px;
-	display: grid;
+
+	display: flex;
+	gap: 3px;
 }
 
 .bgWrapper {
@@ -93,4 +94,66 @@
 .imgFoto:hover {
 	transform: translate(0, -10px);
 	transition: all 0.3s ease 0s;
+}
+
+.depositBtnActive {
+	color: #fff;
+	background: #2f4553 !important;
+	box-shadow: none !important;
+	padding: 0.75em 1em;
+	justify-content: flex-start;
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 150%;
+	appearance: none;
+	margin: 0;
+	border: none;
+	cursor: pointer;
+	touch-action: manipulation;
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	border-radius: 100px;
+	-webkit-tap-highlight-color: transparent;
+	transition: background-color 0.2s, color 0.2s;
+	flex-shrink: 0;
+	outline: none;
+}
+
+.depositBtnDisabled {
+	color: #fff;
+	background: #0f212e;
+	box-shadow: none !important;
+	padding: 0.75em 1em;
+	justify-content: flex-start;
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 150%;
+	appearance: none;
+	margin: 0;
+	border: none;
+	cursor: pointer;
+	touch-action: manipulation;
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	border-radius: 100px;
+	-webkit-tap-highlight-color: transparent;
+	transition: background-color 0.2s, color 0.2s;
+	flex-shrink: 0;
+	outline: none;
+}
+
+.depositBtnDisabled:hover {
+	background: #2f4553;
+}
+
+.depositBtnDisabled:active {
+	opacity: 0.5;
+}
+
+.walletBtnText {
+	display: inline-flex;
+	position: relative;
+	align-items: center;
 }

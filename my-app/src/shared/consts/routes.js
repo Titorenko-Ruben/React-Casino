@@ -6,5 +6,6 @@ export const ROUTES = {
 	SETTINGS: '/settings',
 	PAY: '/pay',
 	WITHDRAW: '/withdraw',
-	PROMOTION: '/promotions'
+	PROMOTION: '/promotions',
+	RECENT: '/recent'
 }
