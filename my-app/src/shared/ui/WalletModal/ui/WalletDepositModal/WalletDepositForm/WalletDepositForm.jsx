@@ -7,13 +7,13 @@ import { depositSchema } from 'shared/validations/common'
 
 import styles from './styles.module.scss'
 
-function WalletDepositForm({ setWalletWindow }) {
+function WalletDepositForm({ hideModal }) {
 	const navigate = useNavigate()
 
 	function onSubmit(values, actions) {
 		localStorage.setItem('DepositRequest', Math.ceil(values.deposit))
 		actions.resetForm()
-		setWalletWindow(false)
+		hideModal()
 		navigate('pay')
 	}
 
