@@ -1,4 +1,5 @@
 import React, { useEffect, useState, createContext } from 'react'
+import { ModalProvider } from 'react-modal-hook'
 import { BrowserRouter } from 'react-router-dom'
 
 import { SignUp, SignIn, WalletModal } from 'shared/ui'
@@ -31,7 +32,6 @@ function App() {
 	const [isNavBarOpen, setIsNavBarOpen] = useState(false)
 	const [showRegModal, setShowRegModal] = useState(false)
 	const [showSignInModal, setShowSignInModal] = useState(false)
-	const [showWalletModal, setShowWalletModal] = useState(false)
 	const [dataBase, setDataBase] = useState(
 		JSON.parse(localStorage.getItem('DataBase')) || {
 			users: [
@@ -63,34 +63,30 @@ function App() {
 		<BrowserRouter>
 			<Store.Provider value={[store, setStore]}>
 				<DataBase.Provider value={[dataBase, setDataBase]}>
-					<Layout
-						showWalletModal={showWalletModal}
-						setShowWalletModal={setShowWalletModal}
-						showRegModal={showRegModal}
-						setShowRegModal={setShowRegModal}
-						showSignInModal={showSignInModal}
-						setShowSignInModal={setShowSignInModal}
-						isNavBarOpen={isNavBarOpen}
-						setIsNavBarOpen={setIsNavBarOpen}
-					>
-						<Router
+					<ModalProvider>
+						<Layout
 							showRegModal={showRegModal}
 							setShowRegModal={setShowRegModal}
+							showSignInModal={showSignInModal}
+							setShowSignInModal={setShowSignInModal}
 							isNavBarOpen={isNavBarOpen}
+							setIsNavBarOpen={setIsNavBarOpen}
+						>
+							<Router
+								showRegModal={showRegModal}
+								setShowRegModal={setShowRegModal}
+								isNavBarOpen={isNavBarOpen}
+							/>
+						</Layout>
+						<SignUp
+							showRegModal={showRegModal}
+							setShowRegModal={setShowRegModal}
 						/>
-					</Layout>
-					<SignUp
-						showRegModal={showRegModal}
-						setShowRegModal={setShowRegModal}
-					/>
-					<SignIn
-						showSignInModal={showSignInModal}
-						setShowSignInModal={setShowSignInModal}
-					/>
-					<WalletModal
-						showWalletModal={showWalletModal}
-						setShowWalletModal={setShowWalletModal}
-					/>
+						<SignIn
+							showSignInModal={showSignInModal}
+							setShowSignInModal={setShowSignInModal}
+						/>
+					</ModalProvider>
 				</DataBase.Provider>
 			</Store.Provider>
 		</BrowserRouter>

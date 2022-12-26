@@ -5,8 +5,6 @@ import { Header, UserHeader, NavBar, NavBarWindow, Footer } from 'widgets'
 
 function Layout({
 	children,
-	showWalletModal,
-	setShowWalletModal,
 	showRegModal,
 	setShowRegModal,
 	showSignInModal,
@@ -19,10 +17,7 @@ function Layout({
 	return (
 		<>
 			{store.isUserLoggedIn ? (
-				<UserHeader
-					showWalletModal={showWalletModal}
-					setShowWalletModal={setShowWalletModal}
-				/>
+				<UserHeader />
 			) : (
 				<Header
 					showRegModal={showRegModal}

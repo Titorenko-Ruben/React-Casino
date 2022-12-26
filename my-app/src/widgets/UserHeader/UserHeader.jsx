@@ -4,17 +4,18 @@ import { IoIosArrowDown, IoIosArrowUp, IoIosPaper } from 'react-icons/io'
 import { IoWalletSharp, IoSettingsSharp, IoLogOutSharp } from 'react-icons/io5'
 import { HiOutlineCurrencyDollar, HiOutlineChatAlt2 } from 'react-icons/hi'
 import { ImArrowUp } from 'react-icons/im'
+import { useModal } from 'react-modal-hook'
 
 import stakeLogo from 'assets/img/stakeLogo.jpg'
 import person from 'assets/img/person.png'
 import vault from 'assets/icons/vault.svg'
 
 import { Store } from 'app/App'
-import { BalanceWindow } from 'shared/ui'
+import { BalanceWindow, WalletModal } from 'shared/ui'
 
 import styles from './styles.module.scss'
 
-function UserHeader({ setShowWalletModal, showWalletModal }) {
+function UserHeader() {
 	const [store, setStore] = useContext(Store)
 	const [showBalanceModal, setShowBalanceModal] = useState(false)
 	const [isUserWindowOpen, setIsUserWindowOpen] = useState(false)
@@ -40,6 +41,9 @@ function UserHeader({ setShowWalletModal, showWalletModal }) {
 			isUserLoggedIn: false
 		})
 	}
+	const [showModal, hideModal] = useModal(() => (
+		<WalletModal hideModal={hideModal} />
+	))
 
 	return (
 		<div className={styles.headerWrapper}>
@@ -93,7 +97,7 @@ function UserHeader({ setShowWalletModal, showWalletModal }) {
 							</div>
 							<button
 								className={styles.walletButton}
-								onClick={() => setShowWalletModal(!showWalletModal)}
+								onClick={() => showModal()}
 							>
 								<span className={styles.walletButtonText}>Wallet</span>
 							</button>
@@ -118,7 +122,7 @@ function UserHeader({ setShowWalletModal, showWalletModal }) {
 										<div className={styles.userToolWindow}>
 											<button
 												className={styles.userTool}
-												onClick={() => setShowWalletModal(true)}
+												onClick={() => showModal()}
 											>
 												<IoWalletSharp className={styles.userToolIcon} />
 												<div className={styles.userToolText}>Wallet</div>

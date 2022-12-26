@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { Tooltip } from '@mui/material'
 
 import { GiPresent, GiTennisBall, GiSoccerBall } from 'react-icons/gi'
 import { IoIosBasketball, IoIosMicrophone } from 'react-icons/io'
@@ -34,60 +35,71 @@ function NavBar({ setIsNavBarOpen, isNavBarOpen }) {
 			</div>
 			<div className={styles.scroll}>
 				<div className={styles.scrollebleContent}>
-					<Link to='/sports'>
-						<div
-							className={
-								location.pathname === '/sports'
-									? styles.hoverableActive
-									: styles.hoverable
-							}
-						>
-							<span className={styles.contentLoader}>
-								<GiSoccerBall
-									className={styles.icon}
-									style={{ color: 'white' }}
-								/>
-							</span>
-						</div>
-					</Link>
-					<Link to='/promotions'>
-						<div
-							className={
-								location.pathname === '/promotions'
-									? styles.hoverableActive
-									: styles.hoverable
-							}
-						>
-							<span className={styles.contentLoader}>
-								<GiPresent className={styles.icon} style={{ color: 'white' }} />
-							</span>
-						</div>
-					</Link>
-					<Link to='/sponsorships'>
-						<div
-							className={
-								location.pathname === '/sponsorships'
-									? styles.hoverableActive
-									: styles.hoverable
-							}
-						>
-							<span className={styles.contentLoader}>
-								<FaHandshake
-									className={styles.icon}
-									style={{ color: 'white' }}
-								/>
-							</span>
-						</div>
-					</Link>
+					<Tooltip title='Sports' placement='right-end'>
+						<Link to='/sports'>
+							<div
+								className={
+									location.pathname === '/sports'
+										? styles.hoverableActive
+										: styles.hoverable
+								}
+							>
+								<span className={styles.contentLoader}>
+									<GiSoccerBall
+										className={styles.icon}
+										style={{ color: 'white' }}
+									/>
+								</span>
+							</div>
+						</Link>
+					</Tooltip>
+					<Tooltip title='Promotions' placement='right-end'>
+						<Link to='/promotions'>
+							<div
+								className={
+									location.pathname === '/promotions'
+										? styles.hoverableActive
+										: styles.hoverable
+								}
+							>
+								<span className={styles.contentLoader}>
+									<GiPresent
+										className={styles.icon}
+										style={{ color: 'white' }}
+									/>
+								</span>
+							</div>
+						</Link>
+					</Tooltip>
+					<Tooltip title='Sponsorships' placement='right-end'>
+						<Link to='/sponsorships'>
+							<div
+								className={
+									location.pathname === '/sponsorships'
+										? styles.hoverableActive
+										: styles.hoverable
+								}
+							>
+								<span className={styles.contentLoader}>
+									<FaHandshake
+										className={styles.icon}
+										style={{ color: 'white' }}
+									/>
+								</span>
+							</div>
+						</Link>
+					</Tooltip>
 					<div className={styles.lineWrapper}>
 						<hr className={styles.separator} />
 					</div>
 					<div className={styles.hoverable}>
-						<Link>
-							<span className={styles.contentLoader}>
-								<BiReset className={styles.icon} style={{ color: 'white' }} />
-							</span>
-						</Link>
+						<Tooltip title='Recent' placement='right-end'>
+							<Link>
+								<span className={styles.contentLoader}>
+									<BiReset className={styles.icon} style={{ color: 'white' }} />
+								</span>
+							</Link>
+						</Tooltip>
 					</div>
 					{location.pathname === '/sports' && (
 						<>

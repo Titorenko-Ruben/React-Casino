@@ -8,7 +8,7 @@ import { Store } from 'app/App'
 
 import styles from './styles.module.scss'
 
-function WalletWithdrawForm({ setWalletWindow }) {
+function WalletWithdrawForm({ hideModal }) {
 	const [store] = useContext(Store)
 	const [error, setError] = useState(false)
 	const navigate = useNavigate()
@@ -20,7 +20,7 @@ function WalletWithdrawForm({ setWalletWindow }) {
 			setError(false)
 			localStorage.setItem('WithdrawRequest', Math.ceil(values.withdraw))
 			actions.resetForm()
-			setWalletWindow(false)
+			hideModal()
 			navigate('withdraw')
 		}
 	}
