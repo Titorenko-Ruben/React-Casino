@@ -122,7 +122,9 @@ function UserHeader() {
 										<div className={styles.userToolWindow}>
 											<button
 												className={styles.userTool}
-												onClick={() => showModal()}
+												onClick={() => {showModal()
+													setIsUserWindowOpen(false)
+												}}
 											>
 												<IoWalletSharp className={styles.userToolIcon} />
 												<div className={styles.userToolText}>Wallet</div>
@@ -131,6 +133,7 @@ function UserHeader() {
 												className={styles.userTool}
 												onClick={() => {
 													navigate('/vault')
+													setIsUserWindowOpen(false)
 												}}
 											>
 												<img
@@ -144,6 +147,7 @@ function UserHeader() {
 												className={styles.userTool}
 												onClick={() => {
 													navigate('/transactions')
+													setIsUserWindowOpen(false)
 												}}
 											>
 												<IoIosPaper className={styles.userToolIcon} />
@@ -153,6 +157,7 @@ function UserHeader() {
 												className={styles.userTool}
 												onClick={() => {
 													navigate('/settings')
+													setIsUserWindowOpen(false)
 												}}
 											>
 												<IoSettingsSharp className={styles.userToolIcon} />
