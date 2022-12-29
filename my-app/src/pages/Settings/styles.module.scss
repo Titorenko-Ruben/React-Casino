@@ -79,18 +79,7 @@
 .linkActive{
     padding: 10.5px 14px;
     background-color: #071824;
+    border-left: 3.5px solid #1475E1;
+    transition: .2s ;
     cursor: pointer;
 }
-
-.dash{
-    height: 11.1111%;
-    transform: translateY(0%);
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 3px;
-    background: #1475E1;
-    transition: all .2s ease-out
-}
-
