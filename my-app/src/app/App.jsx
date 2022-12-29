@@ -2,7 +2,6 @@ import React, { useEffect, useState, createContext } from 'react'
 import { ModalProvider } from 'react-modal-hook'
 import { BrowserRouter } from 'react-router-dom'
 
-import { SignUp, SignIn, WalletModal } from 'shared/ui'
 import { Layout } from './Layout'
 import Router from './Router'
 
@@ -30,8 +29,6 @@ function App() {
 		isUserLoggedIn: false
 	})
 	const [isNavBarOpen, setIsNavBarOpen] = useState(false)
-	const [showRegModal, setShowRegModal] = useState(false)
-	const [showSignInModal, setShowSignInModal] = useState(false)
 	const [dataBase, setDataBase] = useState(
 		JSON.parse(localStorage.getItem('DataBase')) || {
 			users: [
@@ -65,27 +62,11 @@ function App() {
 				<DataBase.Provider value={[dataBase, setDataBase]}>
 					<ModalProvider>
 						<Layout
-							showRegModal={showRegModal}
-							setShowRegModal={setShowRegModal}
-							showSignInModal={showSignInModal}
-							setShowSignInModal={setShowSignInModal}
 							isNavBarOpen={isNavBarOpen}
 							setIsNavBarOpen={setIsNavBarOpen}
 						>
-							<Router
-								showRegModal={showRegModal}
-								setShowRegModal={setShowRegModal}
-								isNavBarOpen={isNavBarOpen}
-							/>
+							<Router isNavBarOpen={isNavBarOpen} />
 						</Layout>
-						<SignUp
-							showRegModal={showRegModal}
-							setShowRegModal={setShowRegModal}
-						/>
-						<SignIn
-							showSignInModal={showSignInModal}
-							setShowSignInModal={setShowSignInModal}
-						/>
 					</ModalProvider>
 				</DataBase.Provider>
 			</Store.Provider>

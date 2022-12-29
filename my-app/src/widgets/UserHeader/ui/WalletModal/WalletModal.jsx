@@ -6,19 +6,19 @@ import { WalletDepositForm } from './ui/WalletDepositModal/WalletDepositForm'
 import { WalletWithdrawForm } from './ui/WalletWithdrawModal/WalletWirhdrawForm'
 import styles from './styles.module.scss'
 
-function WalletModal({ hideModal }) {
+function WalletModal({ hideWalletModal }) {
 	const [isDepositeActive, setIsDepositeActive] = useState(true)
 
 	return (
 		<div className={styles.modalWindow}>
-			<div className={styles.overlay} onClick={() => hideModal()}></div>
+			<div className={styles.overlay} onClick={() => hideWalletModal()}></div>
 			<div className={styles.window} onClick={(e) => e.stopPropagation()}>
 				<div className={styles.header}>
 					<div className={styles.walletTextWrapper}>
 						<IoWalletSharp className={styles.walletIcon} />
 						<div className={styles.walletText}>Wallet</div>
 					</div>
-					<button onClick={() => hideModal()} className={styles.closeBtn}>
+					<button onClick={() => hideWalletModal()} className={styles.closeBtn}>
 						<IoIosClose className={styles.closeIcon} />
 					</button>
 				</div>
@@ -52,9 +52,9 @@ function WalletModal({ hideModal }) {
 						</div>
 					</div>
 					{isDepositeActive ? (
-						<WalletDepositForm hideModal={hideModal} />
+						<WalletDepositForm hideModal={hideWalletModal} />
 					) : (
-						<WalletWithdrawForm hideModal={hideModal} />
+						<WalletWithdrawForm hideModal={hideWalletModal} />
 					)}
 				</div>
 			</div>

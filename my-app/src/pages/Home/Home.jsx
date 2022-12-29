@@ -1,17 +1,12 @@
 import React from 'react'
 
-import { Description, Discount, PlayBanner, StakeDrake } from 'shared/ui'
-
+import { Description, Discount, PlayBanner, StakeDrake } from './ui'
 import styles from './styles.module.scss'
 
-function Home({ showRegModal, setShowRegModal, isNavBarOpen }) {
+function Home({ isNavBarOpen }) {
 	return (
 		<div>
-			<Discount
-				showRegModal={showRegModal}
-				setShowRegModal={setShowRegModal}
-				isNavBarOpen={isNavBarOpen}
-			/>
+			<Discount isNavBarOpen={isNavBarOpen} />
 			<div
 				className={
 					isNavBarOpen
