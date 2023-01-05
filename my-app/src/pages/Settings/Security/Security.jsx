@@ -5,13 +5,14 @@ import { BiCommentError } from 'react-icons/bi'
 import 'react-toastify/dist/ReactToastify.css'
 
 import { DataBase, Store } from 'app/App'
+import { securitySchema } from 'shared/validations'
 
 import styles from './styles.module.scss'
-import { securitySchema } from 'shared/validations'
 
 function Security() {
 	const [dataBase, setDataBase] = useContext(DataBase)
 	const [store, setStore] = useContext(Store)
+
 	const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
 		useFormik({
 			initialValues: {
@@ -22,6 +23,7 @@ function Security() {
 			validationSchema: securitySchema,
 			onSubmit
 		})
+
 	const notify = () =>
 		toast.error('Error', {
 			position: 'top-left',
@@ -35,34 +37,23 @@ function Security() {
 		})
 
 	function onSubmit(values, { resetForm }) {
-		if (
-			values.pastPassword === '' ||
-			values.password === '' ||
-			values.confirmPassword === '' ||
-			values.pastPassword !== store.user.password ||
-			values.password !== values.confirmPassword
-		) {
+		if (values.pastPassword !== store.user.password) {
 			notify()
 		} else {
-			setStore((prev) => {
-				return {
-					...prev,
-					user: {
-						...prev.user,
-						password: values.password
-					}
+			setStore((prev) => ({
+				...prev,
+				user: {
+					...prev.user,
+					password: values.password
 				}
-			})
+			}))
 			setDataBase((prev) => {
 				return {
 					...prev,
 					users: dataBase.users.map((user) => {
-						if (
-							user.email === store.user.email &&
-							user.password === store.user.password
-						) {
+						if (user.email === store.user.email) {
 							return {
-								...store.user,
+								...user,
 								password: values.password
 							}
 						} else {
@@ -74,8 +65,7 @@ function Security() {
 		}
 		resetForm({ values: '' })
 	}
-	console.log(store.user)
-	console.log(dataBase.users)
+
 	return (
 		<div>
 			<form className={styles.cardVariantDefault} onSubmit={handleSubmit}>

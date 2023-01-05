@@ -3,20 +3,20 @@ import { IoLogoTwitch } from 'react-icons/io'
 import { AiOutlineGoogle } from 'react-icons/ai'
 import { CgFacebook } from 'react-icons/cg'
 import { MdWavingHand } from 'react-icons/md'
-
-import styles from './styles.module.scss'
 import { useModal } from 'react-modal-hook'
 
 import { Store } from 'app/App'
 import welcomeTopImg from 'assets/img/sweeps-welcome-top-en.png'
+import { SignUp } from 'shared/ui'
 
-import { SignUp } from '../../../../shared/ui/SignUp'
+import styles from './styles.module.scss'
 
 function Discount({ isNavBarOpen }) {
 	const [store] = useContext(Store)
 	const [showSignUpModal, hideSignUpModal] = useModal(() => (
 		<SignUp hideSignUpModal={hideSignUpModal} />
 	))
+
 	return (
 		<>
 			{store.isUserLoggedIn ? (
