@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import { useFormik } from 'formik'
 import { BiCommentError } from 'react-icons/bi'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { DataBase, Store } from 'app/App'
 import { email } from 'shared/validations'
@@ -18,9 +20,20 @@ function General() {
 			validationSchema: email,
 			onSubmit
 		})
+	const notify = () =>
+		toast.error('Error', {
+			position: 'top-left',
+			autoClose: 3500,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: 'dark'
+		})
 	function onSubmit(values, { resetForm }) {
 		if (values.email === store.user.email) {
-			console.log('Error')
+			notify()
 		} else {
 			setStore((prev) => {
 				return {
@@ -89,6 +102,7 @@ function General() {
 						<button type='submit' className={styles.btn}>
 							<span>Save</span>
 						</button>
+						<ToastContainer />
 					</div>
 				</form>
 			</div>

@@ -131,6 +131,7 @@ function UserHeader() {
 												className={styles.userTool}
 												onClick={() => {
 													navigate('/vault')
+													setIsUserWindowOpen(false)
 												}}
 											>
 												<img
@@ -144,6 +145,7 @@ function UserHeader() {
 												className={styles.userTool}
 												onClick={() => {
 													navigate('/transactions')
+													setIsUserWindowOpen(false)
 												}}
 											>
 												<IoIosPaper className={styles.userToolIcon} />
@@ -153,6 +155,7 @@ function UserHeader() {
 												className={styles.userTool}
 												onClick={() => {
 													navigate('/settings')
+													setIsUserWindowOpen(false)
 												}}
 											>
 												<IoSettingsSharp className={styles.userToolIcon} />
