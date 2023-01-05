@@ -5,12 +5,18 @@ import { CgFacebook } from 'react-icons/cg'
 import { MdWavingHand } from 'react-icons/md'
 
 import styles from './styles.module.scss'
+import { useModal } from 'react-modal-hook'
 
-import welcomeTopImg from 'assets/img/sweeps-welcome-top-en.png'
 import { Store } from 'app/App'
+import welcomeTopImg from 'assets/img/sweeps-welcome-top-en.png'
 
-function Discount({ showRegModal, setShowRegModal, isNavBarOpen }) {
+import { SignUp } from '../../../../shared/ui/SignUp'
+
+function Discount({ isNavBarOpen }) {
 	const [store] = useContext(Store)
+	const [showSignUpModal, hideSignUpModal] = useModal(() => (
+		<SignUp hideSignUpModal={hideSignUpModal} />
+	))
 	return (
 		<>
 			{store.isUserLoggedIn ? (
@@ -49,7 +55,7 @@ function Discount({ showRegModal, setShowRegModal, isNavBarOpen }) {
 							<h1 className={styles.title}>Play Smarter</h1>
 							<button
 								className={styles.mainBtn}
-								onClick={() => setShowRegModal(!showRegModal)}
+								onClick={() => showSignUpModal()}
 							>
 								<span> Register instanly</span>
 							</button>

@@ -1,17 +1,17 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Tooltip } from '@mui/material'
-
-import { GiPresent, GiTennisBall, GiSoccerBall } from 'react-icons/gi'
 import { IoIosBasketball, IoIosMicrophone } from 'react-icons/io'
-import { AiOutlineMenuUnfold } from 'react-icons/ai'
+import { GiPresent, GiTennisBall, GiSoccerBall } from 'react-icons/gi'
 import { BiReset } from 'react-icons/bi'
+import { AiOutlineMenuUnfold } from 'react-icons/ai'
 import { FaHandshake } from 'react-icons/fa'
 
 import styles from './styles.module.scss'
 
 function NavBar({ setIsNavBarOpen, isNavBarOpen }) {
 	const location = useLocation()
+
 	return (
 		<div
 			className={

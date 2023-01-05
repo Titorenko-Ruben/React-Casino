@@ -11,8 +11,8 @@ import person from 'assets/img/person.png'
 import vault from 'assets/icons/vault.svg'
 
 import { Store } from 'app/App'
-import { BalanceWindow, WalletModal } from 'shared/ui'
 
+import { BalanceWindow, WalletModal } from './ui'
 import styles from './styles.module.scss'
 
 function UserHeader() {
@@ -41,8 +41,8 @@ function UserHeader() {
 			isUserLoggedIn: false
 		})
 	}
-	const [showModal, hideModal] = useModal(() => (
-		<WalletModal hideModal={hideModal} />
+	const [showWalletModal, hideWalletModal] = useModal(() => (
+		<WalletModal hideWalletModal={hideWalletModal} />
 	))
 
 	return (
@@ -97,7 +97,7 @@ function UserHeader() {
 							</div>
 							<button
 								className={styles.walletButton}
-								onClick={() => showModal()}
+								onClick={() => showWalletModal()}
 							>
 								<span className={styles.walletButtonText}>Wallet</span>
 							</button>
@@ -122,9 +122,7 @@ function UserHeader() {
 										<div className={styles.userToolWindow}>
 											<button
 												className={styles.userTool}
-												onClick={() => {showModal()
-													setIsUserWindowOpen(false)
-												}}
+												onClick={() => showWalletModal()}
 											>
 												<IoWalletSharp className={styles.userToolIcon} />
 												<div className={styles.userToolText}>Wallet</div>
